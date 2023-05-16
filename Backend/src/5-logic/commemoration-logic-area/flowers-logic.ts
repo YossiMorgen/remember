@@ -3,9 +3,16 @@ import FlowersModel from "../../4-models/commemorations-models/flowers-model";
 
 async function addFlower(flower: FlowersModel) {
     const sql = `
-        UPDATE commemorationSites 
+        UPDATE flowers 
         SET amount = amount + 1, 
-        lastFlowerDate = NOW()
+        lastUpdate = NOW()
         WHERE commemorationSiteID = ? AND userID = ?`;
+
+}
+
+async function getFlowersAmountByCommemorativeID(commemorationSiteID: number) {
+    const sql = `
+        SELECT SUM(amount) AS amount FROM flowers
+        WHERE commemorationSiteID = ?`;
 
 }
