@@ -48,7 +48,7 @@ export default class CommemorativeModel {
 
 
     public static validationSchema = Joi.object({
-        commemorativeID: Joi.string().optional(),
+        commemorativeID: Joi.number().optional().integer().positive(),
         deceasedName: Joi.string().min(2).max(30).required(),
         biography: Joi.string().min(2).max(200).required(),
         about: Joi.string().min(2).max(200).required(),
