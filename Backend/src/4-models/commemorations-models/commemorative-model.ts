@@ -1,5 +1,6 @@
 import { UploadedFile } from "express-fileupload";
 import Joi from "joi";
+import LanguageModel from "../languages-model";
 
 export default class CommemorativeModel {
     public commemorativeID : number;
@@ -8,7 +9,7 @@ export default class CommemorativeModel {
     public about: string;
     public deceaseImage: UploadedFile;
     public deceaseImageName: string;
-    public language: string;
+    public language: LanguageModel;
     public birthDate: Date;
     public deathDate: Date;
     public state: string;
@@ -54,7 +55,7 @@ export default class CommemorativeModel {
         about: Joi.string().min(2).max(200).required(),
         deceaseImage: Joi.object().optional(),
         deceaseImageName: Joi.date().optional(),
-        language: Joi.string().valid('english', 'hebrew'),
+        language: Joi.string().valid(...Object.values(LanguageModel)).required(),
         birthDate: Joi.date().required(),
         deathDate: Joi.date().required(),
         state: Joi.string().min(2).max(15).required(),
