@@ -10,8 +10,9 @@ class User{
     public email: string;
     public password: string;
     public role: RoleModel;
-    public address : string;
+    public state : string;
     public city : string;
+    public birthDate: Date;
 
     constructor(user: User) {
         this.userID = user.userID;
@@ -20,8 +21,9 @@ class User{
         this.email = user.email;
         this.password = user.password;
         this.role = RoleModel.user;
-        this.address = user.address;
+        this.state = user.state;
         this.city = user.city;
+        this.birthDate = user.birthDate;
     }
 
     public static validationSchema = Joi.object({
@@ -31,7 +33,7 @@ class User{
         email: Joi.string().required().min(2).max(30),
         password: Joi.string().required().min(2).max(30),
         role: Joi.string().valid(...Object.values(RoleModel)),
-        address: Joi.string().required().min(2).max(30),
+        state: Joi.string().required().min(2).max(30),
         city: Joi.string().required().min(2).max(30),
         birthDate: Joi.date().required(),
     })
