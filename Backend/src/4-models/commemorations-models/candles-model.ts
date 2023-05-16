@@ -4,20 +4,17 @@ export default class CandlesModel {
     public commemorativeID: number;
     public userID: number;
     public amount: number;
-    public LastUpdate: Date;
 
     public constructor(candle: CandlesModel){
         this.commemorativeID = candle.commemorativeID;
         this.userID = candle.userID;
         this.amount = candle.amount;
-        this.LastUpdate = candle.LastUpdate;
     }
 
     public static validationSchema = Joi.object({
         commemorativeID: Joi.number().optional().integer().positive(),
         userID : Joi.number().optional().integer().positive(),
         amount: Joi.number().optional().integer().positive(),
-        LastUpdate: Joi.date().optional(),
     })
 
     public validation():string{

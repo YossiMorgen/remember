@@ -1,8 +1,7 @@
-import e from "express";
 import dal from "../../2-utils/dal";
 
 async function addCandle(commemorativeID: number, userID: number) {
-    const sql = `UPDATE candles SET amount = amount + 1, lastUpdate = ? WHERE commemorativeID = ? AND userID = ?`;
+    const sql = `UPDATE candles SET amount = amount + 1 WHERE commemorativeID = ? AND userID = ?`;
     const info = await dal.execute(sql, [new Date(), commemorativeID, userID]);
     if (info.affectedRows === 0) {
         const sql = `INSERT INTO candles (commemorativeID, userID, amount, lastUpdate) VALUES (?, ?, 1, ?)`;

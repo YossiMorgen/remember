@@ -23,6 +23,7 @@ export default class CommemorativeModel {
     public graveYardName: string;
     public locationLink: string;
     public views: number;
+    public lastWatched: Date;
 
     public constructor(commemorative : CommemorativeModel){
         this.commemorativeID = commemorative.commemorativeID;
@@ -45,6 +46,7 @@ export default class CommemorativeModel {
         this.graveYardName = commemorative.graveYardName;
         this.locationLink = commemorative.locationLink;
         this.views = commemorative.views;
+        this.lastWatched = commemorative.lastWatched;
     }
 
 
@@ -68,7 +70,8 @@ export default class CommemorativeModel {
         graveImageName: Joi.string().max(150).optional(),
         graveYardName: Joi.string().min(2).max(20).required(),
         locationLink: Joi.string().min(2).max(100).optional(),
-        views: Joi.number().optional()
+        views: Joi.number().optional(),
+        lastWatched: Joi.date().optional(),
     })
 
     public validation():string{
