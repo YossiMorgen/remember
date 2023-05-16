@@ -1,0 +1,12 @@
+# i don't wanna show the details of the server
+docker-compose.prod.yml
+
+node_modules
+
+Backend/node_modules
+Backend/build-stage
+Frontend/node_modules
+Frontend/build
+
+Backend/src/1-assets/logs/activities
+Backend/src/1-assets/logs/errors
