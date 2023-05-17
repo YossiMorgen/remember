@@ -104,7 +104,7 @@ async function addCommemorative (commemorative: CommemorativeModel){
     delete commemorative.deceaseImage;
     delete commemorative.graveImage;
 
-    let sql = `INSERT INTO users VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`
+    let sql = `INSERT INTO commemorative VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`
     const info: OkPacket = await dal.execute(sql, [
         commemorative.deceasedName,
         commemorative.biography, 

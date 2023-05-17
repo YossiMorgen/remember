@@ -4,8 +4,11 @@ import catchAll from "./3-middleware/catch-all";
 import routeNotFound from "./3-middleware/route-not-found";
 import cors from "cors";
 import CommemorativeController from "./6-controllers/commemorative-controllers/commemorative-controller";
+import candlesController from "./6-controllers/commemorative-controllers/candles-controller";
+import flowersController from "./6-controllers/commemorative-controllers/flowers-controller";
+import deceaseImagesController from "./6-controllers/commemorative-controllers/decease-images-controller";
+import commemorationSiteController from "./6-controllers/commemorative-controllers/commemoration-site-controller";
 import authController from "./6-controllers/auth-controller";
-import productsController from "./6-controllers/products-controller";
 import expressRateLimit from "express-rate-limit";
 import helmet from "helmet";
 import expressFileUpload from 'express-fileupload'
@@ -31,11 +34,15 @@ server.use(express.static('src/1-assets/images'))
 server.use(express.urlencoded({ extended: false }));
 
 server.use('/api', authController);
+server.use('/api/commemorative', candlesController);
+server.use('/api/commemorative', flowersController);
+
 
 
 server.use(expressFileUpload());
-server.use('/api', productsController);
-server.use('/api', CommemorativeController);
+server.use('/api/commemorative', deceaseImagesController);
+server.use('/api/commemorative', CommemorativeController);
+server.use('/api/commemorative', commemorationSiteController);
 
 server.use('*', routeNotFound);
 

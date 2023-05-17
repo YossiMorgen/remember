@@ -1,38 +1,38 @@
 import dal from "../../2-utils/dal";
 import FlowersModel from "../../4-models/commemorations-models/flowers-model";
 
-async function getFlowerByUserAndCommemorativeID(userID: number, commemorativeID: number) {
+async function getFlowerByUserAndCommemorativeID( commemorativeID: number, userID: number) {
     const sql = `SELECT * FROM flowers WHERE userID = ? AND commemorationSiteID = ?`;
     const [flower] = await dal.execute(sql, [userID, commemorativeID]);
     return flower;
 }
 
 
-async function addFlower(flower: FlowersModel) {
+async function addFlower(commemorativeID: number, userID: number) {
     const sql = `
         UPDATE flowers 
         SET amount = amount + 1, 
         lastUpdate = NOW()
         WHERE commemorationSiteID = ? AND userID = ?`;
 
-    const info = await dal.execute(sql, [flower.commemorativeID, flower.userID]);
+    const info = await dal.execute(sql, [commemorativeID, userID]);
 
     if (info.affectedRows === 0) {
         const sql = `
             INSERT INTO flowers 
             VALUES (DEFAULT, ?, ?, NOW())`;
 
-        const info = await dal.execute(sql, [flower.commemorativeID, flower.userID]);
+        const info = await dal.execute(sql, [commemorativeID, userID]);
     }
 
 }
 
-async function getFlowersAmountByCommemorativeID(commemorationSiteID: number) {
+async function getFlowersAmountByCommemorativeID(commemorativeID: number) {
     const sql = `
         SELECT SUM(amount) AS amount FROM flowers
-        WHERE commemorationSiteID = ?`;
+        WHERE commemorativeID = ?`;
 
-    const flowersAmount = await dal.execute(sql, [commemorationSiteID]);
+    const flowersAmount = await dal.execute(sql, [commemorativeID]);
 
     return flowersAmount[0].amount;
 }

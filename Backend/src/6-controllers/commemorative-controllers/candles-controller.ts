@@ -25,7 +25,7 @@ router.get('/candle_by_user/', async (req, res, next) => {
 })
 
 
-router.post('/add_candle/:commemorativeID()', async (req, res, next) => {
+router.post('/add_candle/:commemorativeID([0-9]+)', async (req, res, next) => {
     try {
         const decodeUser = await cyber.getDecodeToken(req);
         const userID = decodeUser.userID;

@@ -3,7 +3,7 @@ import deceaseImagesLogic from "../../5-logic/commemoration-logic-area/decease-i
 
 const router = Router();
 
-router.get('/decease_images/:commemorativeID', async (req, res, next) => {
+router.get('/decease_images/:commemorativeID([0-9]+)', async (req, res, next) => {
     try {
         const commemorativeID = +req.params.commemorativeID;
         const deceaseImages = await deceaseImagesLogic.getAllDeceaseImages(commemorativeID);
@@ -24,7 +24,7 @@ router.post('/add_decease_image', async (req, res, next) => {
     }
 })
 
-router.delete('/delete_decease_image/:deceaseImageID', async (req, res, next) => {
+router.delete('/delete_decease_image/:deceaseImageID([0-9]+)', async (req, res, next) => {
     try {
         const deceaseImageID = +req.params.deceaseImageID;
         await deceaseImagesLogic.deleteDeceaseImage(deceaseImageID);
