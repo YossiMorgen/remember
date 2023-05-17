@@ -5,7 +5,7 @@ import CommemorationSitesModel from "../../4-models/commemorations-models/commem
 import { ValidationErrorModel } from "../../4-models/error-models";
 import e from "express";
 
-async function getAllCommemorationSitesByCommemorative(commemorativeID : number) {
+async function getAllCommemorationSitesByCommemorativeID(commemorativeID : number) {
     const sql = `SELECT * FROM commemorationSites WHERE commemorativeID = ?`;
     const commemorationSites = await dal.execute(sql, [commemorativeID]);
     return commemorationSites;
@@ -74,7 +74,7 @@ async function getCommemorationSiteByID(commemorationSiteID: number) {
 }
 
 export default {
-    getAllCommemorationSitesByCommemorative,
+    getAllCommemorationSitesByCommemorativeID,
     addCommemorationSite,
     updateCommemorationSite,
     deleteCommemorationSite,
