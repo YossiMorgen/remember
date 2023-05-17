@@ -1,0 +1,15 @@
+.centerCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+mat-card{
+    margin: 5%;
+}
+
+mat-form-field{
+    display: block;
+}

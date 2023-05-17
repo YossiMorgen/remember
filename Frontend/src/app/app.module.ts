@@ -61,6 +61,7 @@ import { HeaderComponent } from './components/layout-area/header/header.componen
 import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
 import { LayoutComponent } from './components/layout-area/layout/layout.component';
 import { LoaderComponent } from './components/playground/loader/loader.component';
+import { CommemorativeListComponent } from './components/commemorative-area/commemorative-list/commemorative-list.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { LoaderComponent } from './components/playground/loader/loader.component
     PageNotFoundComponent,
     LayoutComponent,
     LoaderComponent,
+    CommemorativeListComponent,
   ],
   imports: [
     BrowserModule,
