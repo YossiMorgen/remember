@@ -9,7 +9,7 @@ import { ConfigService } from 'src/app/utils/config.service';
 export class FlowersService {
 
     constructor(
-      private http: HttpClient, 
+      private http: HttpClient,
       private config: ConfigService,
     ) { }
 

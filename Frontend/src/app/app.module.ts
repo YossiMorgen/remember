@@ -4,14 +4,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastService, AngularToastifyModule } from 'angular-toastify'; 
-
-import { AppRoutingModule } from './app-routing.module';
-import { LayoutComponent } from './conponents/layout-area/layout/layout.component';
-import { LoginComponent } from './conponents/auth-area/login/login.component';
-import { RegisterComponent } from './conponents/auth-area/register/register.component';
-import { HeaderComponent } from './conponents/layout-area/header/header.component';
 import { FormsModule } from '@angular/forms';
-
+import { AppRoutingModule } from './app-routing.module';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -61,21 +55,21 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {CdkMenuModule} from '@angular/cdk/menu';
 import {DialogModule} from '@angular/cdk/dialog';
-import { CommemorativeListComponent } from './components/commemorative-area/commemorative-list/commemorative-list.component';
-import { CommemorativeCardComponent } from './components/commemorative-area/commemorative-card/commemorative-card.component';
-import { CommemorativePageComponent } from './components/commemorative-area/commemorative-page/commemorative-page.component';
+import { LoginComponent } from './components/auth-area/login/login.component';
+import { RegisterComponent } from './components/auth-area/register/register.component';
+import { HeaderComponent } from './components/layout-area/header/header.component';
 import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
+import { LayoutComponent } from './components/layout-area/layout/layout.component';
+import { LoaderComponent } from './components/playground/loader/loader.component';
 
 @NgModule({
   declarations: [
-    LayoutComponent,
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    CommemorativeListComponent,
-    CommemorativeCardComponent,
-    CommemorativePageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LayoutComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
