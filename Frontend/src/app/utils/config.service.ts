@@ -30,10 +30,9 @@ export class ConfigService {
   public update_commemoration_site = this.baseUrl + "commemorative/update_commemoration_site/";
   public delete_commemoration_site = this.baseUrl + "commemorative/delete_commemoration_site/";
 
-  public sum_commemorative_candles = this.baseUrl + "commemorative/commemorative_candles/";
+  public sum_commemorative_candles = this.baseUrl + "commemorative/sum_commemorative_candles/";
   public add_candle = this.baseUrl + "commemorative/add_candle/";
 
-  public user_flowers = this.baseUrl + "commemorative/user_flowers/";
   public add_flower = this.baseUrl + "commemorative/add_flower/";
-  public flowers_amount = this.baseUrl + "commemorative/flowers_amount/";
+  public sum_commemorative_flowers = this.baseUrl + "commemorative/sum_commemorative_flowers/";
 }

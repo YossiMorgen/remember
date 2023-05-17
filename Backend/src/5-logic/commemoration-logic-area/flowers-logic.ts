@@ -1,13 +1,6 @@
 import dal from "../../2-utils/dal";
 import FlowersModel from "../../4-models/commemorations-models/flowers-model";
 
-async function getFlowerByUserAndCommemorativeID( commemorativeID: number, userID: number) {
-    const sql = `SELECT * FROM flowers WHERE userID = ? AND commemorationSiteID = ?`;
-    const [flower] = await dal.execute(sql, [userID, commemorativeID]);
-    return flower;
-}
-
-
 async function addFlower(commemorativeID: number, userID: number) {
     const sql = `
         UPDATE flowers 
@@ -27,7 +20,7 @@ async function addFlower(commemorativeID: number, userID: number) {
 
 }
 
-async function getFlowersAmountByCommemorativeID(commemorativeID: number) {
+async function sumFlowersAmountByCommemorativeID(commemorativeID: number) {
     const sql = `
         SELECT SUM(amount) AS amount FROM flowers
         WHERE commemorativeID = ?`;
@@ -37,4 +30,4 @@ async function getFlowersAmountByCommemorativeID(commemorativeID: number) {
     return flowersAmount[0].amount;
 }
 
-export default { getFlowerByUserAndCommemorativeID, addFlower, getFlowersAmountByCommemorativeID };
+export default { addFlower, sumFlowersAmountByCommemorativeID };
