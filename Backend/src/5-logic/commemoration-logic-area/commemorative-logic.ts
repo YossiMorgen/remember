@@ -155,6 +155,7 @@ async function updateCommemorative (commemorative: CommemorativeModel){
     let sql = `
         UPDATE commemorative SET 
             deceasedName = ?, 
+            userID = ?,
             biography = ?, 
             about = ?, 
             deceaseImageName = ?, 
@@ -198,6 +199,7 @@ async function updateCommemorative (commemorative: CommemorativeModel){
     
     await dal.execute(sql, [
         commemorative.deceasedName,
+        commemorative.userID,
         commemorative.biography, 
         commemorative.about, 
         commemorative.deceaseImageName,
