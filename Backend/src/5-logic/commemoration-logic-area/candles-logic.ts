@@ -21,4 +21,4 @@ async function addCandle(commemorativeID: number, userID: number) {
     }
 }
 
-export default { addCandle, getCommemorativeCandles, getCandleByUser, getCandlesSumPerCommemorative, getCandlesSumPerUser };
+export default { addCandle, getCommemorativeCandles, getCandleByUser };
