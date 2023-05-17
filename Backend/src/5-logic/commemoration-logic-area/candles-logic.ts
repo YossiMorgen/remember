@@ -1,14 +1,8 @@
 import dal from "../../2-utils/dal";
 
-async function getCommemorativeCandles(commemorativeID: number) {
+async function sumCommemorativeCandles(commemorativeID: number) {
     const sql = `SELECT SUM(amount) AS candlesSum FROM candles WHERE commemorativeID = ?`;
     const candlesSum = await dal.execute(sql, [commemorativeID]);
-    return candlesSum[0].candlesSum;
-}
-
-async function getCandleByUser(userID: number) {
-    const sql = `SELECT SUM(amount) AS candlesSum FROM candles WHERE userID = ?`;
-    const candlesSum = await dal.execute(sql, [userID]);
     return candlesSum[0].candlesSum;
 }
 
@@ -21,4 +15,4 @@ async function addCandle(commemorativeID: number, userID: number) {
     }
 }
 
-export default { addCandle, getCommemorativeCandles, getCandleByUser };
+export default { addCandle, sumCommemorativeCandles };

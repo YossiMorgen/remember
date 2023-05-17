@@ -11,7 +11,7 @@ export class ConfigService {
   public register = this.baseUrl + "auth/register";
   public isEmailExist = this.baseUrl + "auth/is_email_exist/";
 
-  
+
 
   public random_commemorative = this.baseUrl + "commemorative/random_commemorative";
   public commemorative_by_id = this.baseUrl + "commemorative/commemorative_by_id/";
@@ -30,8 +30,7 @@ export class ConfigService {
   public update_commemoration_site = this.baseUrl + "commemorative/update_commemoration_site/";
   public delete_commemoration_site = this.baseUrl + "commemorative/delete_commemoration_site/";
 
-  public commemorative_candles = this.baseUrl + "commemorative/commemorative_candles/";
-  public candle_by_user = this.baseUrl + "commemorative/candle_by_user/";
+  public sum_commemorative_candles = this.baseUrl + "commemorative/commemorative_candles/";
   public add_candle = this.baseUrl + "commemorative/add_candle/";
 
   public user_flowers = this.baseUrl + "commemorative/user_flowers/";

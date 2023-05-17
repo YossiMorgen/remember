@@ -1,31 +1,20 @@
 import { Router } from "express";
-import candlesLogic from "../../4-models/commemorations-models/candles-logic";
+import candlesLogic from "../../5-logic/commemoration-logic-area/candles-logic";
 import cyber from "../../2-utils/cyber";
 
 const router = Router();
 
-router.get('/commemorative_candles/:id', async (req, res, next) => {
+router.get('/sum_commemorative_candles/:id', async (req, res, next) => {
     try {
         const commemorativeID = +req.params.id;
-        const commemorativeCandles = await candlesLogic.getCommemorativeCandles(commemorativeID);
+        const commemorativeCandles = await candlesLogic.sumCommemorativeCandles(commemorativeID);
         res.json(commemorativeCandles);
     } catch (error) {
         next(error);
     }
 })
 
-router.get('/candle_by_user/', async (req, res, next) => {
-    try {
-        const decodeUser = await cyber.getDecodeToken(req);
-        const commemorativeCandle = await candlesLogic.getCandleByUser(decodeUser.userID);
-        res.json(commemorativeCandle);
-    } catch (error) {
-        next(error);
-    }
-})
-
-
-router.post('/add_candle/:commemorativeID([0-9]+)', async (req, res, next) => {
+router.get('/add_candle/:commemorativeID([0-9]+)', async (req, res, next) => {
     try {
         const decodeUser = await cyber.getDecodeToken(req);
         const userID = decodeUser.userID;
