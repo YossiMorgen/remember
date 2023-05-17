@@ -8,6 +8,16 @@ async function addFlower(flower: FlowersModel) {
         lastUpdate = NOW()
         WHERE commemorationSiteID = ? AND userID = ?`;
 
+    const info = await dal.execute(sql, [flower.commemorativeID, flower.userID]);
+
+    if (info.affectedRows === 0) {
+        const sql = `
+            INSERT INTO flowers 
+            VALUES (DEFAULT, ?, ?, NOW())`;
+
+        const info = await dal.execute(sql, [flower.commemorativeID, flower.userID]);
+    }
+
 }
 
 async function getFlowersAmountByCommemorativeID(commemorationSiteID: number) {
@@ -15,4 +25,7 @@ async function getFlowersAmountByCommemorativeID(commemorationSiteID: number) {
         SELECT SUM(amount) AS amount FROM flowers
         WHERE commemorationSiteID = ?`;
 
+    const flowersAmount = await dal.execute(sql, [commemorationSiteID]);
+
+    return flowersAmount[0].amount;
 }

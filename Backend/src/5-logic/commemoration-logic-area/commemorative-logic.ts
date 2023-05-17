@@ -6,7 +6,7 @@ import { ValidationErrorModel } from "../../4-models/error-models";
 import appConfig from "../../2-utils/AppConfig";
 import LanguageModel from "../../4-models/languages-model";
 
-async function getRandomCommemorative(offset: number, language: LanguageModel){
+async function getRandomCommemorative(offset: number, language: string){
     const limit = 10;
 
     const sql = `
@@ -58,6 +58,41 @@ async function getCommemorativeByID(commemorativeID: number){
     return commemorative;
 }
 
+async function getCommemorativeByUser(userID: number){
+    const sql = `  
+    SELECT 
+        commemorativeID, 
+        deceasedName, 
+        biography, 
+        about, 
+        deceaseImageName, 
+        language, 
+        birthDate, 
+        deathDate, 
+        state, 
+        partnerType, 
+        partnerName, 
+        fatherName, 
+        motherName, 
+        childrenNames, 
+        graveImageName, 
+        graveYardName, 
+        locationLink, 
+        views, 
+        lastWatched,
+        SUM(flowers.amount) AS flowersAmount,
+        SUM(candles.amount) AS candlesAmount
+    FROM commemorative 
+    LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
+    LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
+    WHERE userID = ?`
+    const commemorative = await dal.execute(sql, [userID])
+    commemorative.graveImageName = appConfig.nodeUrl + commemorative.graveImageName;
+    commemorative.deceaseImageName = appConfig.nodeUrl + commemorative.deceaseImageName;
+
+    return commemorative;
+}
+
 async function addCommemorative (commemorative: CommemorativeModel){
 
     const err = commemorative.validation();
@@ -99,6 +134,79 @@ async function addCommemorative (commemorative: CommemorativeModel){
 }
 
 async function updateCommemorative (commemorative: CommemorativeModel){
+    
+    const err = commemorative.validation();
+    if(err) throw new ValidationErrorModel(err);
+    
+    const oldCommemorative = await getCommemorativeByID(commemorative.commemorativeID);
+
+    let sql = `
+        UPDATE commemorative SET 
+            deceasedName = ?, 
+            biography = ?, 
+            about = ?, 
+            deceaseImageName = ?, 
+             
+            `
+
+    if(commemorative.deceaseImage){
+        sql += `, deceaseImageName = ?`
+        commemorative.deceaseImageName =  appConfig.nodeUrl + await fileHandler.saveFile(commemorative.deceaseImage);
+        delete commemorative.deceaseImage;
+
+        fileHandler.deleteFile(oldCommemorative.deceaseImageName);
+    }
+
+    sql += `
+        language = ?, 
+        birthDate = ?, 
+        deathDate = ?, 
+        state = ?, 
+        partnerType = ?, 
+        partnerName = ?, 
+        fatherName = ?, 
+        motherName = ?, 
+        childrenNames = ?, 
+        graveImageName = ?, 
+        graveYardName = ?,`
+
+    if(commemorative.graveImage){
+        sql += `, graveImageName = ?`
+        commemorative.graveImageName =  appConfig.nodeUrl + await fileHandler.saveFile(commemorative.graveImage);
+        delete commemorative.graveImage;
+
+        fileHandler.deleteFile(oldCommemorative.graveImageName);
+    }
+
+    sql += `
+        locationLink = ?, 
+        lastWatched = NOW() 
+        WHERE commemorativeID = ?`
+
+    
+    await dal.execute(sql, [
+        commemorative.deceasedName,
+        commemorative.biography, 
+        commemorative.about, 
+        commemorative.deceaseImageName,
+        commemorative.language,
+        commemorative.birthDate,
+        commemorative.deathDate,
+        commemorative.state,
+        commemorative.partnerType,
+        commemorative.partnerName,
+        commemorative.fatherName,
+        commemorative.motherName,
+        commemorative.childrenNames,
+        commemorative.graveImageName,
+        commemorative.graveYardName,
+        commemorative.locationLink,
+        commemorative.views,
+        commemorative.lastWatched,
+        commemorative.commemorativeID
+    ])
+
+    return commemorative;
 }
 
 async function deleteCommemorative (commemorativeID: number){
@@ -116,5 +224,6 @@ export default {
     getCommemorativeByID,
     addCommemorative,
     updateCommemorative,
-    deleteCommemorative
+    deleteCommemorative,
+    getCommemorativeByUser
 }
