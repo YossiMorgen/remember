@@ -10,8 +10,17 @@ async function getRandomCommemorative(offset: number, language: string){
     const limit = 10;
 
     const sql = `
-        SELECT commemorativeID, deceasedName, deceaseImageName, deathDate 
+        SELECT 
+            commemorativeID, 
+            userID, 
+            deceasedName, 
+            deceaseImageName, 
+            deathDate
+            SUM(flowers.amount) AS flowersAmount,
+            SUM(candles.amount) AS candlesAmount
         FROM commemorative
+        LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
+        LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
         WHERE language = ?
         LIMIT ?
         OFFSET ?
@@ -27,6 +36,7 @@ async function getCommemorativeByID(commemorativeID: number){
     const sql = ` 
         SELECT 
             commemorativeID, 
+            userID,
             deceasedName, 
             biography, 
             about, 
@@ -62,6 +72,7 @@ async function getCommemorativeByUser(userID: number){
     const sql = `  
     SELECT 
         commemorativeID, 
+        userID,
         deceasedName, 
         biography, 
         about, 
@@ -104,9 +115,10 @@ async function addCommemorative (commemorative: CommemorativeModel){
     delete commemorative.deceaseImage;
     delete commemorative.graveImage;
 
-    let sql = `INSERT INTO commemorative VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`
+    let sql = `INSERT INTO commemorative VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`
     const info: OkPacket = await dal.execute(sql, [
         commemorative.deceasedName,
+        commemorative.userID,
         commemorative.biography, 
         commemorative.about, 
         commemorative.deceaseImageName,

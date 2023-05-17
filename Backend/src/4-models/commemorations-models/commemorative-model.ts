@@ -4,6 +4,7 @@ import LanguageModel from "../languages-model";
 
 export default class CommemorativeModel {
     public commemorativeID : number;
+    public userID : number;
     public deceasedName : string;
     public biography : string;
     public about: string;
@@ -27,6 +28,7 @@ export default class CommemorativeModel {
 
     public constructor(commemorative : CommemorativeModel){
         this.commemorativeID = commemorative.commemorativeID;
+        this.userID = commemorative.userID;
         this.deceasedName = commemorative.deceasedName;
         this.biography = commemorative.biography;
         this.about = commemorative.about;
@@ -52,6 +54,7 @@ export default class CommemorativeModel {
 
     public static validationSchema = Joi.object({
         commemorativeID: Joi.number().optional().integer().positive(),
+        userID: Joi.number().required().integer().positive(),
         deceasedName: Joi.string().min(2).max(30).required(),
         biography: Joi.string().min(2).max(200).required(),
         about: Joi.string().min(2).max(200).required(),

@@ -2,6 +2,7 @@ import LanguageModel from "../languages-model";
 
 export default class CommemorativeModel {
     public commemorativeID : number;
+    public userID : number;
     public deceasedName : string;
     public biography : string;
     public about: string;

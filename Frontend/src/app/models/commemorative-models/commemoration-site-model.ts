@@ -1,6 +1,7 @@
 export default class CommemorationSitesModel {
     public commemorationSiteID: number;
     public commemorativeID: number;
+    public userID: number;
     public commemorationName: string;
     public commemorationAddress: string;
     public image: File;
