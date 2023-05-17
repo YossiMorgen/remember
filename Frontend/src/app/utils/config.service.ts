@@ -11,7 +11,9 @@ export class ConfigService {
   public register = this.baseUrl + "auth/register";
   public isEmailExist = this.baseUrl + "auth/is_email_exist/";
 
-  public randomCommemorative = this.baseUrl + "commemorative/random_commemorative/";
+  
+
+  public random_commemorative = this.baseUrl + "commemorative/random_commemorative";
   public commemorative_by_id = this.baseUrl + "commemorative/commemorative_by_id/";
   public commemorative_by_user = this.baseUrl + "commemorative/commemorative_by_user/";
   public addCommemorative = this.baseUrl + "commemorative/add_commemorative";

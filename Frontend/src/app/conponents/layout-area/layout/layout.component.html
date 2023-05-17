@@ -1,1 +1,15 @@
-<p>layout works!</p>
+<div class="layout">
+    
+    <main>
+        <router-outlet class="route"></router-outlet>
+    </main>
+
+    
+
+    <lib-toastify-toast-container
+    [position]="'bottom-right'"
+    [transition]="'flip'"
+    [iconLibrary]="'material'"
+    >
+    </lib-toastify-toast-container>
+</div>

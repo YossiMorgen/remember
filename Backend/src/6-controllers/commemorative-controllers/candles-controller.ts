@@ -1,5 +1,5 @@
 import { Router } from "express";
-import candlesLogic from "../../5-logic/commemoration-logic-area/candles-logic";
+import candlesLogic from "../../4-models/commemorations-models/candles-logic";
 import cyber from "../../2-utils/cyber";
 
 const router = Router();

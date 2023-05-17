@@ -2,13 +2,12 @@ import { Router, NextFunction, Request, Response } from "express";
 import commemorativeLogic from "../../5-logic/commemoration-logic-area/commemorative-logic";
 import CommemorativeModel from "../../4-models/commemorations-models/commemorative-model";
 import { UploadedFile } from "express-fileupload";
-import exp from "constants";
 
 const router = Router();
 
-router.get('/random_commemorative/:language', async (req, res, next) => {
+router.get('/random_commemorative', async (req, res, next) => {
     try {
-        const language = req.params.language;
+        const language = req.query.language as string;
         const offset = +req.query.offset;
         const commemorative = await commemorativeLogic.getRandomCommemorative(offset, language);
         res.json(commemorative);
