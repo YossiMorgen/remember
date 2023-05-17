@@ -1,9 +1,9 @@
 import dal from "../../2-utils/dal";
 import DeceaseImagesModel from "../../4-models/commemorations-models/decease-images-model";
 
-async function getAllDeceaseImages(params:DeceaseImagesModel) {
+async function getAllDeceaseImages(commemorativeID: number) {
     const sql = `SELECT * FROM deceaseImages WHERE commemorativeID = ?`;
-    const deceaseImages = await dal.execute(sql, [params.commemorativeID]);
+    const deceaseImages = await dal.execute(sql, [commemorativeID]);
     return deceaseImages;
 }
 
