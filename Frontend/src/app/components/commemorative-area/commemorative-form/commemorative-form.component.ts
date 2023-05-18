@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import LanguageModel from 'src/app/models/languages-model';
 import { CommemorativeService } from 'src/app/services/commemorative-services/commemorative.service';
+import { ConfigService } from 'src/app/utils/config.service';
 import { ToastifyNotificationsService } from 'src/app/utils/toastify-notifications.service';
 
 @Component({
@@ -50,7 +51,8 @@ export class CommemorativeFormComponent implements OnInit {
     private router: Router,
     private formBuilder : FormBuilder,
     private toast: ToastifyNotificationsService,
-    public commemorativeService : CommemorativeService
+    public commemorativeService : CommemorativeService,
+    private config: ConfigService
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -87,8 +89,8 @@ export class CommemorativeFormComponent implements OnInit {
           locationLink: commemorative.locationLink,
         });
 
-        this.deceaseImageName = commemorative.deceaseImageName;
-        this.graveImageName = commemorative.graveImageName;
+        this.deceaseImageName = commemorative.deceaseImageName.slice(this.config.baseUrl.length, commemorative.deceaseImageName.length);
+        this.graveImageName = commemorative.graveImageName.slice(this.config.baseUrl.length, commemorative.graveImageName.length);
       } catch (error) {
         this.toast.error('Error while loading commemorative data!');
       }
@@ -109,8 +111,8 @@ export class CommemorativeFormComponent implements OnInit {
     formData.append('biography', this.basicDataForm.value.biography);
     formData.append('about', this.basicDataForm.value.about);
     formData.append('language', this.basicDataForm.value.language);
-    formData.append('birthDate', this.basicDataForm.value.birthDate);
-    formData.append('deathDate', this.basicDataForm.value.deathDate);
+    formData.append('birthDate', new Date(this.basicDataForm.value.birthDate).toISOString().split('T')[0]);
+    formData.append('deathDate', new Date(this.basicDataForm.value.deathDate).toISOString().split('T')[0]);
     formData.append('state', this.technicalDataForm.value.state);
     formData.append('city', this.technicalDataForm.value.city);
     formData.append('partnerType', this.technicalDataForm.value.partnerType);

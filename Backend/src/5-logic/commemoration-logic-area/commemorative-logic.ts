@@ -40,7 +40,7 @@ async function getCommemorativeByID(commemorativeID: number){
             deceasedName, 
             biography, 
             about, 
-            deceaseImageName,
+            CONCAT(?, deceaseImageName) AS deceaseImageName,
             language, 
             birthDate, 
             deathDate, 
@@ -51,7 +51,7 @@ async function getCommemorativeByID(commemorativeID: number){
             fatherName, 
             motherName, 
             childrenNames, 
-            graveImageName, 
+            CONCAT(?, graveImageName) AS graveImageName, 
             graveYardName, 
             locationLink, 
             views, 
@@ -62,7 +62,7 @@ async function getCommemorativeByID(commemorativeID: number){
         LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
         LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
         WHERE commemorative.commemorativeID = ?`
-    const [commemorative] = await dal.execute(sql, [commemorativeID])
+    const [commemorative] = await dal.execute(sql, [appConfig.nodeUrl, appConfig.nodeUrl, commemorativeID])
 
     if(commemorative.length === 0) throw new ValidationErrorModel("No commemorative found with this ID");
     return commemorative;

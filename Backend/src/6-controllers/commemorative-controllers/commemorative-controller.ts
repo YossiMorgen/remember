@@ -5,6 +5,7 @@ import { UploadedFile } from "express-fileupload";
 import verifyLoggedIn from "../../3-middleware/verify-logged-in";
 import cyber from "../../2-utils/cyber";
 import User from "../../4-models/auth-models/user-model";
+import appConfig from "../../2-utils/AppConfig";
 
 const router = Router();
 
@@ -22,8 +23,8 @@ router.get('/random_commemorative', async (req, res, next) => {
 router.get('/commemorative_by_id/:id([0-9]+)', async (req, res, next) => {
     try {
         const commemorativeID = +req.params.id;
-        const commemorative = await commemorativeLogic.getCommemorativeByID(commemorativeID);
-        res.json(commemorative);
+        const commemorative: CommemorativeModel = await commemorativeLogic.getCommemorativeByID(commemorativeID);
+       res.json(commemorative);
     } catch (error) {
         next(error);
     }

@@ -21,6 +21,7 @@ export class CommemorativeListComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     try {
+      this.commemorativeService.commemorative = [];
       await this.commemorativeService.getRandomCommemorative('english');
     } catch (error) {
       this.toast.error(error);
