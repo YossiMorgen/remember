@@ -12,6 +12,7 @@ export default class CommemorativeModel {
     public birthDate: string;
     public deathDate: string;
     public state: string;
+    public city: string;
     public partnerType: string;
     public partnerName: string;
     public fatherName: string;
