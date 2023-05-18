@@ -125,7 +125,7 @@ export class CommemorativeFormComponent implements OnInit {
       try {
         await this.commemorativeService.updateCommemorative( formData, this.editedItemIndex );
         this.toast.message('Commemorative edited successfully!');
-        // this.router.navigate(['/commemorative_list']);
+        this.router.navigate(['/commemorative_list']);
       } catch (error) {
         this.toast.error('Error while editing commemorative!');
       }

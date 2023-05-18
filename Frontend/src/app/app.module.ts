@@ -65,8 +65,6 @@ import { CommemorativeListComponent } from './components/commemorative-area/comm
 import { CommemorativePageComponent } from './components/commemorative-area/commemorative-page/commemorative-page.component';
 import { DeceaseImagesComponent } from './components/commemorative-area/decease-images/decease-images.component';
 import { CommemorationSitesComponent } from './components/commemorative-area/commemoration-sites/commemoration-sites.component';
-import { AddCommemorativeComponent } from './components/commemorative-area/add-commemorative/add-commemorative.component';
-import { EditCommemorativeComponent } from './components/commemorative-area/edit-commemorative/edit-commemorative.component';
 import { HttpResponseInterceptor } from './utils/response.interceptor';
 import { HttpRequestInterceptor } from './utils/request.interceptor';
 import { CommemorativeFormComponent } from './components/commemorative-area/commemorative-form/commemorative-form.component';
@@ -83,8 +81,6 @@ import { CommemorativeFormComponent } from './components/commemorative-area/comm
     CommemorativePageComponent,
     DeceaseImagesComponent,
     CommemorationSitesComponent,
-    AddCommemorativeComponent,
-    EditCommemorativeComponent,
     CommemorativeFormComponent,
   ],
   imports: [
