@@ -62,6 +62,10 @@ import { PageNotFoundComponent } from './components/layout-area/page-not-found/p
 import { LayoutComponent } from './components/layout-area/layout/layout.component';
 import { LoaderComponent } from './components/playground/loader/loader.component';
 import { CommemorativeListComponent } from './components/commemorative-area/commemorative-list/commemorative-list.component';
+import { CommemorativeCardComponent } from './components/commemorative-area/commemorative-card/commemorative-card.component';
+import { CommemorativePageComponent } from './components/commemorative-area/commemorative-page/commemorative-page.component';
+import { DeceaseImagesComponent } from './components/commemorative-area/decease-images/decease-images.component';
+import { CommemorationSitesComponent } from './components/commemorative-area/commemoration-sites/commemoration-sites.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +76,10 @@ import { CommemorativeListComponent } from './components/commemorative-area/comm
     LayoutComponent,
     LoaderComponent,
     CommemorativeListComponent,
+    CommemorativeCardComponent,
+    CommemorativePageComponent,
+    DeceaseImagesComponent,
+    CommemorationSitesComponent,
   ],
   imports: [
     BrowserModule,

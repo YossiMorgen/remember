@@ -11,11 +11,11 @@ async function getRandomCommemorative(offset: number, language: string){
 
     const sql = `
         SELECT 
-            commemorativeID, 
-            userID, 
+            commemorative.commemorativeID, 
+            commemorative.userID,
             deceasedName, 
-            deceaseImageName, 
-            deathDate
+            CONCAT(?, deceaseImageName) AS deceaseImageName,
+            deathDate,
             SUM(flowers.amount) AS flowersAmount,
             SUM(candles.amount) AS candlesAmount
         FROM commemorative
@@ -26,7 +26,7 @@ async function getRandomCommemorative(offset: number, language: string){
         OFFSET ?
     `
 
-    const commemorative = await dal.execute(sql, [language, limit, offset])
+    const commemorative = await dal.execute(sql, [appConfig.nodeUrl, language, limit, offset])
 
     return commemorative;
 
@@ -35,12 +35,12 @@ async function getRandomCommemorative(offset: number, language: string){
 async function getCommemorativeByID(commemorativeID: number){
     const sql = ` 
         SELECT 
-            commemorativeID, 
-            userID,
+            commemorative.commemorativeID, 
+            commemorative.userID,
             deceasedName, 
             biography, 
             about, 
-            deceaseImageName, 
+            CONCAT(?, deceaseImageName) AS deceaseImageName,
             language, 
             birthDate, 
             deathDate, 
@@ -50,7 +50,7 @@ async function getCommemorativeByID(commemorativeID: number){
             fatherName, 
             motherName, 
             childrenNames, 
-            graveImageName, 
+            CONCAT(?, graveImageName) AS graveImageName, 
             graveYardName, 
             locationLink, 
             views, 
@@ -60,8 +60,8 @@ async function getCommemorativeByID(commemorativeID: number){
         FROM commemorative 
         LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
         LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
-        WHERE commemorativeID = ?`
-    const [commemorative] = await dal.execute(sql, [commemorativeID])
+        WHERE commemorative.commemorativeID = ?`
+    const [commemorative] = await dal.execute(sql, [appConfig.nodeUrl, appConfig.nodeUrl, commemorativeID])
     commemorative.graveImageName = appConfig.nodeUrl + commemorative.graveImageName;
     commemorative.deceaseImageName = appConfig.nodeUrl + commemorative.deceaseImageName;
     
@@ -71,12 +71,12 @@ async function getCommemorativeByID(commemorativeID: number){
 async function getCommemorativeByUser(userID: number){
     const sql = `  
     SELECT 
-        commemorativeID, 
-        userID,
+        commemorative.commemorativeID, 
+        commemorative.userID,
         deceasedName, 
         biography, 
         about, 
-        deceaseImageName, 
+        CONCAT(?, deceaseImageName) AS deceaseImageName,
         language, 
         birthDate, 
         deathDate, 
@@ -85,8 +85,8 @@ async function getCommemorativeByUser(userID: number){
         partnerName, 
         fatherName, 
         motherName, 
-        childrenNames, 
-        graveImageName, 
+        childrenNames,
+        CONCAT(?, graveImageName) AS graveImageName, 
         graveYardName, 
         locationLink, 
         views, 
@@ -96,10 +96,8 @@ async function getCommemorativeByUser(userID: number){
     FROM commemorative 
     LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
     LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
-    WHERE userID = ?`
-    const commemorative = await dal.execute(sql, [userID])
-    commemorative.graveImageName = appConfig.nodeUrl + commemorative.graveImageName;
-    commemorative.deceaseImageName = appConfig.nodeUrl + commemorative.deceaseImageName;
+    WHERE commemorative.userID = ?`
+    const commemorative = await dal.execute(sql, [appConfig.nodeUrl, appConfig.nodeUrl, userID])
 
     return commemorative;
 }
@@ -219,6 +217,9 @@ async function updateCommemorative (commemorative: CommemorativeModel){
         commemorative.lastWatched,
         commemorative.commemorativeID
     ])
+
+    commemorative.graveImageName = appConfig.nodeUrl + commemorative.graveImageName;
+    commemorative.deceaseImageName = appConfig.nodeUrl + commemorative.deceaseImageName;
 
     return commemorative;
 }

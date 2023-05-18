@@ -34,15 +34,15 @@ server.use(express.static('src/1-assets/images'))
 server.use(express.urlencoded({ extended: false }));
 
 server.use('/api', authController);
-server.use('/api/commemorative', candlesController);
-server.use('/api/commemorative', flowersController);
+server.use('/api', candlesController);
+server.use('/api', flowersController);
 
 
 
 server.use(expressFileUpload());
-server.use('/api/commemorative', deceaseImagesController);
-server.use('/api/commemorative', CommemorativeController);
-server.use('/api/commemorative', commemorationSiteController);
+server.use('/api', deceaseImagesController);
+server.use('/api', CommemorativeController);
+server.use('/api', commemorationSiteController);
 
 server.use('*', routeNotFound);
 

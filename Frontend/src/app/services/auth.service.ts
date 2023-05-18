@@ -15,8 +15,6 @@ export class AuthService{
     public user: User;
     private token: string;
 
-    public cities: string[] = ['Jerusalem', 'Tel Aviv', 'Haifa'];
-
     constructor( 
         private http: HttpClient, 
         private config: ConfigService, 

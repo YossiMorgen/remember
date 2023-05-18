@@ -16,8 +16,8 @@ export class CommemorativeService {
     private config: ConfigService,
   ) { }
 
-  public async getRandomCommemorative(offset: number, language: string) {
-    const observable = this.http.get<CommemorativeModel[]>(this.config.random_commemorative + "?offset=" + offset + "&language=" + language);
+  public async getRandomCommemorative( language: string) {
+    const observable = this.http.get<CommemorativeModel[]>(this.config.random_commemorative + "?offset=" + this.commemorative.length + "&language=" + language);
 
     const commemorative = await firstValueFrom(observable);
 
