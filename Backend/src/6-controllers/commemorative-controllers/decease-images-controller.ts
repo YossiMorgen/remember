@@ -1,5 +1,6 @@
 import { Router } from "express";
 import deceaseImagesLogic from "../../5-logic/commemoration-logic-area/decease-images-logic";
+import verifyLoggedIn from "../../3-middleware/verify-logged-in";
 
 const router = Router();
 
@@ -13,7 +14,7 @@ router.get('/decease_images/:commemorativeID([0-9]+)', async (req, res, next) =>
     }
 })
 
-router.post('/add_decease_image', async (req, res, next) => {
+router.post('/add_decease_image', verifyLoggedIn, async (req, res, next) => {
     try {
         req.body.image = req.files?.image;
         const deceaseImage = req.body;
@@ -24,7 +25,7 @@ router.post('/add_decease_image', async (req, res, next) => {
     }
 })
 
-router.delete('/delete_decease_image/:deceaseImageID([0-9]+)', async (req, res, next) => {
+router.delete('/delete_decease_image/:deceaseImageID([0-9]+)', verifyLoggedIn, async (req, res, next) => {
     try {
         const deceaseImageID = +req.params.deceaseImageID;
         await deceaseImagesLogic.deleteDeceaseImage(deceaseImageID);

@@ -2,6 +2,8 @@ import { Router, NextFunction, Request, Response } from "express";
 import commemorativeLogic from "../../5-logic/commemoration-logic-area/commemorative-logic";
 import CommemorativeModel from "../../4-models/commemorations-models/commemorative-model";
 import { UploadedFile } from "express-fileupload";
+import verifyLoggedIn from "../../3-middleware/verify-logged-in";
+import cyber from "../../2-utils/cyber";
 
 const router = Router();
 
@@ -39,7 +41,7 @@ router.get('/commemorative_by_user/:userID([0-9]+)', async (req, res, next) => {
 router.post('/add_commemorative', async (req, res, next) => {
     try {
         const commemorative = new CommemorativeModel(req.body);
-                
+        commemorative.userID = cyber.getDecodeToken(req)?.['userID'];
         commemorative.graveImage = req.files.graveImage as UploadedFile;
         commemorative.deceaseImage = req.files?.deceaseImage as UploadedFile;
         
@@ -50,7 +52,7 @@ router.post('/add_commemorative', async (req, res, next) => {
     }
 })
 
-router.put('/update_commemorative/:id([0-9]+)', async (req, res, next) => {
+router.put('/update_commemorative/:id([0-9]+)', verifyLoggedIn, async (req, res, next) => {
     try {
         req.body.graveImage = req.files?.graveImage;
         req.body.deceaseImage = req.files?.deceaseImage;
@@ -65,7 +67,7 @@ router.put('/update_commemorative/:id([0-9]+)', async (req, res, next) => {
     }
 })
 
-router.delete('/delete_commemorative/:id([0-9]+)', async (req, res, next) => {
+router.delete('/delete_commemorative/:id([0-9]+)', verifyLoggedIn, async (req, res, next) => {
     try {
         const commemorativeID = +req.params.id;
         await commemorativeLogic.deleteCommemorative(commemorativeID);

@@ -3,6 +3,7 @@ import commemorationSitesLogic from "../../5-logic/commemoration-logic-area/comm
 import CommemorationSitesModel from "../../4-models/commemorations-models/commemoration-site-model";
 import appConfig from "../../2-utils/AppConfig";
 import { UploadedFile } from "express-fileupload";
+import verifyLoggedIn from "../../3-middleware/verify-logged-in";
 
 const router = Router();
 
@@ -28,7 +29,7 @@ router.get('commemoration_site/:commemorationSiteID([0-9]+)', async (req, res, n
 })
 
 
-router.post('/add_commemoration_site', async (req, res, next) => {
+router.post('/add_commemoration_site', verifyLoggedIn, async (req, res, next) => {
     try {
         const commemorationSite = new CommemorationSitesModel(req.body);
         commemorationSite.image = req.files?.image as UploadedFile;
@@ -40,7 +41,7 @@ router.post('/add_commemoration_site', async (req, res, next) => {
     }
 })
 
-router.put('/update_commemoration_site/:id([0-9]+)', async (req, res, next) => {
+router.put('/update_commemoration_site/:id([0-9]+)', verifyLoggedIn, async (req, res, next) => {
     try {
         req.body.image = req.files?.image;
 
@@ -54,7 +55,7 @@ router.put('/update_commemoration_site/:id([0-9]+)', async (req, res, next) => {
     }
 })
 
-router.delete('/delete_commemoration_site/:id([0-9]+)', async (req, res, next) => {
+router.delete('/delete_commemoration_site/:id([0-9]+)', verifyLoggedIn, async (req, res, next) => {
     try {
         const commemorationSiteID = +req.params.id;
         await commemorationSitesLogic.deleteCommemorationSite(commemorationSiteID);

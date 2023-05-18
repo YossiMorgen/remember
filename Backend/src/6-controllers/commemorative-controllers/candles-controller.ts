@@ -1,6 +1,7 @@
 import { Router } from "express";
 import candlesLogic from "../../5-logic/commemoration-logic-area/candles-logic";
 import cyber from "../../2-utils/cyber";
+import verifyLoggedIn from "../../3-middleware/verify-logged-in";
 
 const router = Router();
 
