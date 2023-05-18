@@ -15,7 +15,6 @@ async function getRandomCommemorative(offset: number, language: string){
             commemorative.userID,
             deceasedName, 
             CONCAT(?, deceaseImageName) AS deceaseImageName,
-            deathDate,
             (SELECT SUM(flowers.amount) FROM flowers WHERE commemorative.commemorativeID = flowers.commemorativeID) AS flowersAmount,
             (SELECT SUM(candles.amount) FROM candles WHERE commemorative.commemorativeID = candles.commemorativeID) AS candlesAmount
         FROM commemorative
@@ -46,6 +45,7 @@ async function getCommemorativeByID(commemorativeID: number){
             birthDate, 
             deathDate, 
             state, 
+            city,
             partnerType, 
             partnerName, 
             fatherName, 
@@ -80,6 +80,7 @@ async function getCommemorativeByUser(userID: number){
         birthDate, 
         deathDate, 
         state, 
+        city,
         partnerType, 
         partnerName, 
         fatherName, 
@@ -112,7 +113,7 @@ async function addCommemorative (commemorative: CommemorativeModel){
     delete commemorative.deceaseImage;
     delete commemorative.graveImage;
 
-    let sql = `INSERT INTO commemorative VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`
+    let sql = `INSERT INTO commemorative VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`
     const info: OkPacket = await dal.execute(sql, [
         commemorative.deceasedName,
         commemorative.userID,
@@ -123,6 +124,7 @@ async function addCommemorative (commemorative: CommemorativeModel){
         commemorative.birthDate,
         commemorative.deathDate,
         commemorative.state,
+        commemorative.city,
         commemorative.partnerType,
         commemorative.partnerName,
         commemorative.fatherName,
@@ -172,6 +174,7 @@ async function updateCommemorative (commemorative: CommemorativeModel){
         birthDate = ?, 
         deathDate = ?, 
         state = ?, 
+        city = ?,
         partnerType = ?, 
         partnerName = ?, 
         fatherName = ?, 
@@ -204,6 +207,7 @@ async function updateCommemorative (commemorative: CommemorativeModel){
         commemorative.birthDate,
         commemorative.deathDate,
         commemorative.state,
+        commemorative.city,
         commemorative.partnerType,
         commemorative.partnerName,
         commemorative.fatherName,

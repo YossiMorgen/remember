@@ -14,6 +14,7 @@ export default class CommemorativeModel {
     public birthDate: Date;
     public deathDate: Date;
     public state: string;
+    public city: string;
     public partnerType: string;
     public partnerName: string;
     public fatherName: string;
@@ -38,6 +39,7 @@ export default class CommemorativeModel {
         this.birthDate = commemorative.birthDate;
         this.deathDate = commemorative.deathDate;
         this.state = commemorative.state;
+        this.city = commemorative.city;
         this.partnerType = commemorative.partnerType;
         this.partnerName = commemorative.partnerName;
         this.fatherName = commemorative.fatherName;
@@ -64,7 +66,8 @@ export default class CommemorativeModel {
         birthDate: Joi.date().required(),
         deathDate: Joi.date().required(),
         state: Joi.string().min(2).max(15).required(),
-        partnerType: Joi.string().valid('wife', 'husband').required(),
+        city: Joi.string().min(2).max(15).required(),
+        partnerType: Joi.string().valid('Wife', 'Husband').required(),
         partnerName: Joi.string().min(2).max(20).required(),
         fatherName: Joi.string().min(2).max(20),
         motherName: Joi.string().min(2).max(20),
