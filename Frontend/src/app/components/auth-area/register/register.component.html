@@ -5,15 +5,19 @@
                 <mat-form-field>
                     <input matInput placeholder="Email" formControlName="email">
                 </mat-form-field>
+                
                 <mat-form-field>
                     <input matInput placeholder="Password" formControlName="password">
                 </mat-form-field>
+
                 <mat-form-field>
                     <input matInput placeholder="Confirm Password" formControlName="confirmPassword">
                 </mat-form-field>
+
                 <mat-form-field>
                     <input matInput placeholder="First Name" formControlName="firstName">
                 </mat-form-field>
+
                 <mat-form-field>
                     <input matInput placeholder="Last Name" formControlName="lastName">
                 </mat-form-field>
@@ -21,6 +25,7 @@
                 <mat-form-field>
                     <input matInput placeholder="City" formControlName="city">
                 </mat-form-field>
+
                 <mat-form-field>
                     <input matInput placeholder="State" formControlName="state">
                 </mat-form-field>
@@ -31,7 +36,8 @@
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker touchUi #picker></mat-datepicker>
-                  </mat-form-field>
+                </mat-form-field>
+
                 <button mat-raised-button color="primary" type="submit">Login</button>
             </form>
         </mat-card-content>

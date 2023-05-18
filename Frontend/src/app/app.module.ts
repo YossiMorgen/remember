@@ -67,6 +67,9 @@ import { DeceaseImagesComponent } from './components/commemorative-area/decease-
 import { CommemorationSitesComponent } from './components/commemorative-area/commemoration-sites/commemoration-sites.component';
 import { AddCommemorativeComponent } from './components/commemorative-area/add-commemorative/add-commemorative.component';
 import { EditCommemorativeComponent } from './components/commemorative-area/edit-commemorative/edit-commemorative.component';
+import { HttpResponseInterceptor } from './utils/response.interceptor';
+import { HttpRequestInterceptor } from './utils/request.interceptor';
+import { CommemorativeFormComponent } from './components/commemorative-area/commemorative-form/commemorative-form.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +85,7 @@ import { EditCommemorativeComponent } from './components/commemorative-area/edit
     CommemorationSitesComponent,
     AddCommemorativeComponent,
     EditCommemorativeComponent,
+    CommemorativeFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -142,7 +146,10 @@ import { EditCommemorativeComponent } from './components/commemorative-area/edit
     ScrollingModule,
     DialogModule,
   ],
-  providers: [],
+  providers: [    
+    {useClass: HttpRequestInterceptor, provide: HTTP_INTERCEPTORS, multi: true},
+    {useClass: HttpResponseInterceptor, provide: HTTP_INTERCEPTORS, multi: true}
+  ],
   bootstrap: [LayoutComponent]
 })
 export class AppModule { }

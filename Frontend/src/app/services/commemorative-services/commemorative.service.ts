@@ -36,7 +36,7 @@ export class CommemorativeService {
     return firstValueFrom(observable);
   }
 
-  public async addCommemorative(commemorative: CommemorativeModel){
+  public async addCommemorative(commemorative: FormData){
     const observable = this.http.post<CommemorativeModel>(this.config.addCommemorative, commemorative);
 
     return firstValueFrom(observable);

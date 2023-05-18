@@ -5,7 +5,7 @@ import { AuthService } from "../services/auth.service";
 import { tap } from 'rxjs';
 import { Router } from "@angular/router";
 import { ToastService } from "angular-toastify";
-import { AppService } from "../services/app.service";
+import AppService from "../services/app.service";
 @Injectable()
 export class HttpResponseInterceptor implements HttpInterceptor {
   constructor(
