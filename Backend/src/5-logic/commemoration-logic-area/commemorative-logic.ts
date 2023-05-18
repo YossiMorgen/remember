@@ -16,8 +16,8 @@ async function getRandomCommemorative(offset: number, language: string){
             deceasedName, 
             CONCAT(?, deceaseImageName) AS deceaseImageName,
             deathDate,
-            SUM(flowers.amount) AS flowersAmount,
-            SUM(candles.amount) AS candlesAmount
+            (SELECT SUM(flowers.amount) FROM flowers WHERE commemorative.commemorativeID = flowers.commemorativeID) AS flowersAmount,
+            (SELECT SUM(candles.amount) FROM candles WHERE commemorative.commemorativeID = candles.commemorativeID) AS candlesAmount
         FROM commemorative
         LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
         LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
@@ -26,8 +26,9 @@ async function getRandomCommemorative(offset: number, language: string){
         OFFSET ?
     `
 
-    const commemorative = await dal.execute(sql, [appConfig.nodeUrl, language, limit, offset])
-
+    const commemorative = await dal.execute(sql, [appConfig.nodeUrl, language, 20, 0])
+    console.log(commemorative);
+    
     return commemorative;
 
 }

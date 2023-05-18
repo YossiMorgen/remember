@@ -4,6 +4,7 @@ import CommemorativeModel from "../../4-models/commemorations-models/commemorati
 import { UploadedFile } from "express-fileupload";
 import verifyLoggedIn from "../../3-middleware/verify-logged-in";
 import cyber from "../../2-utils/cyber";
+import User from "../../4-models/auth-models/user-model";
 
 const router = Router();
 
@@ -41,7 +42,8 @@ router.get('/commemorative_by_user/:userID([0-9]+)', async (req, res, next) => {
 router.post('/add_commemorative', async (req, res, next) => {
     try {
         const commemorative = new CommemorativeModel(req.body);
-        commemorative.userID = cyber.getDecodeToken(req)?.['userID'];
+        const decodedUser: User = await cyber.getDecodeToken(req);
+        commemorative.userID = decodedUser.userID;
         commemorative.graveImage = req.files.graveImage as UploadedFile;
         commemorative.deceaseImage = req.files?.deceaseImage as UploadedFile;
         

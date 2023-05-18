@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
   {path: 'commemorative_list', component: CommemorativeListComponent},
-  {path: 'commemorative_list/:id', component: CommemorativePageComponent},
+  {path: 'commemorative/:id', component: CommemorativePageComponent},
   {path: '', redirectTo: '/commemorative_list', pathMatch: 'full' },
   {path: '**', component: PageNotFoundComponent }
 

@@ -12,25 +12,58 @@ import { ToastifyNotificationsService } from 'src/app/utils/toastify-notificatio
 })
 export class CommemorativeListComponent implements OnInit {
 
-  public commemorativeList: CommemorativeModel[] = [];
-
   constructor(
     private router: Router,
     private auth: AuthService,
-    private commemorativeService: CommemorativeService,
+    public commemorativeService: CommemorativeService,
     private toast: ToastifyNotificationsService
   ) {  }
 
   ngOnInit(): void {
     try {
       this.commemorativeService.getRandomCommemorative('english');
-      console.log(this.commemorativeService.commemorative);
-      
     } catch (error) {
       this.toast.error(error);
     }
   }
 
+  public async getCommemorativeByName(title: string): Promise<void> {
+    try {
+      // const commemorative = await this.commemorativeService.getCommemorativeByTitle(title);
+      // this.commemorativeService.commemorative = commemorative;
+      this.router.navigate(['/commemorative']);
+    } catch (error) {
+      this.toast.error(error);
+    }
+  }
+
+  public async getCommemorativeByDate(date: string): Promise<void> {
+    try {
+      // const commemorative = await this.commemorativeService.getCommemorativeByDate(date);
+      // this.commemorativeService.commemorative = commemorative;
+      // this.router.navigate(['/commemorative']);
+    } catch (error) {
+      this.toast.error(error);
+    }
+  }
+
+
+  public async editCommemorative(commemorative: CommemorativeModel): Promise<void> {
+    try {
+      this.router.navigate(['/edit-commemorative']);
+    } catch (error) {
+      this.toast.error(error);
+    }
+  }
+
+  public async deleteCommemorative(commemorative: CommemorativeModel): Promise<void> {
+    try {
+      await this.commemorativeService.deleteCommemorative(commemorative);
+      this.toast.success('Commemorative deleted successfully');
+    } catch (error) {
+      this.toast.error(error);
+    }
+  }
 
 
 }

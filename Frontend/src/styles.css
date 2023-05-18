@@ -1,4 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+}
 
-html, body, .layout { height: 100%; }
+*::-webkit-scrollbar {
+    display: none;
+}
+
+html, body, .layout { 
+    height: fit-content;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a{
+    text-decoration: none;
+    color: black;
+}
