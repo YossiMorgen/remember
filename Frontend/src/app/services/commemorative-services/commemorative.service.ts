@@ -24,7 +24,7 @@ export class CommemorativeService {
     this.commemorative = [...this.commemorative, ...commemorative];
   }
 
-  public async getCommemorativeById(id: string) {
+  public async getCommemorativeById(id: number): Promise<CommemorativeModel> {
     const observable = this.http.get<CommemorativeModel>(this.config.commemorative_by_id + id );
 
     return firstValueFrom(observable);
@@ -42,8 +42,8 @@ export class CommemorativeService {
     return firstValueFrom(observable);
   }
 
-  public async updateCommemorative(commemorative: CommemorativeModel){
-    const observable = this.http.put<CommemorativeModel>(this.config.updateCommemorative, commemorative);
+  public async updateCommemorative(commemorative: FormData, commemorativeID: number){
+    const observable = this.http.put<CommemorativeModel>(this.config.updateCommemorative + commemorativeID, commemorative);
 
     return firstValueFrom(observable);
   }

@@ -10,6 +10,7 @@
 
 html, body, .layout { 
     height: fit-content;
+    min-width: 100vw;
     min-height: 100vh;
     padding: 0;
     margin: 0;

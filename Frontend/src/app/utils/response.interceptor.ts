@@ -28,6 +28,7 @@ export class HttpResponseInterceptor implements HttpInterceptor {
           this.app.loading = false;
           if(error.status === 401) {
             this.auth.logout();
+            this.router.navigate(['/login']);
           }
         }
       }));

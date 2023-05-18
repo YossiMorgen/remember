@@ -20,7 +20,7 @@ export class CommemorativePageComponent implements OnInit {
 
 async ngOnInit(): Promise<void> {
   try {    
-    this.commemorative = await this.commemorativeService.getCommemorativeById(this.router.url.split('/').pop());    
+    this.commemorative = await this.commemorativeService.getCommemorativeById(+this.router.url.split('/').pop());    
   } catch (error) {
     this.toast.error(error);
   }

@@ -150,26 +150,25 @@ async function updateCommemorative (commemorative: CommemorativeModel){
     if(err) throw new ValidationErrorModel(err);
     
     const oldCommemorative = await getCommemorativeByID(commemorative.commemorativeID);
-
-    let sql = `
-        UPDATE commemorative SET 
-            deceasedName = ?, 
-            userID = ?,
-            biography = ?, 
-            about = ?, 
-            deceaseImageName = ?, 
-             
-            `
-
+   
     if(commemorative.deceaseImage){
-        sql += `, deceaseImageName = ?`
+        fileHandler.deleteFile(oldCommemorative.deceaseImageName);
         commemorative.deceaseImageName =  appConfig.nodeUrl + await fileHandler.saveFile(commemorative.deceaseImage);
         delete commemorative.deceaseImage;
-
-        fileHandler.deleteFile(oldCommemorative.deceaseImageName);
     }
 
-    sql += `
+    if(commemorative.graveImage){
+        fileHandler.deleteFile(oldCommemorative.graveImageName);
+        commemorative.graveImageName =  appConfig.nodeUrl + await fileHandler.saveFile(commemorative.graveImage);
+        delete commemorative.graveImage;
+    }
+    
+    let sql = `
+        UPDATE commemorative SET 
+        deceasedName = ?, 
+        biography = ?, 
+        about = ?, 
+        deceaseImageName = ?,
         language = ?, 
         birthDate = ?, 
         deathDate = ?, 
@@ -180,32 +179,20 @@ async function updateCommemorative (commemorative: CommemorativeModel){
         fatherName = ?, 
         motherName = ?, 
         childrenNames = ?, 
-        graveImageName = ?, 
-        graveYardName = ?,`
+        graveYardName = ?,
+        graveImageName = ?,
+        locationLink = ?
+        WHERE commemorativeID = ? AND userID = ?
+    `
 
-    if(commemorative.graveImage){
-        sql += `, graveImageName = ?`
-        commemorative.graveImageName =  appConfig.nodeUrl + await fileHandler.saveFile(commemorative.graveImage);
-        delete commemorative.graveImage;
-
-        fileHandler.deleteFile(oldCommemorative.graveImageName);
-    }
-
-    sql += `
-        locationLink = ?, 
-        lastWatched = NOW() 
-        WHERE commemorativeID = ?`
-
-    
-    await dal.execute(sql, [
+    let arr = [
         commemorative.deceasedName,
-        commemorative.userID,
-        commemorative.biography, 
-        commemorative.about, 
+        commemorative.biography,
+        commemorative.about,
         commemorative.deceaseImageName,
         commemorative.language,
-        commemorative.birthDate,
-        commemorative.deathDate,
+        commemorative.birthDate + '',
+        commemorative.deathDate + '',
         commemorative.state,
         commemorative.city,
         commemorative.partnerType,
@@ -213,14 +200,18 @@ async function updateCommemorative (commemorative: CommemorativeModel){
         commemorative.fatherName,
         commemorative.motherName,
         commemorative.childrenNames,
-        commemorative.graveImageName,
         commemorative.graveYardName,
+        commemorative.graveImageName,        
         commemorative.locationLink,
-        commemorative.views,
-        commemorative.lastWatched,
-        commemorative.commemorativeID
-    ])
+        commemorative.commemorativeID,
+        commemorative.userID
+    ]
 
+
+    const info: OkPacket = await dal.execute(sql, arr);
+    
+    if(!info.affectedRows) throw new ValidationErrorModel('commemorative does not exist');
+    
     commemorative.graveImageName = appConfig.nodeUrl + commemorative.graveImageName;
     commemorative.deceaseImageName = appConfig.nodeUrl + commemorative.deceaseImageName;
 

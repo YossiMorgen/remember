@@ -1,11 +1,16 @@
 .commemorativeList{
+    width: 100vw;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 1rem;
     justify-items: center;
-    align-items: center;
+    align-items: left;
     padding: 1rem;
-    margin: 1rem;
+    /* margin: 1rem; */
+}
+
+mat-card{
+    max-width: 100%;
 }
 
 .img{

@@ -61,7 +61,7 @@ export default class CommemorativeModel {
         biography: Joi.string().min(2).max(200).required(),
         about: Joi.string().min(2).max(200).required(),
         deceaseImage: Joi.object().optional(),
-        deceaseImageName: Joi.date().optional(),
+        deceaseImageName: Joi.string().optional(),
         language: Joi.string().valid(...Object.values(LanguageModel)).required(),
         birthDate: Joi.date().required(),
         deathDate: Joi.date().required(),

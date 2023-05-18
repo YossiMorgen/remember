@@ -29,7 +29,7 @@ public async login():Promise<void>{
       await this.auth.login( this.loginForm.value as CredentialsModel );
       this.toast.success('Welcome back ' + this.auth.user.firstName + " " + this.auth.user.lastName)
       if(this.router.url === '/login'){
-          this.router.navigateByUrl('/products');
+          this.router.navigateByUrl('/commemorative_list');
       }
   } catch (error:any) {
       this.toast.error(error);

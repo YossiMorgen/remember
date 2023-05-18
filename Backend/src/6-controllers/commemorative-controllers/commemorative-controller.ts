@@ -50,20 +50,21 @@ router.post('/add_commemorative', async (req, res, next) => {
         const newCommemorative = await commemorativeLogic.addCommemorative(commemorative);
         res.status(201).json(newCommemorative);
     } catch (error) {
-        next(error);
+        next(error); 
     }
 })
 
 router.put('/update_commemorative/:id([0-9]+)', verifyLoggedIn, async (req, res, next) => {
     try {
         req.body.graveImage = req.files?.graveImage;
-        req.body.deceaseImage = req.files?.deceaseImage;
-        
+        req.body.deceaseImage = req.files?.deceaseImage;        
         const commemorative = new CommemorativeModel(req.body);
+        const decodedUser: User = await cyber.getDecodeToken(req);
+        commemorative.userID = decodedUser.userID;
         commemorative.commemorativeID = +req.params.id;
-
+        
         const updatedCommemorative = await commemorativeLogic.updateCommemorative(commemorative);
-        res.json(updatedCommemorative);
+        res.status(201).json(updatedCommemorative);
     } catch (error) {
         next(error);
     }

@@ -5,15 +5,14 @@ import { LoginComponent } from './components/auth-area/login/login.component';
 import { RegisterComponent } from './components/auth-area/register/register.component';
 import { CommemorativeListComponent } from './components/commemorative-area/commemorative-list/commemorative-list.component';
 import { CommemorativePageComponent } from './components/commemorative-area/commemorative-page/commemorative-page.component';
-import { AddCommemorativeComponent } from './components/commemorative-area/add-commemorative/add-commemorative.component';
-import { EditCommemorativeComponent } from './components/commemorative-area/edit-commemorative/edit-commemorative.component';
+import { CommemorativeFormComponent } from './components/commemorative-area/commemorative-form/commemorative-form.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
   {path: 'commemorative_list', component: CommemorativeListComponent},
-  {path: 'add_commemorative', component: AddCommemorativeComponent},
-  {path: 'edit_commemorative/:id', component: EditCommemorativeComponent},
+  {path: 'add_commemorative', component: CommemorativeFormComponent},
+  {path: 'edit_commemorative/:id', component: CommemorativeFormComponent},
   {path: 'commemorative/:id', component: CommemorativePageComponent},
   {path: '', redirectTo: '/commemorative_list', pathMatch: 'full' },
   {path: '**', component: PageNotFoundComponent }
