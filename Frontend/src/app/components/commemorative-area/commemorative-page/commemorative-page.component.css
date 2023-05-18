@@ -1,0 +1,26 @@
+mat-card{
+    display: flex;
+    flex-direction: column;
+}
+img{
+
+    /* border-radius: 50%; */
+    max-width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+
+    filter: grayscale(0);
+    transition: 0.5s;
+
+    -webkit-box-reflect: below 0px linear-gradient(to bottom, transparent, #0002);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow:
+        6.9px 3.4px 1.9px rgba(0, 0, 0, 0.028),
+        13.7px 6.7px 4.3px rgba(0, 0, 0, 0.051),
+        21px 10.2px 7.7px rgba(0, 0, 0, 0.07),
+        29.2px 14.2px 12.8px rgba(0, 0, 0, 0.084),
+        39px 19px 21.2px rgba(0, 0, 0, 0.096),
+        51.6px 25.1px 37px rgba(0, 0, 0, 0.116),
+        74px 36px 80px rgba(0, 0, 0, 0.19);
+    }

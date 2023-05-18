@@ -63,9 +63,7 @@ async function getCommemorativeByID(commemorativeID: number){
         LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
         WHERE commemorative.commemorativeID = ?`
     const [commemorative] = await dal.execute(sql, [appConfig.nodeUrl, appConfig.nodeUrl, commemorativeID])
-    commemorative.graveImageName = appConfig.nodeUrl + commemorative.graveImageName;
-    commemorative.deceaseImageName = appConfig.nodeUrl + commemorative.deceaseImageName;
-    
+
     return commemorative;
 }
 

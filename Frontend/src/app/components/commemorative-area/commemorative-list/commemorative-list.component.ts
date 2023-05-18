@@ -19,9 +19,9 @@ export class CommemorativeListComponent implements OnInit {
     private toast: ToastifyNotificationsService
   ) {  }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     try {
-      this.commemorativeService.getRandomCommemorative('english');
+      await this.commemorativeService.getRandomCommemorative('english');
     } catch (error) {
       this.toast.error(error);
     }

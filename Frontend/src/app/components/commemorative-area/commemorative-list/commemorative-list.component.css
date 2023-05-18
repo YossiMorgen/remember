@@ -33,7 +33,8 @@ img{
         29.2px 14.2px 12.8px rgba(0, 0, 0, 0.084),
         39px 19px 21.2px rgba(0, 0, 0, 0.096),
         51.6px 25.1px 37px rgba(0, 0, 0, 0.116),
-        74px 36px 80px rgba(0, 0, 0, 0.19);}
+        74px 36px 80px rgba(0, 0, 0, 0.19);
+}
 
 img:hover{
     filter: grayscale(1);
