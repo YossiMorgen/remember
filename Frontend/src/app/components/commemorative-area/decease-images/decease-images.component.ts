@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { DeceaseImagesService } from 'src/app/services/commemorative-services/decease-images.service';
 import { ToastifyNotificationsService } from 'src/app/utils/toastify-notifications.service';
 
@@ -11,9 +12,10 @@ import { ToastifyNotificationsService } from 'src/app/utils/toastify-notificatio
 export class DeceaseImagesComponent {
 
   public constructor(
-    private imagesService: DeceaseImagesService,
+    public imagesService: DeceaseImagesService,
     private toast: ToastifyNotificationsService,
     private router: Router,
+    public auth: AuthService
   ) { }
 
   public async onFileSelected(event: any){
@@ -22,6 +24,15 @@ export class DeceaseImagesComponent {
     image.append('commemorativeID', this.router.url.split('/').pop());
     try {
       await this.imagesService.addDeceaseImage(image);
+    }
+    catch(err){
+      this.toast.error(err);
+    }
+  }
+
+  public async deleteImage(imageID: number){
+    try {
+      await this.imagesService.deleteDeceaseImage(imageID);
     }
     catch(err){
       this.toast.error(err);

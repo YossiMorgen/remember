@@ -9,7 +9,7 @@ async function getAllDeceaseImages(commemorativeID: number) {
         deceaseImageID, 
         commemorativeID, 
         userID, 
-        CONCAT(?, imageName) AS imageName,
+        CONCAT(?, imageName) AS imageName
     FROM deceaseImages 
     WHERE commemorativeID = ?`;
     const deceaseImages = await dal.execute(sql, [appConfig.nodeUrl, commemorativeID]);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import CommemorativeModel from 'src/app/models/commemorative-models/commemorative-model';
 import { CommemorativeService } from 'src/app/services/commemorative-services/commemorative.service';
+import { DeceaseImagesService } from 'src/app/services/commemorative-services/decease-images.service';
 import { ToastifyNotificationsService } from 'src/app/utils/toastify-notifications.service';
 
 @Component({
@@ -15,12 +16,15 @@ export class CommemorativePageComponent implements OnInit {
   constructor(
     private router: Router,
     private commemorativeService: CommemorativeService,
+    private deceaseImagesService: DeceaseImagesService,
     private toast: ToastifyNotificationsService
   ) { }
 
 async ngOnInit(): Promise<void> {
   try {    
-    this.commemorative = await this.commemorativeService.getCommemorativeById(+this.router.url.split('/').pop());    
+    const commemorativeID = +this.router.url.split('/').pop();
+    this.commemorative = await this.commemorativeService.getCommemorativeById(commemorativeID);  
+    await this.deceaseImagesService.getAllDeceaseImages(commemorativeID)
   } catch (error) {
     this.toast.error(error);
   }

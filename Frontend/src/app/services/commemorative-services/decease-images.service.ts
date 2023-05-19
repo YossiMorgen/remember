@@ -15,8 +15,8 @@ export class DeceaseImagesService {
     private http: HttpClient, 
     private config: ConfigService,
   ) { }
-  public async getAllDeceaseImages(){
-    const observable = this.http.get<DeceaseImagesModel[]>(this.config.decease_images);
+  public async getAllDeceaseImages(commemorativeID: number){
+    const observable = this.http.get<DeceaseImagesModel[]>(this.config.decease_images + commemorativeID);
     const deceaseImages = await firstValueFrom(observable);
     this.deceaseImages = [...this.deceaseImages, ...deceaseImages];
   }

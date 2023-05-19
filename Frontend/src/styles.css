@@ -23,3 +23,7 @@ a{
     text-decoration: none;
     color: black;
 }
+
+.mat-mdc-tab-body-content{
+    height: 50vh;
+}
