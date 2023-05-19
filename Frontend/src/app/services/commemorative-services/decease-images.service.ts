@@ -21,7 +21,7 @@ export class DeceaseImagesService {
     this.deceaseImages = [...this.deceaseImages, ...deceaseImages];
   }
 
-  public async addDeceaseImage(deceaseImage: DeceaseImagesModel){
+  public async addDeceaseImage(deceaseImage: FormData){
     const observable = this.http.post<DeceaseImagesModel>(this.config.add_decease_image, deceaseImage);
     const newDeceaseImage = await firstValueFrom(observable);
     this.deceaseImages = [...this.deceaseImages, newDeceaseImage];

@@ -150,10 +150,6 @@ export class CommemorativeFormComponent implements OnInit {
     console.log(event.target.files);
 
     this[name] = event.target.files[0];
-    console.log(this[name]);
-    
-    console.log(this.graveImage);
-    console.log(this.deceaseImage); 
   }
 
   addKid(event: MatChipInputEvent): void {

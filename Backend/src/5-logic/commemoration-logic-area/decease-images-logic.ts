@@ -1,16 +1,29 @@
+import appConfig from "../../2-utils/AppConfig";
 import dal from "../../2-utils/dal";
+import fileHandler from "../../2-utils/file-handler";
 import DeceaseImagesModel from "../../4-models/commemorations-models/decease-images-model";
 
 async function getAllDeceaseImages(commemorativeID: number) {
-    const sql = `SELECT * FROM deceaseImages WHERE commemorativeID = ?`;
-    const deceaseImages = await dal.execute(sql, [commemorativeID]);
+    const sql = `
+    SELECT 
+        deceaseImageID, 
+        commemorativeID, 
+        userID, 
+        CONCAT(?, imageName) AS imageName,
+    FROM deceaseImages 
+    WHERE commemorativeID = ?`;
+    const deceaseImages = await dal.execute(sql, [appConfig.nodeUrl, commemorativeID]);
+
     return deceaseImages;
 }
 
 async function addDeceaseImage(deceaseImage: DeceaseImagesModel) {
-    const sql = `INSERT INTO deceaseImages VALUES (DEFAULT, ?, ?)`;
+
+    deceaseImage.imageName = await fileHandler.saveFile(deceaseImage.image);
+    const sql = `INSERT INTO deceaseImages VALUES (DEFAULT, ?, ?, ?)`;
     const info = await dal.execute(sql, [
         deceaseImage.commemorativeID,
+        deceaseImage.userID,
         deceaseImage.imageName,
     ]);
 

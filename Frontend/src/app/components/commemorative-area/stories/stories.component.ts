@@ -21,7 +21,7 @@ export class StoriesComponent implements OnInit {
     public dialog: MatDialog,
     public storyService: StoryService,
     private router: Router,
-    private auth: AuthService
+    public auth: AuthService
   ) { }
 
   async ngOnInit(): Promise<void> {
