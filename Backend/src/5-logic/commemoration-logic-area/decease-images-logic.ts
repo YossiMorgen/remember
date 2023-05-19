@@ -31,9 +31,15 @@ async function addDeceaseImage(deceaseImage: DeceaseImagesModel) {
     return deceaseImage;
 }
 
-async function deleteDeceaseImage(deceaseImageID: number) {
-    const sql = `DELETE FROM deceaseImages WHERE deceaseImageID = ?`;
-    await dal.execute(sql, [deceaseImageID]);
+async function deleteDeceaseImage(deceaseImageID: number, userID: number, isAdmin: boolean) {
+    let sql = `DELETE FROM deceaseImages WHERE deceaseImageID = ?`;
+    const arr = [deceaseImageID];
+    if (!isAdmin) {
+        sql += ` AND userID = ?`;
+        arr.push(userID);
+    }
+
+    await dal.execute(sql, arr);
 }
 
 export default { getAllDeceaseImages, addDeceaseImage, deleteDeceaseImage };

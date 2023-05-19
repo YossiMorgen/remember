@@ -29,10 +29,12 @@ router.post('/add_decease_image', verifyLoggedIn, async (req, res, next) => {
     }
 })
 
-router.delete('/delete_decease_image/:deceaseImageID([0-9]+)', verifyLoggedIn, async (req, res, next) => {
+router.delete('/delete_decease_image/:deceaseImageID([0-9]+)', async (req, res, next) => {
     try {
         const deceaseImageID = +req.params.deceaseImageID;
-        await deceaseImagesLogic.deleteDeceaseImage(deceaseImageID);
+        const decodeUser = await cyber.getDecodeToken(req);
+
+        await deceaseImagesLogic.deleteDeceaseImage(deceaseImageID, decodeUser.userID, decodeUser.role === 'admin');
         res.sendStatus(204);
     } catch (error) {
         next(error);
