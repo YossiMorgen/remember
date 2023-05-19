@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>{{editMode ? 'Edit ' : 'Add '}} Story</h1>
 
-<form [formGroup]="storyForm">
+<form [formGroup]="storyForm" (submit)="onSubmit()">
     <mat-dialog-content>
         <mat-form-field>
             <input matInput placeholder="Author" formControlName="author">
@@ -13,6 +13,6 @@
 
     <mat-dialog-actions>
         <button mat-button (click)="onCancel()">Cancel</button>
-        <button mat-button [disabled]="!storyForm.valid" [mat-dialog-close]="storyForm.value">Save</button>
+        <button mat-button type="submit" [disabled]="!storyForm.valid">Save</button>
     </mat-dialog-actions>
 </form>

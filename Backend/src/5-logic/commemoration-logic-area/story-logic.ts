@@ -18,9 +18,24 @@ async function addCommemorativeStory(story: StoryModel) {
     return story;
 }
 
-async function deleteCommemorativeStory(storyID: number, userID: number) {
-    const sql = `DELETE FROM stories WHERE storyID = ? AND userID = ?`;
-    await dal.execute(sql, [storyID, userID]);
+async function updateCommemorativeStory(story: StoryModel) {
+    const err = story.validation();
+    if (err) throw new ValidationErrorModel(err);
+
+    const sql = `UPDATE stories SET author = ?, story = ? WHERE storyID = ? AND userID = ?`;
+    await dal.execute(sql, [story.author, story.story, story.storyID, story.userID]);
+
+    return story;
 }
 
-export default { getCommemorativeStories, addCommemorativeStory, deleteCommemorativeStory };
+async function deleteCommemorativeStory(storyID: number, userID: number, isAdmin: boolean) {
+    let sql = `DELETE FROM stories WHERE storyID = ?`;
+    const arr = [storyID];
+    if (!isAdmin) {
+        sql += ` AND userID = ?`;
+        arr.push(userID);
+    }
+    await dal.execute(sql, arr);
+}
+
+export default { getCommemorativeStories, addCommemorativeStory, updateCommemorativeStory, deleteCommemorativeStory };

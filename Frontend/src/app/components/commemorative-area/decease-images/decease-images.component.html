@@ -5,7 +5,13 @@
 
 <div class="imageContainer">
     <div *ngFor="let img of imagesService.deceaseImages" class="img">
-        <button (click)="deleteImage(img.deceaseImageID)" *ngIf="auth.user.userID === img.userID" class="delete" mat-mini-fab color="warn" >
+        <button 
+            (click)="deleteImage(img.deceaseImageID)" 
+            *ngIf="auth.user.userID === img.userID || auth.user.role === 'admin'" 
+            class="delete" 
+            mat-mini-fab 
+            color="warn" 
+        >
             <mat-icon>remove</mat-icon>
         </button>
 

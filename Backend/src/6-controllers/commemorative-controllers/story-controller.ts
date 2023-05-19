@@ -27,11 +27,23 @@ router.post('/add_story', async (req, res, next) => {
     }
 })
 
+router.put('/update_story', async (req, res, next) => {
+    try {
+        const story = new StoryModel(req.body);
+        const decodeUser = await cyber.getDecodeToken(req);
+        story.userID = decodeUser.userID;
+        const updatedStory = await storyLogic.updateCommemorativeStory(story);
+        res.json(updatedStory);
+    } catch (error) {
+        next(error);
+    }
+})
+
 router.delete('/delete_story/:storyID([0-9]+)', async (req, res, next) => {
     try {
         const storyID = +req.params.storyID;
         const decodeUser = await cyber.getDecodeToken(req);
-        await storyLogic.deleteCommemorativeStory(storyID, decodeUser.userID);
+        await storyLogic.deleteCommemorativeStory(storyID, decodeUser.userID, decodeUser.role === 'admin');
         res.sendStatus(204);
     } catch (error) {
         next(error);

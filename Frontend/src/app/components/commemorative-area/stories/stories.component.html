@@ -3,7 +3,7 @@
     <button (click)="showDialog()" class="addStory" mat-mini-fab color="primary" >
         <mat-icon>plus_one</mat-icon>
     </button>
-    <div (click)="auth.user?.userID === story.userID && showDialog(story)" *ngFor="let story of stories">
+    <div (click)="auth.user?.userID === story.userID && showDialog(i)" *ngFor="let story of storyService.stories let i = index">
         <mat-card-title class="stories__title">{{story.author}}</mat-card-title>
         <mat-card-content>
             <p>{{story.story}}</p>

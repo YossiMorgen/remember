@@ -15,8 +15,6 @@ type storyData = {author: string, story: string}
 })
 export class StoriesComponent implements OnInit {
 
-  public stories: StoryModel[] = [];
-
   constructor(
     public dialog: MatDialog,
     public storyService: StoryService,
@@ -25,27 +23,21 @@ export class StoriesComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.stories = await this.storyService.getCommemorativeStories(+this.router.url.split('/').pop());
+    await this.storyService.getCommemorativeStories(+this.router.url.split('/').pop());
   }
 
-  public showDialog(story?: StoryModel){
+  public showDialog(i?: number){
     if(!this.auth.user) {
       this.router.navigate(['/login']);
       return;
     } 
+    
 
-    const dialogRef = this.dialog.open(StoryFormComponent, {
+    this.dialog.open(StoryFormComponent, {
       width: '45vh',
       enterAnimationDuration: '300',
       exitAnimationDuration: '200',
-      data: {...story}
-    });
-    dialogRef.afterClosed().subscribe(async (result: StoryModel) => {
-      if(result){      
-        result.commemorativeID = +this.router.url.split('/').pop();
-        result.userID = this.auth.user.userID;    
-        await this.storyService.addStory(result);
-      }
+      data: i
     });
   }
 

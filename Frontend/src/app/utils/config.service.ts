@@ -34,6 +34,7 @@ export class ConfigService {
 
   public get_commemorative_stories = this.api + "get_commemorative_stories/";
   public add_story = this.api + "add_story/";
+  public update_story = this.api + "update_story";
   public delete_story = this.api + "delete_story/";
   
   public commemoration_sites = this.api + "commemoration_sites/";
