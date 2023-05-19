@@ -32,40 +32,25 @@ async function getRandomCommemorative(offset: number, language: string){
 
 }
 
-async function getCommemorativeByID(commemorativeID: number){
-    const sql = ` 
-        SELECT 
-            commemorative.commemorativeID, 
+async function searchCommemorative(search: string){
+    const sql = `
+        SELECT
+            commemorative.commemorativeID,
             commemorative.userID,
-            deceasedName, 
-            biography, 
-            about, 
+            deceasedName,
             CONCAT(?, deceaseImageName) AS deceaseImageName,
-            language, 
-            birthDate, 
-            deathDate, 
-            state, 
-            city,
-            partnerType, 
-            partnerName, 
-            fatherName, 
-            motherName, 
-            childrenNames, 
-            CONCAT(?, graveImageName) AS graveImageName, 
-            graveYardName, 
-            locationLink, 
-            views, 
-            lastWatched,
-            SUM(flowers.amount) AS flowersAmount,
-            SUM(candles.amount) AS candlesAmount
-        FROM commemorative 
+            (SELECT SUM(flowers.amount) FROM flowers WHERE commemorative.commemorativeID = flowers.commemorativeID) AS flowersAmount,
+            (SELECT SUM(candles.amount) FROM candles WHERE commemorative.commemorativeID = candles.commemorativeID) AS candlesAmount
+        FROM commemorative
         LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
         LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
-        WHERE commemorative.commemorativeID = ?`
-    const [commemorative] = await dal.execute(sql, [appConfig.nodeUrl, appConfig.nodeUrl, commemorativeID])
-
-    if(commemorative.length === 0) throw new ValidationErrorModel("No commemorative found with this ID");
+        WHERE deceasedName LIKE ?
+        LIMIT ?
+        OFFSET ?
+    `
+    const commemorative = await dal.execute(sql, [appConfig.nodeUrl, `%${search}%`, 20, 0])
     return commemorative;
+
 }
 
 async function getCommemorativeByUser(userID: number){
@@ -101,6 +86,42 @@ async function getCommemorativeByUser(userID: number){
     const commemorative = await dal.execute(sql, [appConfig.nodeUrl, appConfig.nodeUrl, userID])
 
     if(commemorative.length === 0) throw new ValidationErrorModel("No commemorative found");
+    return commemorative;
+}
+
+async function getCommemorativeByID(commemorativeID: number){
+    const sql = ` 
+        SELECT 
+            commemorative.commemorativeID, 
+            commemorative.userID,
+            deceasedName, 
+            biography, 
+            about, 
+            CONCAT(?, deceaseImageName) AS deceaseImageName,
+            language, 
+            birthDate, 
+            deathDate, 
+            state, 
+            city,
+            partnerType, 
+            partnerName, 
+            fatherName, 
+            motherName, 
+            childrenNames, 
+            CONCAT(?, graveImageName) AS graveImageName, 
+            graveYardName, 
+            locationLink, 
+            views, 
+            lastWatched,
+            SUM(flowers.amount) AS flowersAmount,
+            SUM(candles.amount) AS candlesAmount
+        FROM commemorative 
+        LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
+        LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
+        WHERE commemorative.commemorativeID = ?`
+    const [commemorative] = await dal.execute(sql, [appConfig.nodeUrl, appConfig.nodeUrl, commemorativeID])
+
+    if(commemorative.length === 0) throw new ValidationErrorModel("No commemorative found with this ID");
     return commemorative;
 }
 
@@ -155,17 +176,12 @@ async function updateCommemorative (commemorative: CommemorativeModel){
     if(commemorative.deceaseImage || commemorative.graveImage){
         oldCommemorative = await getCommemorativeByID(commemorative.commemorativeID);
     }
-   
-    console.log(commemorative.deceaseImageName);
-    
+       
     if(commemorative.deceaseImage){
         fileHandler.deleteFile(oldCommemorative.deceaseImageName);
         commemorative.deceaseImageName = await fileHandler.saveFile(commemorative.deceaseImage);
         delete commemorative.deceaseImage;
-    }
-
-    console.log(commemorative.deceaseImageName);
-    
+    }    
 
     if(commemorative.graveImage){
         fileHandler.deleteFile(oldCommemorative.graveImageName);
@@ -228,21 +244,29 @@ async function updateCommemorative (commemorative: CommemorativeModel){
     return commemorative;
 }
 
-async function deleteCommemorative (commemorativeID: number){
+async function deleteCommemorative (commemorativeID: number, userID: number, admin: boolean){
     const oldCommemorative = await getCommemorativeByID(commemorativeID);
 
     fileHandler.deleteFile(oldCommemorative.deceaseImageName);
     fileHandler.deleteFile(oldCommemorative.graveImageName);
 
-    const sql = `DELETE FROM commemorative WHERE commemorativeID = ?`
-    await dal.execute(sql, [commemorativeID]);
+    let sql = `DELETE FROM commemorative WHERE commemorativeID = ?`
+    let arr = [commemorativeID];
+
+    if(!admin){
+        sql += ` AND userID = ?`
+        arr.push(userID);
+    }
+    
+    await dal.execute(sql, arr);
 }
 
 export default {
     getRandomCommemorative,
+    searchCommemorative,
+    getCommemorativeByUser,
     getCommemorativeByID,
     addCommemorative,
     updateCommemorative,
     deleteCommemorative,
-    getCommemorativeByUser
 }

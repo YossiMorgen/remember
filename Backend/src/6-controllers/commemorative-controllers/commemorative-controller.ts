@@ -20,11 +20,11 @@ router.get('/random_commemorative', async (req, res, next) => {
     }
 })
 
-router.get('/commemorative_by_id/:id([0-9]+)', async (req, res, next) => {
+router.get('/search_commemorative/:search', async (req, res, next) => {
     try {
-        const commemorativeID = +req.params.id;
-        const commemorative: CommemorativeModel = await commemorativeLogic.getCommemorativeByID(commemorativeID);
-       res.json(commemorative);
+        const search = req.params.search;
+        const commemorative = await commemorativeLogic.searchCommemorative(search);
+        res.json(commemorative);
     } catch (error) {
         next(error);
     }
@@ -35,6 +35,16 @@ router.get('/commemorative_by_user/:userID([0-9]+)', async (req, res, next) => {
         const userID = +req.params.userID;
         const commemorative = await commemorativeLogic.getCommemorativeByUser(userID);
         res.json(commemorative);
+    } catch (error) {
+        next(error);
+    }
+})
+
+router.get('/commemorative_by_id/:commemorativeID([0-9]+)', async (req, res, next) => {
+    try {
+        const commemorativeID = +req.params.commemorativeID;
+        const commemorative: CommemorativeModel = await commemorativeLogic.getCommemorativeByID(commemorativeID);
+       res.json(commemorative);
     } catch (error) {
         next(error);
     }
@@ -71,10 +81,12 @@ router.put('/update_commemorative/:id([0-9]+)', verifyLoggedIn, async (req, res,
     }
 })
 
-router.delete('/delete_commemorative/:id([0-9]+)', verifyLoggedIn, async (req, res, next) => {
+router.delete('/delete_commemorative/:id([0-9]+)', async (req, res, next) => {
     try {
         const commemorativeID = +req.params.id;
-        await commemorativeLogic.deleteCommemorative(commemorativeID);
+        const decodedUser: User = await cyber.getDecodeToken(req);
+
+        await commemorativeLogic.deleteCommemorative(commemorativeID, decodedUser.userID, decodedUser.role === 'admin');
         res.sendStatus(204);
     } catch (error) {
         next(error);
