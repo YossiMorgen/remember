@@ -76,13 +76,13 @@
                         <mat-label>City</mat-label>
                         <input matInput formControlName="city" placeholder="city">
                     </mat-form-field>
-                    
-                    <mat-form-field>
-                        <mat-label>Partner Type</mat-label>
-                        <mat-select formControlName="partnerType">
-                            <mat-option value="Wife"> {{'Wife'}} </mat-option>
-                            <mat-option value="Husband"> {{'Husband'}} </mat-option>
-                        </mat-select>
+
+                    <mat-form-field appearance="fill">
+                        <label>Partner Type</label>
+                        <mat-radio-group formControlName="partnerType">
+                          <mat-radio-button value="Wife">Wife</mat-radio-button>
+                          <mat-radio-button value="Husband">Husband</mat-radio-button>
+                        </mat-radio-group>
                     </mat-form-field>
                                     
                     <mat-form-field appearance="fill">

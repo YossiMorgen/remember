@@ -11,16 +11,18 @@ import { ToastifyNotificationsService } from 'src/app/utils/toastify-notificatio
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  hide = true;
+
   public constructor( 
     private auth: AuthService, 
     public router: Router,
     private formBuilder : FormBuilder,
     private toast: ToastifyNotificationsService
-){}
+  ){}
 
 public loginForm = this.formBuilder.group({
   email : ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'), Validators.required]],
-  password : ['', [Validators.required, Validators.minLength(5)]]
+  password : ['', [Validators.required, Validators.minLength(6)]]
 })
 
 public async login():Promise<void>{       

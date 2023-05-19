@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {A11yModule} from '@angular/cdk/a11y';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
@@ -144,7 +144,8 @@ import { CommemorativeFormComponent } from './components/commemorative-area/comm
   ],
   providers: [    
     {useClass: HttpRequestInterceptor, provide: HTTP_INTERCEPTORS, multi: true},
-    {useClass: HttpResponseInterceptor, provide: HTTP_INTERCEPTORS, multi: true}
+    {useClass: HttpResponseInterceptor, provide: HTTP_INTERCEPTORS, multi: true},
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}
   ],
   bootstrap: [LayoutComponent]
 })

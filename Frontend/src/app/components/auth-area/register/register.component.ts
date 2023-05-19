@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import User from 'src/app/models/auth-models/user-model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,7 +10,10 @@ import { ToastifyNotificationsService } from 'src/app/utils/toastify-notificatio
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+
+  public hide = true;
+  public hideConfirm = true;
   public constructor( 
     public auth: AuthService, 
     private router: Router,
@@ -30,6 +33,16 @@ export class RegisterComponent {
     birthDate: ['', [Validators.required]]
   })
 
+  ngOnInit(): void {
+    this.registerForm.addValidators(this.matchPasswords(this.registerForm.get('password'), this.registerForm.get('confirmPassword')))
+  }
+
+  public matchPasswords(control: AbstractControl, secondControl: AbstractControl) {
+    return () => {
+        const isMatch = control.value === secondControl.value
+        return isMatch ? null : {noMatch: true};
+    }
+  }
 
   public async frobiddenEmail(control: FormControl): Promise<any> {            
     try {

@@ -6,8 +6,22 @@
                     <input matInput placeholder="Email" formControlName="email">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput placeholder="Password" formControlName="password">
+                    <mat-label>Enter your password</mat-label>
+                    <input placeholder="Password" formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
                 </mat-form-field>
+                <mat-error *ngIf="loginForm.controls['email'].hasError('pattern')">
+                    Please enter a <strong>valid</strong> email
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">
+                    Password must be at least <strong>6 characters</strong>
+                </mat-error>
+
                 <button mat-raised-button color="primary" type="submit">Login</button>
             </form>
         </mat-card-content>
