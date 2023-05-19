@@ -1,9 +1,9 @@
 
-<!-- <img mat-card-xl-image src={{commemorative.deceaseImageName}} alt=""> -->
+<img src={{commemorative.deceaseImageName}} alt="🧓🏽">
 <mat-card-title>{{commemorative.deceasedName}}</mat-card-title>
 
 
-<mat-tab-group animationDuration="2000ms">
+<mat-tab-group (selectedTabChange)="openedTab($event)" animationDuration="2000ms">
     <mat-tab label="Details">
         <mat-card-content>
             <h4>State</h4>

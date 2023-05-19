@@ -3,7 +3,7 @@ import dal from "../../2-utils/dal";
 import fileHandler from "../../2-utils/file-handler";
 import DeceaseImagesModel from "../../4-models/commemorations-models/decease-images-model";
 
-async function getAllDeceaseImages(commemorativeID: number) {
+async function getAllDeceaseImages(commemorativeID: number, offset: number) {
     const sql = `
     SELECT 
         deceaseImageID, 
@@ -11,8 +11,10 @@ async function getAllDeceaseImages(commemorativeID: number) {
         userID, 
         CONCAT(?, imageName) AS imageName
     FROM deceaseImages 
-    WHERE commemorativeID = ?`;
-    const deceaseImages = await dal.execute(sql, [appConfig.nodeUrl, commemorativeID]);
+    WHERE commemorativeID = ?
+    ORDER BY deceaseImageID DESC
+    LIMIT 10 OFFSET ?;`;
+    const deceaseImages = await dal.execute(sql, [appConfig.nodeUrl, commemorativeID, offset]);
 
     return deceaseImages;
 }

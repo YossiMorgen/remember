@@ -17,7 +17,7 @@ export class StoryService {
   ) { }
 
   public async getCommemorativeStories(commemorativeID: number){
-    const observable = this.http.get<StoryModel[]>(this.config.get_commemorative_stories + commemorativeID);
+    const observable = this.http.get<StoryModel[]>(this.config.get_commemorative_stories + commemorativeID + "?offset=" + this.stories.length);
     const stories = await firstValueFrom(observable);
     this.stories = [...this.stories, ...stories];
 

@@ -13,7 +13,7 @@ type storyData = {author: string, story: string}
   templateUrl: './stories.component.html',
   styleUrls: ['./stories.component.css']
 })
-export class StoriesComponent implements OnInit {
+export class StoriesComponent {
 
   constructor(
     public dialog: MatDialog,
@@ -21,10 +21,6 @@ export class StoriesComponent implements OnInit {
     private router: Router,
     public auth: AuthService
   ) { }
-
-  async ngOnInit(): Promise<void> {
-    await this.storyService.getCommemorativeStories(+this.router.url.split('/').pop());
-  }
 
   public showDialog(i?: number){
     if(!this.auth.user) {

@@ -7,7 +7,6 @@ import appConfig from "../../2-utils/AppConfig";
 import LanguageModel from "../../4-models/languages-model";
 
 async function getRandomCommemorative(offset: number, language: string){
-    const limit = 10;
 
     const sql = `
         SELECT 
@@ -21,18 +20,19 @@ async function getRandomCommemorative(offset: number, language: string){
         LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
         LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
         WHERE language = ?
-        LIMIT ?
+        ORDER BY commemorative.commemorativeID DESC
+        LIMIT 10
         OFFSET ?
     `
 
-    const commemorative = await dal.execute(sql, [appConfig.nodeUrl, language, 20, 0])
+    const commemorative = await dal.execute(sql, [appConfig.nodeUrl, language, offset])
     console.log(commemorative);
     
     return commemorative;
 
 }
 
-async function searchCommemorative(search: string){
+async function searchCommemorative(search: string, offset: number){
     const sql = `
         SELECT
             commemorative.commemorativeID,
@@ -45,15 +45,16 @@ async function searchCommemorative(search: string){
         LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
         LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
         WHERE deceasedName LIKE ?
-        LIMIT ?
+        ORDER BY commemorative.commemorativeID DESC
+        LIMIT 10
         OFFSET ?
     `
-    const commemorative = await dal.execute(sql, [appConfig.nodeUrl, `%${search}%`, 20, 0])
+    const commemorative = await dal.execute(sql, [appConfig.nodeUrl, `%${search}%`, offset])
     return commemorative;
 
 }
 
-async function getCommemorativeByUser(userID: number){
+async function getCommemorativeByUser(userID: number, offset: number){
     const sql = `  
     SELECT 
         commemorative.commemorativeID, 
@@ -82,8 +83,11 @@ async function getCommemorativeByUser(userID: number){
     FROM commemorative 
     LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
     LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
-    WHERE commemorative.userID = ?`
-    const commemorative = await dal.execute(sql, [appConfig.nodeUrl, appConfig.nodeUrl, userID])
+    WHERE commemorative.userID = ?
+    ORDER BY commemorative.commemorativeID DESC
+    LIMIT 10
+    OFFSET ?`
+    const commemorative = await dal.execute(sql, [appConfig.nodeUrl, appConfig.nodeUrl, userID, offset])
 
     if(commemorative.length === 0) throw new ValidationErrorModel("No commemorative found");
     return commemorative;

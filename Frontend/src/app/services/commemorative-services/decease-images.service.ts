@@ -16,7 +16,7 @@ export class DeceaseImagesService {
     private config: ConfigService,
   ) { }
   public async getAllDeceaseImages(commemorativeID: number){
-    const observable = this.http.get<DeceaseImagesModel[]>(this.config.decease_images + commemorativeID);
+    const observable = this.http.get<DeceaseImagesModel[]>(this.config.decease_images + commemorativeID + '?offset=' +  this.deceaseImages.length);
     const deceaseImages = await firstValueFrom(observable);
     this.deceaseImages = [...this.deceaseImages, ...deceaseImages];
   }

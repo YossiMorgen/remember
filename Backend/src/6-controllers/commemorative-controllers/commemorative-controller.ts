@@ -23,7 +23,8 @@ router.get('/random_commemorative', async (req, res, next) => {
 router.get('/search_commemorative/:search', async (req, res, next) => {
     try {
         const search = req.params.search;
-        const commemorative = await commemorativeLogic.searchCommemorative(search);
+        const offset = +req.query.offset;
+        const commemorative = await commemorativeLogic.searchCommemorative(search, offset);
         res.json(commemorative);
     } catch (error) {
         next(error);
@@ -33,7 +34,8 @@ router.get('/search_commemorative/:search', async (req, res, next) => {
 router.get('/commemorative_by_user/:userID([0-9]+)', async (req, res, next) => {
     try {
         const userID = +req.params.userID;
-        const commemorative = await commemorativeLogic.getCommemorativeByUser(userID);
+        const offset = +req.query.offset;
+        const commemorative = await commemorativeLogic.getCommemorativeByUser(userID, offset);
         res.json(commemorative);
     } catch (error) {
         next(error);

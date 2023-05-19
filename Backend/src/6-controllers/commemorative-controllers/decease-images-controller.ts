@@ -9,7 +9,8 @@ const router = Router();
 router.get('/decease_images/:commemorativeID([0-9]+)', async (req, res, next) => {
     try {
         const commemorativeID = +req.params.commemorativeID;
-        const deceaseImages = await deceaseImagesLogic.getAllDeceaseImages(commemorativeID);
+        const offset = +req.query.offset;
+        const deceaseImages = await deceaseImagesLogic.getAllDeceaseImages(commemorativeID, offset);
         res.json(deceaseImages);
     } catch (error) {
         next(error);
