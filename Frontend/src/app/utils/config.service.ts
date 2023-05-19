@@ -15,8 +15,9 @@ export class ConfigService {
 
 
   public random_commemorative = this.api + "random_commemorative";
-  public commemorative_by_id = this.api + "commemorative_by_id/";
   public commemorative_by_user = this.api + "commemorative_by_user/";
+  public search_commemorative = this.api + "search_commemorative/";
+  public commemorative_by_id = this.api + "commemorative_by_id/";
   public addCommemorative = this.api + "add_commemorative";
   public updateCommemorative = this.api + "update_commemorative/";
   public deleteCommemorative = this.api + "delete_commemorative/";

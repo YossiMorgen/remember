@@ -10,6 +10,9 @@ function catchAll(err: any, request: Request, response: Response, next: NextFunc
     }else{
         logger.logActivity(err)
     }
+    console.log("cached");
+    console.log(err);
+    
 
     let message = err.message;
 

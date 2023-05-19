@@ -6,7 +6,7 @@ import { ValidationErrorModel } from "../../4-models/error-models";
 import e from "express";
 
 async function getAllCommemorationSitesByCommemorativeID(commemorativeID : number) {
-    const sql = `SELECT * FROM commemorationSites WHERE commemorativeID = ?`;
+    const sql = `SELECT * FROM commemoration_sites WHERE commemorativeID = ?`;
     const commemorationSites = await dal.execute(sql, [commemorativeID]);
     return commemorationSites;
 }
@@ -18,7 +18,7 @@ async function addCommemorationSite(commemorationSite: CommemorationSitesModel) 
     commemorationSite.imageName = await fileHandler.saveFile(commemorationSite.image);
     delete commemorationSite.image;
 
-    const sql = `INSERT INTO commemorationSites VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?)`;
+    const sql = `INSERT INTO commemoration_sites VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?)`;
     const info:OkPacket = await dal.execute(sql, [
         commemorationSite.commemorativeID,
         commemorationSite.userID,
@@ -46,7 +46,7 @@ async function updateCommemorationSite(commemorationSite: CommemorationSitesMode
     }
 
 
-    const sql = `UPDATE commemorationSites SET commemorativeID = ?, userID =?, commemorationName = ?, commemorationAddress = ?, imageName = ?, description = ?, connection = ? WHERE commemorationSiteID = ?`;
+    const sql = `UPDATE commemoration_sites SET commemorativeID = ?, userID =?, commemorationName = ?, commemorationAddress = ?, imageName = ?, description = ?, connection = ? WHERE commemorationSiteID = ?`;
     await dal.execute(sql, [
         commemorationSite.commemorativeID,
         commemorationSite.userID,
@@ -65,12 +65,12 @@ async function deleteCommemorationSite(commemorationSiteID: number) {
     const commemorationSite = await getCommemorationSiteByID(commemorationSiteID);
     fileHandler.deleteFile(commemorationSite.imageName);
 
-    const sql = `DELETE FROM commemorationSites WHERE commemorationSiteID = ?`;
+    const sql = `DELETE FROM commemoration_sites WHERE commemorationSiteID = ?`;
     await dal.execute(sql, [commemorationSiteID]);
 }
 
 async function getCommemorationSiteByID(commemorationSiteID: number) {
-    const sql = `SELECT * FROM commemorationSites WHERE commemorationSiteID = ?`;
+    const sql = `SELECT * FROM commemoration_sites WHERE commemorationSiteID = ?`;
     const [commemorationSite] = await dal.execute(sql, [commemorationSiteID]);
     return commemorationSite;
 }

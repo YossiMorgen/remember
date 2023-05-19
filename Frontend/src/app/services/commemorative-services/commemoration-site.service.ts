@@ -16,8 +16,8 @@ export class CommemorationSiteService {
     private config: ConfigService,
   ) { }
 
-  public async getAllCommemorationSitesByCommemorativeID(commemorativeID: string) {
-    const observable = this.http.get<CommemorationSitesModel[]>(this.config.commemoration_sites);
+  public async getAllCommemorationSitesByCommemorativeID(commemorativeID: number) {
+    const observable = this.http.get<CommemorationSitesModel[]>(this.config.commemoration_sites + commemorativeID);
 
     const newCommemorationSites = await firstValueFrom(observable);
 

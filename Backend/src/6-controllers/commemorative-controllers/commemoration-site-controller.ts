@@ -7,7 +7,7 @@ import verifyLoggedIn from "../../3-middleware/verify-logged-in";
 
 const router = Router();
 
-router.get('commemoration_sites/:commemorativeID([0-9]+)', async (req, res, next) => {
+router.get('/commemoration_sites/:commemorativeID([0-9]+)', async (req, res, next) => {
     try {
         const commemorativeID = +req.params.commemorativeID;
         const commemorationSites = await commemorationSitesLogic.getAllCommemorationSitesByCommemorativeID(commemorativeID);
@@ -16,7 +16,7 @@ router.get('commemoration_sites/:commemorativeID([0-9]+)', async (req, res, next
     }
 })
 
-router.get('commemoration_site/:commemorationSiteID([0-9]+)', async (req, res, next) => {
+router.get('/commemoration_site/:commemorationSiteID([0-9]+)', async (req, res, next) => {
     try {
         const commemorationSiteID = +req.params.commemorationSiteID;
         const commemorationSite : CommemorationSitesModel = await commemorationSitesLogic.getCommemorationSiteByID(commemorationSiteID);

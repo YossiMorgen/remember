@@ -1,33 +1,40 @@
 <mat-card>
-    <mat-card-header>
 
-        <mat-card-title-group>
-            <mat-card-title>{{commemorative.deceasedName}}</mat-card-title>
-            <mat-card-subtitle>{{commemorative.biography}}</mat-card-subtitle>
-            <img mat-card-xl-image src={{commemorative.deceaseImageName}} alt="">
-        </mat-card-title-group>
+    <img mat-card-xl-image src={{commemorative.deceaseImageName}} alt="">
+    <mat-card-title>{{commemorative.deceasedName}}</mat-card-title>
 
-    </mat-card-header>
 
+    <mat-tab-group animationDuration="2000ms">
+        <mat-tab label="Details">
+            <mat-card-content>
+                <h4>State</h4>
+                <p>{{commemorative.state}}</p>
+                <h4>City</h4>
+                <p>{{commemorative.city}}</p>
+                <h4>{{commemorative.partnerType}}</h4>
+                <p>{{commemorative.partnerName}}</p>
+                <h4>Father</h4>
+                <p>{{commemorative.fatherName}}</p>
+                <h4>Mother</h4>
+                <p>{{commemorative.motherName}}</p>
+                <h4>Children</h4>
+                <p >{{commemorative.childrenNames}}</p>
+                <h4>Biography</h4>
+                <p>{{commemorative.biography}}</p>
+                <h4>About</h4>
+                <p>{{commemorative.about}}</p>
+                <h4>Life Time</h4>
+                <p>{{commemorative.birthDate.slice(0, 10)}} - {{commemorative.deathDate.slice(0, 10)}}</p>
+            </mat-card-content>
+        </mat-tab>
+        <mat-tab label="Commemoration Sites">
+            <app-commemoration-sites></app-commemoration-sites>
+        </mat-tab>
+        <mat-tab label="Decease Images">
+            <app-decease-images></app-decease-images>
+        </mat-tab>
+      </mat-tab-group>
+      
     
-    <mat-card-content>
-        <h4>State</h4>
-        <p>{{commemorative.state}}</p>
-        <!-- <h4>City</h4>
-        <p>{{commemorative.city}}</p> -->
-        <h4>{{commemorative.partnerType}}</h4>
-        <p>{{commemorative.partnerName}}</p>
-        <h4>Father</h4>
-        <p>{{commemorative.fatherName}}</p>
-        <h4>Mother</h4>
-        <p>{{commemorative.motherName}}</p>
-        <h4>Children</h4>
-        <p >{{commemorative.childrenNames}}</p>
-        <!-- <h4>Biography</h4>
-        <p>{{commemorative.biography}}</p> -->
-        <h4>About</h4>
-        <p>{{commemorative.about}}</p>
-        <h4>Life Time</h4>
-        <p>{{commemorative.birthDate.slice(0, 10)}}- {{commemorative.deathDate.slice(0, 10)}}</p>
-    </mat-card-content>
+   
 </mat-card>
