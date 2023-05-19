@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
 import { Router } from '@angular/router';
 import LanguageModel from 'src/app/models/languages-model';
 import { CommemorativeService } from 'src/app/services/commemorative-services/commemorative.service';
 import { ConfigService } from 'src/app/utils/config.service';
 import { ToastifyNotificationsService } from 'src/app/utils/toastify-notifications.service';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-commemorative-form',
@@ -17,6 +19,10 @@ export class CommemorativeFormComponent implements OnInit {
 
   public graveImageName: string;
   public deceaseImageName: string;
+
+  public childrenNames: string[] = [];
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+
   public editMode = false;
   public editedItemIndex: number;
 
@@ -38,7 +44,6 @@ export class CommemorativeFormComponent implements OnInit {
     partnerName: ['', [Validators.required]],
     fatherName: ['', [Validators.required]],
     motherName: ['', [Validators.required]],
-    childrenNames: ['', [Validators.required]],
   });
 
   public graveDataForm = this.formBuilder.group({
@@ -81,7 +86,6 @@ export class CommemorativeFormComponent implements OnInit {
           partnerName: commemorative.partnerName,
           fatherName: commemorative.fatherName,
           motherName: commemorative.motherName,
-          childrenNames: commemorative.childrenNames,
         });
 
         this.graveDataForm.setValue({
@@ -91,6 +95,8 @@ export class CommemorativeFormComponent implements OnInit {
 
         this.deceaseImageName = commemorative.deceaseImageName.slice(this.config.baseUrl.length, commemorative.deceaseImageName.length);
         this.graveImageName = commemorative.graveImageName.slice(this.config.baseUrl.length, commemorative.graveImageName.length);
+
+        this.childrenNames = commemorative.childrenNames.split(',');
       } catch (error) {
         this.toast.error('Error while loading commemorative data!');
       }
@@ -107,6 +113,8 @@ export class CommemorativeFormComponent implements OnInit {
     formData.append('graveImageName', this.graveImageName);
     formData.append('deceaseImageName', this.deceaseImageName);
 
+    formData.append('childrenNames', this.childrenNames.join(','));
+
     formData.append('deceasedName', this.basicDataForm.value.deceasedName);
     formData.append('biography', this.basicDataForm.value.biography);
     formData.append('about', this.basicDataForm.value.about);
@@ -119,7 +127,6 @@ export class CommemorativeFormComponent implements OnInit {
     formData.append('partnerName', this.technicalDataForm.value.partnerName);
     formData.append('fatherName', this.technicalDataForm.value.fatherName);
     formData.append('motherName', this.technicalDataForm.value.motherName);
-    formData.append('childrenNames', this.technicalDataForm.value.childrenNames);
     formData.append('graveYardName', this.graveDataForm.value.graveYardName);
     formData.append('locationLink', this.graveDataForm.value.locationLink);
     
@@ -148,4 +155,39 @@ export class CommemorativeFormComponent implements OnInit {
     console.log(this.graveImage);
     console.log(this.deceaseImage); 
   }
+
+  addKid(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.childrenNames.push( value );
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  removeKid(name: string): void {
+    const index = this.childrenNames.indexOf(name);
+
+    if (index >= 0) {
+      this.childrenNames.splice(index, 1);
+    }
+  }
+
+  editKid(fruit: string, event: MatChipEditedEvent) {
+    const value = event.value.trim();
+
+    if (!value) {
+      this.removeKid(fruit);
+      return;
+    }
+
+    const index = this.childrenNames.indexOf(fruit);
+    if (index >= 0) {
+      this.childrenNames[index] = value;
+    }
+  }
+
 }

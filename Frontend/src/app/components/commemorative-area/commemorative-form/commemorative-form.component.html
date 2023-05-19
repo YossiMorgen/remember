@@ -99,10 +99,26 @@
                         <mat-label>Mother Name</mat-label>
                         <input matInput formControlName="motherName" placeholder="motherName">
                     </mat-form-field>
-                    
-                    <mat-form-field appearance="fill">
-                        <mat-label>Children Names</mat-label>
-                        <input matInput formControlName="childrenNames" placeholder="childrenNames">
+
+                    <mat-form-field class="example-chip-list">
+                        <mat-label>Decease Offspring</mat-label>
+                        <mat-chip-grid #chipGrid aria-label="Enter kids">
+                            <mat-chip-row *ngFor="let kid of childrenNames"
+                                        (removed)="removeKid(kid)"
+                                        [editable]="true"
+                                        (edited)="editKid(kid, $event)"
+                                        [aria-description]="'press enter to edit ' + kid">
+                            {{kid}}
+                            <button matChipRemove [attr.aria-label]="'remove ' + kid">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                            </mat-chip-row>
+                            <input placeholder="kid..."
+                                [matChipInputFor]="chipGrid"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [matChipInputAddOnBlur]="true"
+                                (matChipInputTokenEnd)="addKid($event)"/>
+                        </mat-chip-grid>
                     </mat-form-field>
                     
                     <button mat-button matStepperPrevious>Back</button>
