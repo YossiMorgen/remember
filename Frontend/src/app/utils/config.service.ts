@@ -26,15 +26,20 @@ export class ConfigService {
   public add_decease_image = this.api + "add_decease_image";
   public delete_decease_image = this.api + "delete_decease_image/";
 
+  public sum_commemorative_candles = this.api + "sum_commemorative_candles/";
+  public add_candle = this.api + "add_candle/";
+
+  public add_flower = this.api + "add_flower/";
+  public sum_commemorative_flowers = this.api + "sum_commemorative_flowers/";
+
+  public get_commemorative_stories = this.api + "get_commemorative_stories/";
+  public add_story = this.api + "add_story/";
+  public delete_story = this.api + "delete_story/";
+  
   public commemoration_sites = this.api + "commemoration_sites/";
   public commemoration_site = this.api + "commemoration_site/";
   public add_commemoration_site = this.api + "add_commemoration_site";
   public update_commemoration_site = this.api + "update_commemoration_site/";
   public delete_commemoration_site = this.api + "delete_commemoration_site/";
 
-  public sum_commemorative_candles = this.api + "sum_commemorative_candles/";
-  public add_candle = this.api + "add_candle/";
-
-  public add_flower = this.api + "add_flower/";
-  public sum_commemorative_flowers = this.api + "sum_commemorative_flowers/";
 }
