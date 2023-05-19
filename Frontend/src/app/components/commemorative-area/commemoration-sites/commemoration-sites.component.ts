@@ -18,11 +18,10 @@ export class CommemorationSitesComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     try {
-      if(!this.commemorationSiteService.commemorationSites.length){
-        await this.commemorationSiteService.getAllCommemorationSitesByCommemorativeID(+this.router.url.split('/').pop());
-        console.log(this.commemorationSiteService.commemorationSites);
-        
-      }
+      // if(!this.commemorationSiteService.commemorationSites.length){
+      //   await this.commemorationSiteService.getAllCommemorationSitesByCommemorativeID(+this.router.url.split('/').pop());
+      //   console.log(this.commemorationSiteService.commemorationSites);
+      // }
     } catch (error) {
       this.toast.error(error);
     }
