@@ -4,5 +4,5 @@ export default class StoryModel{
     public storyID : number;
     public userID: number;
     public author: string;
-    public story: Date;
+    public story: string;
 }

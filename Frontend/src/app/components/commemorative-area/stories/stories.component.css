@@ -1,0 +1,16 @@
+.stories{
+    position: relative;
+}
+
+.addStory{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+}
+
+.stories .stories__title{
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}

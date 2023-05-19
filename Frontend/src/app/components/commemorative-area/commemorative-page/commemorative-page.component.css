@@ -1,10 +1,9 @@
-mat-card{
-    display: flex;
-    flex-direction: column;
-}
+
 img{
 
     /* border-radius: 50%; */
+    display: block;
+    width: 250px;
     max-width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
@@ -12,9 +11,9 @@ img{
     filter: grayscale(0);
     transition: 0.5s;
 
-    -webkit-box-reflect: below 0px linear-gradient(to bottom, transparent, #0002);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    -webkit-box-reflect: below 0px linear-gradient(to bottom, transparent, rgba(7, 0, 104, 0.133));
+    /* -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px); */
     box-shadow:
         6.9px 3.4px 1.9px rgba(0, 0, 0, 0.028),
         13.7px 6.7px 4.3px rgba(0, 0, 0, 0.051),

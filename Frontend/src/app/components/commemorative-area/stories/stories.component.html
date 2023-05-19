@@ -1,1 +1,11 @@
-<p>stories works!</p>
+<div class="stories">
+    <button (click)="showDialog()" class="addStory" mat-mini-fab color="primary" >
+        <mat-icon>plus_one</mat-icon>
+    </button>
+    <div *ngFor="let story of stories">
+        <mat-card-title class="stories__title">{{story.author}}</mat-card-title>
+        <mat-card-content>
+            <p>{{story.story}}</p>
+        </mat-card-content>
+    </div>
+</div>

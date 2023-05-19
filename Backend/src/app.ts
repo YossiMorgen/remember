@@ -8,6 +8,7 @@ import candlesController from "./6-controllers/commemorative-controllers/candles
 import flowersController from "./6-controllers/commemorative-controllers/flowers-controller";
 import deceaseImagesController from "./6-controllers/commemorative-controllers/decease-images-controller";
 import commemorationSiteController from "./6-controllers/commemorative-controllers/commemoration-site-controller";
+import storyController from "./6-controllers/commemorative-controllers/story-controller";
 import authController from "./6-controllers/auth-controller";
 import expressRateLimit from "express-rate-limit";
 import helmet from "helmet";
@@ -34,6 +35,7 @@ server.use(express.static('src/1-assets/images'))
 server.use(express.urlencoded({ extended: false }));
 
 server.use('/api', authController);
+server.use('/api', storyController);
 server.use('/api', candlesController);
 server.use('/api', flowersController);
 

@@ -1,13 +1,15 @@
 import { Router } from "express";
 import storyLogic from "../../5-logic/commemoration-logic-area/story-logic";
 import cyber from "../../2-utils/cyber";
+import StoryModel from "../../4-models/commemorations-models/story-model";
 
 const router = Router();
 
-router.get('/get_commemorative_stories/:commemorativeID([0-9]+', async (req, res, next) => {
+router.get('/get_commemorative_stories/:commemorativeID([0-9]+)', async (req, res, next) => {
     try {
         const commemorativeID = +req.params.commemorativeID;
         const commemorativeStories = await storyLogic.getCommemorativeStories(commemorativeID);
+        res.json(commemorativeStories);
     } catch (error) {
         next(error);
     }  
@@ -15,7 +17,7 @@ router.get('/get_commemorative_stories/:commemorativeID([0-9]+', async (req, res
 
 router.post('/add_story', async (req, res, next) => {
     try {
-        const story = req.body;
+        const story = new StoryModel(req.body);
         const decodeUser = await cyber.getDecodeToken(req);
         story.userID = decodeUser.userID;
         const newStory = await storyLogic.addCommemorativeStory(story);

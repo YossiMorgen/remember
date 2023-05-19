@@ -516,3 +516,15 @@ Fri, 19 May 2023 13:24:27 GMT 	 error!!Stack: Error: ER_BAD_FIELD_ERROR: Unknown
     at new Promise (<anonymous>)
     at __awaiter (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\commemoration-sites-logic.ts:4:12)
 ----------------------------------------------------------------------------------------------------
+Fri, 19 May 2023 17:33:32 GMT 	 error!!Stack: TypeError: story.validation is not a function
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\story-logic.ts:12:23)
+    at step (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\story-logic.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\story-logic.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\story-logic.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\story-logic.ts:4:12)
+    at Object.addCommemorativeStory (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\story-logic.ts:60:12)
+    at C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\6-controllers\commemorative-controllers\story-controller.ts:22:43
+    at step (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\6-controllers\commemorative-controllers\story-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\6-controllers\commemorative-controllers\story-controller.ts:14:53)
+----------------------------------------------------------------------------------------------------

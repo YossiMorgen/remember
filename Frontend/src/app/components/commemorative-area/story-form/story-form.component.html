@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{editMode ? 'Edit ' : 'Add '}} Story</h1>
+
+<form [formGroup]="storyForm">
+    <mat-dialog-content>
+        <mat-form-field>
+            <input matInput placeholder="Author" formControlName="author">
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea matInput placeholder="Story" formControlName="story"></textarea>
+        </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mat-button (click)="onCancel()">Cancel</button>
+        <button mat-button [disabled]="!storyForm.valid" [mat-dialog-close]="storyForm.value">Save</button>
+    </mat-dialog-actions>
+</form>

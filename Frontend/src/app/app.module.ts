@@ -69,6 +69,7 @@ import { HttpResponseInterceptor } from './utils/response.interceptor';
 import { HttpRequestInterceptor } from './utils/request.interceptor';
 import { CommemorativeFormComponent } from './components/commemorative-area/commemorative-form/commemorative-form.component';
 import { StoriesComponent } from './components/commemorative-area/stories/stories.component';
+import { StoryFormComponent } from './components/commemorative-area/story-form/story-form.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { StoriesComponent } from './components/commemorative-area/stories/storie
     CommemorationSitesComponent,
     CommemorativeFormComponent,
     StoriesComponent,
+    StoryFormComponent,
   ],
   imports: [
     BrowserModule,
