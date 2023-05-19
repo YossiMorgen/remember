@@ -8,6 +8,7 @@ import { ConfigService } from 'src/app/utils/config.service';
   providedIn: 'root'
 })
 export class CommemorationSiteService {
+  public isThereMoreCommemorationSites: boolean = true;
 
   public commemorationSites: CommemorationSitesModel[] = [];
 
@@ -22,6 +23,10 @@ export class CommemorationSiteService {
     const newCommemorationSites = await firstValueFrom(observable);
 
     this.commemorationSites = [...this.commemorationSites, ...newCommemorationSites];
+
+    if(newCommemorationSites.length < 20){
+      this.isThereMoreCommemorationSites = false;
+    }
   }
 
   public async addCommemorationSite(commemoration: CommemorationSitesModel){

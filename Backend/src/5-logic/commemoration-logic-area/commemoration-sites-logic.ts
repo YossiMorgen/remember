@@ -18,15 +18,13 @@ async function addCommemorationSite(commemorationSite: CommemorationSitesModel) 
     commemorationSite.imageName = await fileHandler.saveFile(commemorationSite.image);
     delete commemorationSite.image;
 
-    const sql = `INSERT INTO commemoration_sites VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?)`;
+    const sql = `INSERT INTO commemoration_sites VALUES (DEFAULT, ?, ?, ?, ?, ?)`;
     const info:OkPacket = await dal.execute(sql, [
-        commemorationSite.commemorativeID,
         commemorationSite.userID,
         commemorationSite.commemorationName,
         commemorationSite.commemorationAddress,
         commemorationSite.imageName,
         commemorationSite.description,
-        commemorationSite.connection,
     ]);
 
     commemorationSite.commemorationSiteID = info.insertId;
@@ -46,15 +44,13 @@ async function updateCommemorationSite(commemorationSite: CommemorationSitesMode
     }
 
 
-    const sql = `UPDATE commemoration_sites SET commemorativeID = ?, userID =?, commemorationName = ?, commemorationAddress = ?, imageName = ?, description = ?, connection = ? WHERE commemorationSiteID = ?`;
+    const sql = `UPDATE commemoration_sites SET userID =?, commemorationName = ?, commemorationAddress = ?, imageName = ?, description = ? WHERE commemorationSiteID = ?`;
     await dal.execute(sql, [
-        commemorationSite.commemorativeID,
         commemorationSite.userID,
         commemorationSite.commemorationName,
         commemorationSite.commemorationAddress,
         commemorationSite.imageName,
         commemorationSite.description,
-        commemorationSite.connection,
         commemorationSite.commemorationSiteID,
     ]);
 
