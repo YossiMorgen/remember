@@ -2,9 +2,13 @@ import dal from "../../2-utils/dal";
 import StoryModel from "../../4-models/commemorations-models/story-model";
 import { ValidationErrorModel } from "../../4-models/error-models";
 
-async function getCommemorativeStories(commemorativeID: number) {
-    const sql = `SELECT * FROM stories WHERE commemorativeID = ?`;
-    const commemorativeStories = await dal.execute(sql, [commemorativeID]);
+async function getCommemorativeStories(commemorativeID: number, offset: number) {
+    const sql = `
+        SELECT * FROM stories 
+        WHERE commemorativeID = ?
+        ORDER BY storyID DESC
+        LIMIT 5 OFFSET ?;`;
+    const commemorativeStories = await dal.execute(sql, [commemorativeID, offset]);
     return commemorativeStories;
 }
 

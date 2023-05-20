@@ -7,8 +7,9 @@ const router = Router();
 
 router.get('/get_commemorative_stories/:commemorativeID([0-9]+)', async (req, res, next) => {
     try {
+        const offset = +req.query.offset;
         const commemorativeID = +req.params.commemorativeID;
-        const commemorativeStories = await storyLogic.getCommemorativeStories(commemorativeID);
+        const commemorativeStories = await storyLogic.getCommemorativeStories(commemorativeID, offset);
         res.json(commemorativeStories);
     } catch (error) {
         next(error);

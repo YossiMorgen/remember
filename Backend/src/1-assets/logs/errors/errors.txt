@@ -669,3 +669,26 @@ Fri, 19 May 2023 18:47:30 GMT 	 error!!Stack: Error: ER_PARSE_ERROR: You have an
     at new Promise (<anonymous>)
     at __awaiter (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\decease-images-logic.ts:4:12)
 ----------------------------------------------------------------------------------------------------
+Sat, 20 May 2023 06:42:02 GMT 	 error!!Stack: Error: ER_BAD_FIELD_ERROR: Unknown column 'deceaseImageID' in 'order clause'
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\2-utils\dal.ts:12:12)
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\story-logic.ts:11:44)
+    at step (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\story-logic.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\story-logic.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\story-logic.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\story-logic.ts:4:12)
+----------------------------------------------------------------------------------------------------

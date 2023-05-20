@@ -13,7 +13,7 @@ async function getAllDeceaseImages(commemorativeID: number, offset: number) {
     FROM deceaseImages 
     WHERE commemorativeID = ?
     ORDER BY deceaseImageID DESC
-    LIMIT 10 OFFSET ?;`;
+    LIMIT 5 OFFSET ?;`;
     const deceaseImages = await dal.execute(sql, [appConfig.nodeUrl, commemorativeID, offset]);
 
     return deceaseImages;
@@ -28,7 +28,7 @@ async function addDeceaseImage(deceaseImage: DeceaseImagesModel) {
         deceaseImage.userID,
         deceaseImage.imageName,
     ]);
-
+    deceaseImage.imageName = appConfig.nodeUrl + deceaseImage.imageName;
     deceaseImage.deceaseImageID = info.insertId;
     return deceaseImage;
 }
