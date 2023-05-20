@@ -7,11 +7,18 @@ import { CommemorativeService } from 'src/app/services/commemorative-services/co
 import { ConfigService } from 'src/app/utils/config.service';
 import { ToastifyNotificationsService } from 'src/app/utils/toastify-notifications.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-commemorative-form',
   templateUrl: './commemorative-form.component.html',
-  styleUrls: ['./commemorative-form.component.css']
+  styleUrls: ['./commemorative-form.component.css'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {showError: true},
+    },
+  ],
 })
 export class CommemorativeFormComponent implements OnInit {
   public graveImage: File;
@@ -62,6 +69,7 @@ export class CommemorativeFormComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     const url = this.router.url;
+    this.technicalDataForm.value.partnerType
 
     if(url.search('edit_commemorative') !== -1){
       this.editMode = true;

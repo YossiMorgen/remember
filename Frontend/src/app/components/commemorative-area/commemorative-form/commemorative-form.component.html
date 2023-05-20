@@ -7,28 +7,49 @@
         </mat-card-header>
 
         <mat-vertical-stepper>
-            <mat-step [stepControl]="basicDataForm" errorMessage="😡">
+            <mat-step [stepControl]="basicDataForm" errorMessage="Please fill everything">
                 <form [formGroup]="basicDataForm">
                     <ng-template matStepLabel>Fill out decease info </ng-template>
 
                     <mat-form-field appearance="fill">
                         <mat-label>Deceased Name</mat-label>
-                        <input matInput formControlName="deceasedName" placeholder="deceasedName">
+                        <input 
+                            matInput 
+                            formControlName="deceasedName" 
+                            placeholder="deceasedName" 
+                        >
                     </mat-form-field>
         
                     <mat-form-field appearance="fill">
                         <mat-label>Biography</mat-label>
-                        <textarea matInput formControlName="biography" placeholder="biography"></textarea>
+                        <textarea 
+                            matInput 
+                            formControlName="biography" 
+                            placeholder="biography" 
+                            required
+                        ></textarea>
                     </mat-form-field>
                     
                     <mat-form-field appearance="fill">
                         <mat-label>About</mat-label>
-                        <textarea matInput formControlName="about" placeholder="about"></textarea>
+                        <textarea 
+                            matInput 
+                            formControlName="about" 
+                            placeholder="about" 
+                            required
+                        ></textarea>
                     </mat-form-field>
                     
         
-                    <input type="file" (change)="onFileSelected($event, 'deceaseImage')" accept="image/*" class="file-input" #deceaseImageInput>   
                     <label class="file_button" [class]="deceaseImage ? ' valid ' : 'invalid '" #fileButton>
+                        <input 
+                            type="file" 
+                            (change)="onFileSelected($event, 'deceaseImage')" 
+                            accept="image/*" 
+                            class="file-input" 
+                            #deceaseImageInput 
+                            required
+                        >   
                         {{deceaseImage?.name || "No file uploaded yet."}}
                         <button (click)="deceaseImageInput.click()" type="button" class="upload-btn">
                             +
@@ -46,7 +67,12 @@
         
                     <mat-form-field class="example-full-width">
                         <mat-label>Birth Date</mat-label>
-                        <input matInput placeholder="Date of Birth" formControlName="birthDate" [matDatepicker]="birthDatePicker">
+                        <input 
+                            matInput 
+                            placeholder="Date of Birth" 
+                            formControlName="birthDate" 
+                            [matDatepicker]="birthDatePicker"
+                        >
                         <mat-hint>MM/DD/YYYY</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
                         <mat-datepicker touchUi #birthDatePicker></mat-datepicker>
@@ -54,7 +80,12 @@
         
                     <mat-form-field class="example-full-width">
                         <mat-label>Death Date</mat-label>
-                        <input matInput placeholder="Date of Birth" formControlName="deathDate" [matDatepicker]="deathDatePicker">
+                        <input 
+                            matInput 
+                            placeholder="Date of death" 
+                            formControlName="deathDate" 
+                            [matDatepicker]="deathDatePicker"
+                        >
                         <mat-hint>MM/DD/YYYY</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="deathDatePicker"></mat-datepicker-toggle>
                         <mat-datepicker touchUi #deathDatePicker></mat-datepicker>
@@ -77,13 +108,21 @@
                         <input matInput formControlName="city" placeholder="city">
                     </mat-form-field>
 
-                    <mat-form-field appearance="fill">
+                    <mat-form-field>
+                        <mat-label>Partner Type</mat-label>
+                        <mat-select formControlName="partnerType">
+                            <mat-option value="Wife">Wife</mat-option>
+                            <mat-option value="Husband">Husband</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <!-- <mat-form-field appearance="fill">
                         <label>Partner Type</label>
-                        <mat-radio-group formControlName="partnerType">
+                        <mat-radio-group formControlName="partnerType" >
                           <mat-radio-button value="Wife">Wife</mat-radio-button>
                           <mat-radio-button value="Husband">Husband</mat-radio-button>
                         </mat-radio-group>
-                    </mat-form-field>
+                    </mat-form-field> -->
                                     
                     <mat-form-field appearance="fill">
                         <mat-label>Partner Name</mat-label>
@@ -125,7 +164,7 @@
                     <button mat-button matStepperNext>Next</button>
                 </form>
             </mat-step>
-            <mat-step [stepControl]="graveDataForm" errorMessage=" ">
+            <mat-step [stepControl]="graveDataForm" errorMessage="😡">
                 <form [formGroup]="graveDataForm">
                     <ng-template matStepLabel>Fill out grave details</ng-template>
                     

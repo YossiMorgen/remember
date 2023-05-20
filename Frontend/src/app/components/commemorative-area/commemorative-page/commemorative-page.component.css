@@ -23,3 +23,7 @@ img{
         51.6px 25.1px 37px rgba(0, 0, 0, 0.116),
         74px 36px 80px rgba(0, 0, 0, 0.19);
     }
+
+    mat-tab{
+        min-height: 50vh;
+    }

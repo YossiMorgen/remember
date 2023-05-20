@@ -57,7 +57,7 @@ export class StoryFormComponent implements OnInit {
         await this.storyService.editStory(story);
       } else {
         const story: StoryModel = {
-          storyID: 0,
+          storyID: 1,
           commemorativeID: +this.router.url.split('/').pop(),
           userID: this.auth.user.userID,
           author: this.storyForm.value.author,
