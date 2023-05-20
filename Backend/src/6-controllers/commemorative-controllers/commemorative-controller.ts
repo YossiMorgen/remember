@@ -11,6 +11,8 @@ const router = Router();
 
 router.get('/random_commemorative', async (req, res, next) => {
     try {
+        console.log(req.socket.remoteAddress);
+        
         const language = req.query.language as string;
         const offset = +req.query.offset;
         const commemorative = await commemorativeLogic.getRandomCommemorative(offset, language);

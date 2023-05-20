@@ -30,7 +30,7 @@ router.post('/add_decease_image', verifyLoggedIn, async (req, res, next) => {
     }
 })
 
-router.delete('/delete_decease_image/:imageName([0-9]+)', async (req, res, next) => {
+router.delete('/delete_decease_image/:imageName', async (req, res, next) => {
     try {
         const imageName = req.params.imageName;
         const decodeUser = await cyber.getDecodeToken(req);

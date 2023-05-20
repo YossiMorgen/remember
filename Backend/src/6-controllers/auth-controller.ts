@@ -14,6 +14,8 @@ router.post("/auth/register", async (req: Request, res: Response, next: NextFunc
         const user = new User(req.body);
         
         user.role = RoleModel.user;
+
+        user.ip = req.socket.remoteAddress || null;
         
         const token = await authLogic.register(user);
         res.status(201).json(token);

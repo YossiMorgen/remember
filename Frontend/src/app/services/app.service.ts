@@ -9,4 +9,6 @@ export default class AppService {
 
   public loading = false;
 
+  public language = 'English';
+
 }

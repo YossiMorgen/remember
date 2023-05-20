@@ -15,8 +15,8 @@ async function register(user : User) {
     user.role = RoleModel.user;
     
     user.password = cyber.hash(user.password);
-    const sql = `INSERT INTO users VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?)`
-    const info: OkPacket = await dal.execute(sql, [user.firstName, user.lastName, user.email, user.password, user.role, user.state, user.city, user.birthDate]);
+    const sql = `INSERT INTO users VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    const info: OkPacket = await dal.execute(sql, [user.firstName, user.lastName, user.email, user.password, user.role, user.state, user.city, user.birthDate, user.ip]);
 
     user.userID = info.insertId;
     delete user.password;

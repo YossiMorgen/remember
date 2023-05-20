@@ -26,12 +26,13 @@ export class CommemorativePageComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     try {    
-      const commemorativeID = +this.router.url.split('/').pop();
+      // get commemorative id from url without the last slash and the query params
+      const commemorativeID = +this.router.url.split('/').pop().split('?')[0];
       this.storyService.stories = [];
       this.deceaseImagesService.deceaseImages = [];
       
       this.commemorative = await this.commemorativeService.getCommemorativeById(commemorativeID);  
-      await this.storyService.getCommemorativeStories(+this.router.url.split('/').pop());
+      await this.storyService.getCommemorativeStories(commemorativeID);
       await this.deceaseImagesService.getAllDeceaseImages(commemorativeID)
     } catch (error) {
       console.log(this.commemorative.about);  
@@ -40,7 +41,7 @@ export class CommemorativePageComponent implements OnInit {
     }
 
     window.addEventListener("scroll", async () => {
-      const commemorativeID = +this.router.url.split('/').pop();
+      const commemorativeID = +this.router.url.split('/').pop().split('?')[0];
 
       if(
         this.router.url.search('/commemorative/') !== -1 && 
