@@ -130,6 +130,7 @@ async function getCommemorativeByID(commemorativeID: number){
 }
 
 async function addCommemorative (commemorative: CommemorativeModel){
+    console.log(commemorative.userID);
 
     const err = commemorative.validation();
     if(err) throw new ValidationErrorModel(err);
@@ -142,8 +143,8 @@ async function addCommemorative (commemorative: CommemorativeModel){
 
     let sql = `INSERT INTO commemorative VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`
     const info: OkPacket = await dal.execute(sql, [
-        commemorative.deceasedName,
         commemorative.userID,
+        commemorative.deceasedName,
         commemorative.biography, 
         commemorative.about, 
         commemorative.deceaseImageName,
@@ -171,7 +172,7 @@ async function addCommemorative (commemorative: CommemorativeModel){
     return commemorative;
 }
 
-async function updateCommemorative (commemorative: CommemorativeModel){
+async function updateCommemorative (commemorative: CommemorativeModel){    
     
     const err = commemorative.validation();
     if(err) throw new ValidationErrorModel(err);
@@ -240,7 +241,7 @@ async function updateCommemorative (commemorative: CommemorativeModel){
 
     const info: OkPacket = await dal.execute(sql, arr);
     
-    if(!info.affectedRows) throw new ValidationErrorModel('commemorative does not exist');
+    if(!info.affectedRows) throw new ValidationErrorModel('commemorative does not exist or you are not the owner');
     
     commemorative.graveImageName = appConfig.nodeUrl + commemorative.graveImageName;
     commemorative.deceaseImageName = appConfig.nodeUrl + commemorative.deceaseImageName;

@@ -107,6 +107,7 @@ export class CommemorativeFormComponent implements OnInit {
         this.childrenNames = commemorative.childrenNames.split(',');
       } catch (error) {
         this.toast.error('Error while loading commemorative data!');
+        this.router.navigate(['/commemorative_list']);
       }
     }
   }
@@ -121,7 +122,7 @@ export class CommemorativeFormComponent implements OnInit {
     formData.append('graveImageName', this.graveImageName);
     formData.append('deceaseImageName', this.deceaseImageName);
 
-    formData.append('childrenNames', this.childrenNames.join(','));
+    formData.append('childrenNames', this.childrenNames.join(',') || ' ');
 
     formData.append('deceasedName', this.basicDataForm.value.deceasedName);
     formData.append('biography', this.basicDataForm.value.biography);

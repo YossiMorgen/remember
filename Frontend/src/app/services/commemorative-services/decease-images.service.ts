@@ -9,6 +9,7 @@ import { ConfigService } from 'src/app/utils/config.service';
 })
 export class DeceaseImagesService {
 
+  isThereMoreDeceaseImages: boolean = true;
 
   public deceaseImages: DeceaseImagesModel[] = [];
   constructor(
@@ -19,6 +20,9 @@ export class DeceaseImagesService {
     const observable = this.http.get<DeceaseImagesModel[]>(this.config.decease_images + commemorativeID + '?offset=' +  this.deceaseImages.length);
     const deceaseImages = await firstValueFrom(observable);
     this.deceaseImages = [...this.deceaseImages, ...deceaseImages];
+    if(deceaseImages.length < 10){
+      this.isThereMoreDeceaseImages = false;
+    }
   }
 
   public async addDeceaseImage(deceaseImage: FormData){
@@ -27,8 +31,9 @@ export class DeceaseImagesService {
     this.deceaseImages.unshift(newDeceaseImage);
   }
 
-  public async deleteDeceaseImage(deceaseImageID: number){
-    const observable = this.http.delete<DeceaseImagesModel>(this.config.delete_decease_image + deceaseImageID);
+  public async deleteDeceaseImage(imageName: string){
+    const imageNameToDelete = imageName.replace(this.config.baseUrl, '');
+    const observable = this.http.delete<DeceaseImagesModel>(this.config.delete_decease_image + imageNameToDelete);
     await firstValueFrom(observable);
-    this.deceaseImages = this.deceaseImages.filter(d => d.deceaseImageID !== deceaseImageID);
+    this.deceaseImages = this.deceaseImages.filter(d => d.imageName !== imageName);
   }}

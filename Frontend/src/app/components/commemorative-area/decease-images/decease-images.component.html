@@ -1,13 +1,13 @@
 <input type="file" (change)="onFileSelected($event)" #image>
-<button (click)="image.click()" class="addImage" mat-mini-fab color="primary" >
+<button (click)="auth.user ? image.click() : router.navigate(['/login'])" class="addImage" mat-mini-fab color="primary" >
     <mat-icon>plus_one</mat-icon>
 </button>
 
 <div class="imageContainer">
     <div *ngFor="let img of imagesService.deceaseImages" class="img">
         <button 
-            (click)="deleteImage(img.deceaseImageID)" 
-            *ngIf="auth.user.userID === img.userID || auth.user.role === 'admin'" 
+            (click)="deleteImage(img.imageName) " 
+            *ngIf="auth.user?.userID === img.userID || auth.user?.role === 'admin'" 
             class="delete" 
             mat-mini-fab 
             color="warn" 

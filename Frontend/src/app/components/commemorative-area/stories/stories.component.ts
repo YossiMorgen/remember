@@ -24,6 +24,7 @@ export class StoriesComponent {
 
   public showDialog(i?: number){
     if(!this.auth.user) {
+      this.auth.logout();
       this.router.navigate(['/login']);
       return;
     } 

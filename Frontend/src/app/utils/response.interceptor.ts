@@ -29,6 +29,7 @@ export class HttpResponseInterceptor implements HttpInterceptor {
           if(error.status === 401) {
             this.auth.logout();
             this.router.navigate(['/login']);
+            this.toast.error("token expired, please login again")
           }
         }
       }));

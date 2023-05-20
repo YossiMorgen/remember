@@ -10,7 +10,7 @@ import { ConfigService } from 'src/app/utils/config.service';
 export class CommemorativeService {
 
   public commemorative: CommemorativeModel[] = [];
-
+  isThereMoreCommemorative: boolean = true;
   constructor(
     private http:HttpClient, 
     private config: ConfigService,
@@ -22,7 +22,36 @@ export class CommemorativeService {
     const commemorative = await firstValueFrom(observable);
 
     this.commemorative = [...this.commemorative, ...commemorative];
+
+    if(commemorative.length < 10){
+      this.isThereMoreCommemorative = false;
+    }
   }
+  
+  public async getCommemorativeByUser(){
+    const observable = this.http.get<CommemorativeModel[]>(this.config.commemorative_by_user);
+
+    const commemorative = await firstValueFrom(observable);
+
+    this.commemorative = [...this.commemorative, ...commemorative];
+
+    if(commemorative.length < 10){
+      this.isThereMoreCommemorative = false;
+    }  
+  }
+
+  public async searchCommemorative(search: string, language: string){
+    const observable = this.http.get<CommemorativeModel[]>(this.config.search_commemorative + search + "?offset=" + this.commemorative.length + "&language=" + language);
+
+    const commemorative = await firstValueFrom(observable);
+
+    this.commemorative = [...this.commemorative, ...commemorative];
+
+    if(commemorative.length < 10){
+      this.isThereMoreCommemorative = false;
+    }
+  }
+  
 
   public async getCommemorativeById(id: number): Promise<CommemorativeModel> {
     const observable = this.http.get<CommemorativeModel>(this.config.commemorative_by_id + id );
@@ -30,11 +59,6 @@ export class CommemorativeService {
     return firstValueFrom(observable);
   }
 
-  public async getCommemorativeByUser(){
-    const observable = this.http.get<CommemorativeModel[]>(this.config.commemorative_by_user);
-
-    return firstValueFrom(observable);
-  }
 
   public async addCommemorative(commemorative: FormData){
     const observable = this.http.post<CommemorativeModel>(this.config.addCommemorative, commemorative);

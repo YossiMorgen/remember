@@ -1,3 +1,4 @@
+import { OkPacket } from "mysql";
 import appConfig from "../../2-utils/AppConfig";
 import dal from "../../2-utils/dal";
 import fileHandler from "../../2-utils/file-handler";
@@ -33,15 +34,22 @@ async function addDeceaseImage(deceaseImage: DeceaseImagesModel) {
     return deceaseImage;
 }
 
-async function deleteDeceaseImage(deceaseImageID: number, userID: number, isAdmin: boolean) {
-    let sql = `DELETE FROM deceaseImages WHERE deceaseImageID = ?`;
-    const arr = [deceaseImageID];
+async function deleteDeceaseImage(imageName: string, userID: number, isAdmin: boolean) {
+    
+    let sql = `DELETE FROM deceaseImages WHERE imageName = ?`;
+    const arr: Array<number | string> = [imageName];
     if (!isAdmin) {
         sql += ` AND userID = ?`;
         arr.push(userID);
     }
 
-    await dal.execute(sql, arr);
+    const info: OkPacket = await dal.execute(sql, arr);
+
+    if (info.affectedRows === 0) {
+        throw new Error("You can't delete this image");
+    }else{
+        fileHandler.deleteFile(imageName);
+    }
 }
 
 export default { getAllDeceaseImages, addDeceaseImage, deleteDeceaseImage };

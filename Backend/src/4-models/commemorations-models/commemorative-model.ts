@@ -71,7 +71,7 @@ export default class CommemorativeModel {
         partnerName: Joi.string().min(2).max(20).required(),
         fatherName: Joi.string().min(2).max(20),
         motherName: Joi.string().min(2).max(20),
-        childrenNames: Joi.string().min(2).max(400).required(),
+        childrenNames: Joi.string().max(400).optional(),
         graveImage: Joi.object().optional(),
         graveImageName: Joi.string().max(150).optional(),
         graveYardName: Joi.string().min(2).max(20).required(),

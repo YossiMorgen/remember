@@ -14,7 +14,7 @@ export class DeceaseImagesComponent {
   public constructor(
     public imagesService: DeceaseImagesService,
     private toast: ToastifyNotificationsService,
-    private router: Router,
+    public router: Router,
     public auth: AuthService
   ) { }
 
@@ -30,9 +30,9 @@ export class DeceaseImagesComponent {
     }
   }
 
-  public async deleteImage(imageID: number){
+  public async deleteImage(imageName: string){
     try {
-      await this.imagesService.deleteDeceaseImage(imageID);
+      await this.imagesService.deleteDeceaseImage(imageName);
     }
     catch(err){
       this.toast.error(err);

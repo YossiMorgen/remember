@@ -1,4 +1,7 @@
-
+.commemorativePage{
+    padding: 1rem;
+    gap: 1rem;
+}
 img{
 
     /* border-radius: 50%; */
@@ -22,8 +25,8 @@ img{
         39px 19px 21.2px rgba(0, 0, 0, 0.096),
         51.6px 25.1px 37px rgba(0, 0, 0, 0.116),
         74px 36px 80px rgba(0, 0, 0, 0.19);
-    }
+}
 
-    mat-tab{
-        min-height: 50vh;
-    }
+mat-tab{
+    min-height: 50vh;
+}
