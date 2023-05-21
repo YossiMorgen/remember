@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "remember2": {
+      "hosting": {
+        "remember": [
+          "remember2"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "remember2"
+  }
+}

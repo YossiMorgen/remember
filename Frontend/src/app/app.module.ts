@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -70,6 +70,11 @@ import { HttpRequestInterceptor } from './utils/request.interceptor';
 import { CommemorativeFormComponent } from './components/commemorative-area/commemorative-form/commemorative-form.component';
 import { StoriesComponent } from './components/commemorative-area/stories/stories.component';
 import { StoryFormComponent } from './components/commemorative-area/story-form/story-form.component';
+
+
+import localeHe from '@angular/common/locales/he';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeHe, 'he');
 
 @NgModule({
   declarations: [
@@ -147,6 +152,7 @@ import { StoryFormComponent } from './components/commemorative-area/story-form/s
     DialogModule,
   ],
   providers: [    
+    { provide: LOCALE_ID, useValue: 'he' },
     {useClass: HttpRequestInterceptor, provide: HTTP_INTERCEPTORS, multi: true},
     {useClass: HttpResponseInterceptor, provide: HTTP_INTERCEPTORS, multi: true},
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}

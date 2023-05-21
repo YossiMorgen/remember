@@ -9,15 +9,15 @@ import AppService from 'src/app/services/app.service';
 })
 export class LayoutComponent implements OnInit {
 
+  public language = 'English'
   constructor(
     private route: ActivatedRoute,
-    public appService: AppService,
   ) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       if (params['language']) {
-        this.appService.language = params['language'];
+        this.language = params['language'];
       }
     });
   }

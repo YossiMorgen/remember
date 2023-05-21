@@ -1,0 +1,47 @@
+{
+  "hosting": {
+    "target": "remember",
+    "public": "dist/remember",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"    ],
+    "headers": [
+      {
+        "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=31536000,immutable"
+          }
+        ]
+      },
+      {
+        "source": "/@(ngsw-worker.js|ngsw.json)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/en/**",
+        "destination": "/en/index.html"
+      },
+      {
+        "source": "/he/**",
+        "destination": "/he/index.html"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/en/",
+        "type": 302
+      }
+    ]
+  }
+}

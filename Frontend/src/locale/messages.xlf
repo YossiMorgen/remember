@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="he">
+     <body>
+      <trans-unit id="Decease Details tab" datatype="html">
+        <source>Details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="State" datatype="html">
+        <source>State</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="City" datatype="html">
+        <source>City</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Wife" datatype="html">
+        <source>Wife</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Husband" datatype="html">
+        <source>Husband</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Father" datatype="html">
+        <source>Father</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Mother" datatype="html">
+        <source>Mother</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Children" datatype="html">
+        <source>Children</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Biography" datatype="html">
+        <source>Biography</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="About" datatype="html">
+        <source>About</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Life Time" datatype="html">
+        <source>Life Time</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Decease Images tab" datatype="html">
+        <source>Decease Images</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Stories tab" datatype="html">
+        <source>Stories</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Commemoration Sites tab" datatype="html">
+        <source>Commemoration Sites</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

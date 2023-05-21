@@ -27,3 +27,11 @@ a{
 .mat-mdc-tab-body-content{
     height: 50vh;
 }
+
+.English{
+    direction: ltr;
+}
+
+.Hebrew{
+    direction: rtl;
+}

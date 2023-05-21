@@ -1,41 +1,44 @@
-<div class="header">
-    <img src={{commemorative.deceaseImageName}} alt="🧓🏽">
-    <mat-card-title>{{commemorative.deceasedName}}</mat-card-title>
+<div [class]="commemorative.language === 'English' ? 'English' : 'Hebrew'">
+    <div class="header">
+        <img src={{commemorative.deceaseImageName}} alt="🧓🏽">
+        <mat-card-title>{{commemorative.deceasedName}}</mat-card-title>
+    </div>
+
+    <mat-tab-group (selectedTabChange)="openedTab($event)" animationDuration="2000ms">
+        <mat-tab  i18n-label="@@Decease Details tab" label="Details">
+            <mat-card-content>
+                <h4 i18n="@@State">State</h4>
+                <p>{{commemorative.state}}</p>
+                <h4 i18n="@@City">City</h4>
+                <p>{{commemorative.city}}</p>
+                <h4 i18n="@@Wife" *ngIf="commemorative.partnerType === 'Wife'">Wife</h4>
+                <h4 i18n="@@Husband" *ngIf="commemorative.partnerType === 'Husband'">Husband</h4>
+                <p> {{commemorative.partnerName}}</p>
+                <h4 i18n="@@Father">Father</h4>
+                <p>{{commemorative.fatherName}}</p>
+                <h4 i18n="@@Mother">Mother</h4>
+                <p>{{commemorative.motherName}}</p>
+                <h4 i18n="@@Children">Children</h4>
+                <p >{{commemorative.childrenNames}}</p>
+                <h4 i18n="@@Biography">Biography</h4>
+                <p>{{commemorative.biography}}</p>
+                <h4 i18n="@@About">About</h4>
+                <p>{{commemorative.about}}</p>
+                <h4 i18n="@@Life Time">Life Time</h4>
+                <p>{{commemorative.birthDate | date}} - {{commemorative.deathDate | date}}</p>
+            </mat-card-content>
+        </mat-tab>
+
+        <mat-tab i18n-label="@@Decease Images tab" label="Decease Images">
+            <app-decease-images></app-decease-images>
+        </mat-tab>
+
+        <mat-tab i18n-label="@@Stories tab" label="Stories">
+            <app-stories></app-stories>
+        </mat-tab>
+
+        <mat-tab i18n-label="@@Commemoration Sites tab" label="Commemoration Sites">
+            <app-commemoration-sites></app-commemoration-sites>
+        </mat-tab>
+    </mat-tab-group>
 </div>
-
-<mat-tab-group (selectedTabChange)="openedTab($event)" animationDuration="2000ms">
-    <mat-tab label="Details">
-        <mat-card-content>
-            <h4>State</h4>
-            <p>{{commemorative.state}}</p>
-            <h4>City</h4>
-            <p>{{commemorative.city}}</p>
-            <h4>{{commemorative.partnerType}}</h4>
-            <p>{{commemorative.partnerName}}</p>
-            <h4>Father</h4>
-            <p>{{commemorative.fatherName}}</p>
-            <h4>Mother</h4>
-            <p>{{commemorative.motherName}}</p>
-            <h4>Children</h4>
-            <p >{{commemorative.childrenNames}}</p>
-            <h4>Biography</h4>
-            <p>{{commemorative.biography}}</p>
-            <h4>About</h4>
-            <p>{{commemorative.about}}</p>
-            <h4>Life Time</h4>
-            <p>{{commemorative.birthDate?.slice(0, 10)}} - {{commemorative.deathDate?.slice(0, 10)}}</p>
-        </mat-card-content>
-    </mat-tab>
-
-    <mat-tab label="Decease Images">
-        <app-decease-images></app-decease-images>
-    </mat-tab>
-
-    <mat-tab label="Stories">
-        <app-stories></app-stories>
-    </mat-tab>
-
-    <mat-tab label="Commemoration Sites">
-        <app-commemoration-sites></app-commemoration-sites>
-    </mat-tab>
-</mat-tab-group>

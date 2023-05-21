@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import LanguageModel from 'src/app/models/languages-model';
 import { CommemorativeService } from 'src/app/services/commemorative-services/commemorative.service';
 import { ConfigService } from 'src/app/utils/config.service';
@@ -21,6 +21,8 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
   ],
 })
 export class CommemorativeFormComponent implements OnInit {
+  public language: 'English' | 'Hebrew' = 'English'
+
   public graveImage: File;
   public deceaseImage: File;
 
@@ -39,7 +41,6 @@ export class CommemorativeFormComponent implements OnInit {
     deceasedName: ['', [Validators.required, Validators.minLength(3)]],
     biography: ['', [Validators.required, Validators.minLength(3)]],
     about: ['', [Validators.required, Validators.minLength(3)]],
-    language: ['', [Validators.required, Validators.minLength(3)]],
     birthDate: ['', [Validators.required]],
     deathDate: ['', [Validators.required]],
   });
@@ -64,10 +65,18 @@ export class CommemorativeFormComponent implements OnInit {
     private formBuilder : FormBuilder,
     private toast: ToastifyNotificationsService,
     public commemorativeService : CommemorativeService,
-    private config: ConfigService
+    private route: ActivatedRoute,
+    private config: ConfigService,
   ) { }
 
   async ngOnInit(): Promise<void> {
+    
+    this.route.queryParams.subscribe(params => {
+      if (params['language'] === 'Hebrew') {
+        this.language = 'Hebrew';
+      }
+    });
+
     const url = this.router.url;
     this.technicalDataForm.value.partnerType
 
@@ -82,7 +91,6 @@ export class CommemorativeFormComponent implements OnInit {
           deceasedName: commemorative.deceasedName,
           biography: commemorative.biography,
           about: commemorative.about,
-          language: commemorative.language,
           birthDate: commemorative.birthDate,
           deathDate: commemorative.deathDate,
         });
@@ -118,6 +126,7 @@ export class CommemorativeFormComponent implements OnInit {
     const formData = new FormData();
     this.graveImage && formData.append('graveImage', this.graveImage);
     this.deceaseImage && formData.append('deceaseImage', this.deceaseImage);
+    formData.append('language', this.language);
 
     formData.append('graveImageName', this.graveImageName);
     formData.append('deceaseImageName', this.deceaseImageName);
@@ -127,7 +136,6 @@ export class CommemorativeFormComponent implements OnInit {
     formData.append('deceasedName', this.basicDataForm.value.deceasedName);
     formData.append('biography', this.basicDataForm.value.biography);
     formData.append('about', this.basicDataForm.value.about);
-    formData.append('language', this.basicDataForm.value.language);
     formData.append('birthDate', new Date(this.basicDataForm.value.birthDate).toISOString().split('T')[0]);
     formData.append('deathDate', new Date(this.basicDataForm.value.deathDate).toISOString().split('T')[0]);
     formData.append('state', this.technicalDataForm.value.state);
@@ -195,4 +203,106 @@ export class CommemorativeFormComponent implements OnInit {
     }
   }
 
+  public pageTexts = {
+    title: {
+      English: (this.editMode ? 'Edit ' : 'Add ') + 'Commemorative',
+      Hebrew: (this.editMode ? 'ערוך ' : 'הוסף ') + 'זיכרון',
+    },
+    basicDataStep: {
+      English: 'Fill out decease info',
+      Hebrew: 'מלא את פרטי הנפטר',
+    },
+    technicalDataStep: {
+      English: 'Technical Data',
+      Hebrew: 'פרטים טכניים',
+    },
+    graveDataStep: {
+      English: 'Grave Data',
+      Hebrew: 'פרטי קבורה',
+    },
+    deceasedName: {
+      English: 'Deceased Name',
+      Hebrew: 'שם המת',
+    },
+    biography: {
+      English: 'Biography',
+      Hebrew: 'ביוגרפיה',
+    },
+    about: {
+      English: 'About',
+      Hebrew: 'אודות',
+    },
+    deceaseImage: {
+      English: 'Decease Image',
+      Hebrew: 'תמונת הנפטר',
+    },
+    birthDate: {
+      English: 'Birth Date',
+      Hebrew: 'תאריך לידה',
+    },
+    deathDate: {
+      English: 'Death Date',
+      Hebrew: 'תאריך פטירה',
+    },
+    state: {
+      English: 'State',
+      Hebrew: 'מדינה',
+    },
+    city: {
+      English: 'City',
+      Hebrew: 'עיר',
+    },
+    partnerType: {
+      English: 'Partner Type',
+      Hebrew: 'הגדרת בן הזוג',
+    },
+    Wife: {
+      English: 'wife',
+      Hebrew: 'אישה',
+    },
+    Husband: {
+      English: 'husband',
+      Hebrew: 'בעל',
+    },
+    partnerName: {
+      English: 'Partner Name',
+      Hebrew: 'שם בן הזוג',
+    },
+    fatherName: {
+      English: 'Father Name',
+      Hebrew: 'שם האב',
+    },
+    motherName: {
+      English: 'Mother Name',
+      Hebrew: 'שם האם',
+    },
+    graveYardName: {
+      English: 'Grave Yard Name',
+      Hebrew: 'שם בית העלמין',
+    },
+    locationLink: {
+      English: 'Location Link',
+      Hebrew: 'קישור למיקום',
+    },
+    childrenNames: {
+      English: 'Children Names',
+      Hebrew: 'שמות הילדים',
+    },
+    graveImage: {
+      English: 'Grave Image',
+      Hebrew: 'תמונת הקבר',
+    },
+    submit: {
+      English: 'Submit',
+      Hebrew: 'שלח',
+    },
+    Next: {
+      English: 'Next',
+      Hebrew: 'הבא',
+    },
+    Previous: {
+      English: 'Previous',
+      Hebrew: 'הקודם',
+    },
+  }
 }
