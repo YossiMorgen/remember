@@ -13,7 +13,6 @@ class User{
     public state : string;
     public city : string;
     public birthDate: Date;
-    public ip : string;
 
     constructor(user: User) {
         this.userID = user.userID;
@@ -25,7 +24,6 @@ class User{
         this.state = user.state;
         this.city = user.city;
         this.birthDate = user.birthDate;
-        this.ip = user.ip;
     }
 
     public static validationSchema = Joi.object({
@@ -38,7 +36,6 @@ class User{
         state: Joi.string().required().min(2).max(30),
         city: Joi.string().required().min(2).max(30),
         birthDate: Joi.date().required(),
-        ip: Joi.string().optional().min(2).max(30),
     })
 
     public validation():string{

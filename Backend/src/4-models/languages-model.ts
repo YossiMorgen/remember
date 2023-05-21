@@ -1,6 +1,6 @@
 enum LanguageModel{
-    English = "English",
-    Hebrew = "Hebrew"
+    English = "en",
+    Hebrew = "he"
 }
 
 export default LanguageModel;

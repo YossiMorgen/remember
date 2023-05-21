@@ -19,8 +19,7 @@ async function getRandomCommemorative(offset: number, language: string){
         FROM commemorative
         LEFT JOIN candles ON commemorative.commemorativeID = candles.commemorativeID
         LEFT JOIN flowers ON commemorative.commemorativeID = flowers.commemorativeID
-        WHERE language = ?
-        ORDER BY commemorative.commemorativeID DESC
+        ORDER BY language = ? AND commemorative.commemorativeID DESC
         LIMIT 10
         OFFSET ?
     `

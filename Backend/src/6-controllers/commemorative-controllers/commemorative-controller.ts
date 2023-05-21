@@ -10,9 +10,7 @@ import appConfig from "../../2-utils/AppConfig";
 const router = Router();
 
 router.get('/random_commemorative', async (req, res, next) => {
-    try {
-        console.log(req.socket.remoteAddress);
-        
+    try {        
         const language = req.query.language as string;
         const offset = +req.query.offset;
         const commemorative = await commemorativeLogic.getRandomCommemorative(offset, language);

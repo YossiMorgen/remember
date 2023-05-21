@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import AppService from 'src/app/services/app.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -9,18 +8,12 @@ import AppService from 'src/app/services/app.service';
 })
 export class LayoutComponent implements OnInit {
 
-  public language = 'English'
+  public language = 'en'
   constructor(
-    private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      if (params['language']) {
-        this.language = params['language'];
-      }
-    });
+    this.language = this.router.url.split('/')[1]
   }
-
-
 }
