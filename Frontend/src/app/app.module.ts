@@ -1,4 +1,4 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -152,7 +152,6 @@ registerLocaleData(localeHe, 'he');
     DialogModule,
   ],
   providers: [    
-    { provide: LOCALE_ID, useValue: 'he' },
     {useClass: HttpRequestInterceptor, provide: HTTP_INTERCEPTORS, multi: true},
     {useClass: HttpResponseInterceptor, provide: HTTP_INTERCEPTORS, multi: true},
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}

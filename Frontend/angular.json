@@ -65,11 +65,22 @@
             "scripts": []
           },
           "configurations": {
-            "he": {
-              "localize": [
-                "he"
-              ],
-              "outputPath": "dist/remember/he"
+            "en": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "localize": ["en"],
+              "baseHref": "/en/",
+              "outputPath": "dist/remember/en",
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             },
             "production": {
               "budgets": [
@@ -105,7 +116,13 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "remember:build"
+          },
           "configurations": {
+            "en": {
+              "browserTarget": "remember:build:development,en"
+            },
             "he": {
               "browserTarget": "remember:build:development,he"
             },

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, LOCALE_ID, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location, getLocaleId } from '@angular/common';
 
 @Component({
   selector: 'app-layout',
@@ -11,9 +12,11 @@ export class LayoutComponent implements OnInit {
   public language = 'en'
   constructor(
     private router: Router,
+    private location: Location,
+    @Inject(LOCALE_ID) public locale: string
   ) { }
 
   ngOnInit(): void {
-    this.language = this.router.url.split('/')[1]
+    this.language = this.locale;
   }
 }

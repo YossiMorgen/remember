@@ -3,26 +3,26 @@
         <mat-card-content>
             <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <mat-form-field>
-                    <input matInput placeholder="Email" formControlName="email">
+                    <input matInput i18n-placeholder="@@Email" placeholder="Email" formControlName="email">
                 </mat-form-field>
                 <mat-form-field>
-                    <mat-label>Enter your password</mat-label>
-                    <input placeholder="Password" formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                    <mat-label i18n="@@Enter your password">Enter your password</mat-label>
+                    <input i18n-placeholder="@@Password" placeholder="Password" formControlName="password" matInput [type]="hide ? 'password' : 'text'">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
-                <mat-error *ngIf="loginForm.controls['email'].hasError('pattern')">
+                <mat-error i18n="@@Please enter a valid email" *ngIf="loginForm.controls['email'].hasError('pattern')">
                     Please enter a <strong>valid</strong> email
                 </mat-error>
-                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                <mat-error i18n="@@ Password is required" *ngIf="loginForm.controls['password'].hasError('required')">
                     Password is <strong>required</strong>
                 </mat-error>
-                <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">
+                <mat-error i18n="@@Password must be at least 6 characters" *ngIf="loginForm.controls['password'].hasError('minlength')">
                     Password must be at least <strong>6 characters</strong>
                 </mat-error>
 
-                <button mat-raised-button color="primary" type="submit">Login</button>
+                <button mat-raised-button color="primary" i18n="@@submit" type="submit">Login</button>
             </form>
         </mat-card-content>
     </mat-card>

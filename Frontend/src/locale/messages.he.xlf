@@ -1,32 +1,157 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en-US" datatype="plaintext" original="ng2.template" target-language="he">
+  <file source-language="en" target-language="he" datatype="plaintext" original="ng2.template">
     <body>
-    <trans-unit id="Decease Details tab" datatype="html">
+       <trans-unit id="Email" datatype="html">
+        <source>Email</source>
+        <target>אימייל</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Enter your password" datatype="html">
+        <source>Enter your password</source>
+        <target>הכנס את הסיסמה שלך</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Password" datatype="html">
+        <source>Password</source>
+        <target>סיסמה</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Please enter a valid email" datatype="html">
+        <source> Please enter a <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>valid<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> email </source>
+        <target>אנא הכנס אימייל <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/> תקין <x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id=" Password is required" datatype="html">
+        <source> Password is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target> סיסמה הינה <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/> חובה <x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Password must be at least 6 characters" datatype="html">
+        <source> Password must be at least <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>6 characters<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target> סיסמה חייבת להיות לפחות <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/> 6 תווים <x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
+          <context context-type="linenumber">22,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="submit" datatype="html">
+        <source>Login</source>
+        <target>התחברות</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Enter your confirm password" datatype="html">
+        <source>Enter your confirm password</source>
+        <target>הכנס את הסיסמה שלך שוב</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Confirm password" datatype="html">
+        <source>Confirm password</source>
+        <target>אימות סיסמה</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="First Name" datatype="html">
+        <source>First Name</source>
+        <target>שם פרטי</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Last Name" datatype="html">
+        <source>Last Name</source>
+        <target>שם משפחה</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="City" datatype="html">
+        <source>City</source>
+        <target>עיר</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="State" datatype="html">
+        <source>State</source>
+        <target>מדינה</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Choose a date" datatype="html">
+        <source>Choose a date</source>
+        <target>בחר תאריך</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Date of Birth" datatype="html">
+        <source>Date of Birth</source>
+        <target>תאריך לידה</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Register" datatype="html">
+        <source>Register</source>
+        <target>הרשמה</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Decease Details tab" datatype="html">
         <source>Details</source>
         <target>פרטים</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="State" datatype="html">
-        <source>State</source>
-        <target>ארץ</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-        <note priority="1" from="description">State</note>
-      </trans-unit>
-      <trans-unit id="City" datatype="html">
-        <source>City</source>
-        <target>עיר</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-        <note priority="1" from="description">City</note>
       </trans-unit>
       <trans-unit id="Wife" datatype="html">
         <source>Wife</source>
@@ -35,7 +160,6 @@
           <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
-        <note priority="1" from="Husband">Wife</note>
       </trans-unit>
       <trans-unit id="Husband" datatype="html">
         <source>Husband</source>
@@ -44,25 +168,22 @@
           <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
           <context context-type="linenumber">15</context>
         </context-group>
-        <note priority="1" from="description">Husband</note>
       </trans-unit>
       <trans-unit id="Father" datatype="html">
         <source>Father</source>
-        <target>אבא</target>
+        <target>אב</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
           <context context-type="linenumber">17</context>
         </context-group>
-        <note priority="1" from="description">Father</note>
       </trans-unit>
       <trans-unit id="Mother" datatype="html">
         <source>Mother</source>
-        <target>אמא</target>
+        <target>אם</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
-        <note priority="1" from="description">Mother</note>
       </trans-unit>
       <trans-unit id="Children" datatype="html">
         <source>Children</source>
@@ -71,7 +192,6 @@
           <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
-        <note priority="1" from="description">Children</note>
       </trans-unit>
       <trans-unit id="Biography" datatype="html">
         <source>Biography</source>
@@ -80,7 +200,6 @@
           <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
-        <note priority="1" from="description">Biography</note>
       </trans-unit>
       <trans-unit id="About" datatype="html">
         <source>About</source>
@@ -89,20 +208,18 @@
           <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
           <context context-type="linenumber">25</context>
         </context-group>
-        <note priority="1" from="description">About</note>
       </trans-unit>
       <trans-unit id="Life Time" datatype="html">
         <source>Life Time</source>
-        <target>תאריך </target>
+        <target>זמן חיים</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
           <context context-type="linenumber">27</context>
         </context-group>
-        <note priority="1" from="description">Life Time</note>
       </trans-unit>
       <trans-unit id="Decease Images tab" datatype="html">
         <source>Decease Images</source>
-        <target>תמונות מקום הקבורה</target>
+        <target>תמונות הנפטר</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
           <context context-type="linenumber">32</context>
