@@ -4,9 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open --hmr --configuration=en",
-    "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "i18n:merge-files": "npx ng-i18n-merge-files -f xlf",
+    "build": "npm run i18n:merge-files && ng build",
+    "start:pt": "npm run i18n:merge-files && ng serve --configuration development,pt"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +43,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "ng-extract-i18n-merge": "^2.7.0",
+    "ng-i18n-merge-files": "^1.3.1",
     "typescript": "~4.9.4"
   }
 }

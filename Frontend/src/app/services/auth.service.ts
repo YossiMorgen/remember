@@ -6,6 +6,7 @@ import { ConfigService } from '../utils/config.service';
 import jwtDecode from 'jwt-decode';
 import User from '../models/auth-models/user-model';
 import CredentialsModel from '../models/auth-models/credentials-model';
+import { ToastifyNotificationsService } from '../utils/toastify-notifications.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +20,7 @@ export class AuthService{
         private http: HttpClient, 
         private config: ConfigService, 
         private router : Router,
+        private toast: ToastifyNotificationsService
     ){ 
       const token = window.localStorage.getItem('token')
       if( token ) this.setUser(token)
@@ -49,15 +51,24 @@ export class AuthService{
     }
 
     private setUser(token: string):void{
+        const decode: any = jwtDecode( token )
         this.token = token;
         window.localStorage.setItem('token', token );
-        const decode: any = jwtDecode( token )
         this.user = decode.user;
         this.userChanges.next();
     }
 
     public isLoggedIn():boolean{
-        return this.token && this.token != ''
+        if(this.token && this.token != ''){
+            const decode = jwtDecode( this.token ) as any;
+            if(decode.exp < Date.now() / 1000) {                
+                this.toast.error('Your session has expired, please login again');
+                this.logout();
+                return false;
+            }
+        }
+
+        return true
     }
 
     public isAdmin():boolean{

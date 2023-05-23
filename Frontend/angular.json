@@ -7,7 +7,10 @@
       "i18n": {
         "sourceLocale": "en",
         "locales": {
-          "he": "src/locale/messages.he.xlf"
+          "he": {
+            "translation": "src/locale/messages.he.xlf",
+            "baseHref": "/he/"
+          }
         }
       },
       "projectType": "application",
@@ -136,11 +139,14 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ng-extract-i18n-merge:ng-extract-i18n-merge",
           "options": {
             "browserTarget": "remember:build",
             "format": "xlf",
-            "outputPath": "src/locale"
+            "outputPath": "src/locale",
+            "targetFiles": [
+              "messages.he.xlf"
+            ]
           }
         },
         "test": {

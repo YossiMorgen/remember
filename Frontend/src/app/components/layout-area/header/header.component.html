@@ -1,3 +1,14 @@
 <mat-toolbar>
-    
+    <a mat-button routerLink="/commemorative_list">
+        <h1>Remember</h1>
+    </a>
+    <a *ngIf="path === 'commemorative_list'" mat-raised-button color="primary" routerLink="add_commemorative" i18n="@@Add Commemorative">Add Commemorative</a>
+    <nav>
+        <div *ngIf="!authService.isLoggedIn()" class="connect">
+            <a mat-raised-button color="primary" routerLink="/login" i18n="@@Login">Login</a>
+            <a mat-raised-button color="primary" routerLink="/register" i18n="@@Register">Register</a>
+        </div>
+        <button (click)="authService.logout()" mat-raised-button color="warn" *ngIf="authService.isLoggedIn()" i18n="@@logout">logout</button>
+    </nav>
+    <a i18n="@@Change To Language" i18n-href="@@Change Language Link" [href]="'/he' + location.path()">English</a>
 </mat-toolbar>

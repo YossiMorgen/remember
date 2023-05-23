@@ -10,3 +10,5 @@ Frontend/build
 
 Backend/src/1-assets/logs/activities
 Backend/src/1-assets/logs/errors
+
+messages.*.xlf

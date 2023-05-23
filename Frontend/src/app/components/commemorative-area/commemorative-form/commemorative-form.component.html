@@ -2,17 +2,17 @@
     <mat-card>
         <mat-card-header>
             <mat-card-title>
-                <h2>{{pageTexts.title[language]}}</h2>
+                <h2 i18n="@@Add/EditMode">{{(this.editMode ? 'Edit ' : 'Add ') + 'Commemorative'}}</h2>
             </mat-card-title>
         </mat-card-header>
 
         <mat-vertical-stepper>
             <mat-step [stepControl]="basicDataForm">
                 <form [formGroup]="basicDataForm">
-                    <ng-template matStepLabel>{{pageTexts.basicDataStep[language]}}</ng-template>
+                    <ng-template matStepLabel i18n="@@Fill out decease info">Fill out decease info</ng-template>
 
                     <mat-form-field appearance="fill">
-                        <mat-label>{{pageTexts.deceasedName[language]}}</mat-label>
+                        <mat-label i18n="@@Deceased Name">Deceased Name</mat-label>
                         <input 
                             matInput 
                             formControlName="deceasedName" 
@@ -20,7 +20,7 @@
                     </mat-form-field>
         
                     <mat-form-field appearance="fill">
-                        <mat-label>{{pageTexts.biography[language]}}</mat-label>
+                        <mat-label i18n="@@Biography">Biography</mat-label>
                         <textarea 
                             matInput 
                             formControlName="biography" 
@@ -29,7 +29,7 @@
                     </mat-form-field>
                     
                     <mat-form-field appearance="fill">
-                        <mat-label>{{pageTexts.about[language]}}</mat-label>
+                        <mat-label i18n="@@About">About</mat-label>
                         <textarea 
                             matInput 
                             formControlName="about" 
@@ -46,15 +46,16 @@
                             class="file-input" 
                             #deceaseImageInput 
                             required
+                            i18n="@@Decease Image"
                         >   
-                        {{deceaseImage?.name || pageTexts.deceaseImage[language]}}
+                        {{deceaseImage?.name || "Decease Image"}}
                         <button (click)="deceaseImageInput.click()" type="button" class="upload-btn">
                             +
                         </button>
                     </label>  
                     
                     <mat-form-field class="example-full-width">
-                        <mat-label>{{ pageTexts.birthDate[language] }}</mat-label>
+                        <mat-label i18n="@@Date of Birth">Date of Birth</mat-label>
                         <input 
                             matInput 
                             formControlName="birthDate" 
@@ -66,7 +67,7 @@
                     </mat-form-field>
         
                     <mat-form-field class="example-full-width">
-                        <mat-label>{{pageTexts.deathDate[language]}}</mat-label>
+                        <mat-label i18n="@@Date of Death">Date of Death</mat-label>
                         <input 
                             matInput 
                             formControlName="deathDate" 
@@ -78,27 +79,27 @@
                     </mat-form-field>
                 </form>
 
-                <button mat-button matStepperNext>{{pageTexts.Next[language]}}</button>
+                <button mat-button matStepperNext  i18n="@@Next">Next</button>
             </mat-step>
             <mat-step  [stepControl]="technicalDataForm" >
                 <form [formGroup]="technicalDataForm">
-                    <ng-template matStepLabel>{{pageTexts.technicalDataStep[language]}}</ng-template>
+                    <ng-template matStepLabel  i18n="@@Fill out decease info">Fill out decease info</ng-template>
 
                     <mat-form-field appearance="fill">
-                        <mat-label>{{pageTexts.state[language]}}</mat-label>
+                        <mat-label i18n="@@State">State</mat-label>
                         <input matInput formControlName="state">
                     </mat-form-field>
                     
                     <mat-form-field appearance="fill">
-                        <mat-label>{{pageTexts.city[language]}}</mat-label>
+                        <mat-label i18n="@@City">City</mat-label>
                         <input matInput formControlName="city" >
                     </mat-form-field>
 
                     <mat-form-field>
-                        <mat-label>{{pageTexts.partnerType[language]}}</mat-label>
+                        <mat-label i18n="@@Partner Type">Partner Type</mat-label>
                         <mat-select formControlName="partnerType">
-                            <mat-option value='Wife'>{{pageTexts.Wife[language]}}</mat-option>
-                            <mat-option value="Husband">{{pageTexts.Husband[language]}}</mat-option>
+                            <mat-option i18n="@@Wife" value='Wife'>Wife</mat-option>
+                            <mat-option i18n="@@Husband" value="Husband">Husband</mat-option>
                         </mat-select>
                     </mat-form-field>
 
@@ -111,22 +112,22 @@
                     </mat-form-field> -->
                                     
                     <mat-form-field appearance="fill">
-                        <mat-label>{{pageTexts.partnerName[language]}}</mat-label>
+                        <mat-label i18n="@@Partner Name">Partner Name</mat-label>
                         <input matInput formControlName="partnerName" >
                     </mat-form-field>
                     
                     <mat-form-field appearance="fill">
-                        <mat-label>{{pageTexts.fatherName[language]}}</mat-label>
+                        <mat-label i18n="@@Father Name">Father Name</mat-label>
                         <input matInput formControlName="fatherName" >
                     </mat-form-field>
                     
                     <mat-form-field appearance="fill">
-                        <mat-label>{{pageTexts.motherName[language]}}</mat-label>
+                        <mat-label i18n="@@Mother Name">Mother Name</mat-label>
                         <input matInput formControlName="motherName" >
                     </mat-form-field>
 
                     <mat-form-field class="example-chip-list">
-                        <mat-label> </mat-label>
+                        <mat-label  i18n="@@Children"> Children</mat-label>
                         <mat-chip-grid #chipGrid aria-label="Enter kids">
                             <mat-chip-row *ngFor="let kid of childrenNames"
                                         (removed)="removeKid(kid)"
@@ -142,40 +143,53 @@
                                 [matChipInputFor]="chipGrid"
                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                 [matChipInputAddOnBlur]="true"
-                                [placeholder]="pageTexts.childrenNames[language]"
+                                placeholder="Children Names"
+                                i18n-placeholder="@@Children Names"
                                 (matChipInputTokenEnd)="addKid($event)"/>
                         </mat-chip-grid>
                     </mat-form-field>
                     
-                    <button mat-button matStepperPrevious>{{pageTexts.Previous[language]}}</button>
-                    <button mat-button matStepperNext>{{pageTexts.Next[language]}}</button>
+                    <button mat-button matStepperPrevious i18n="@@Previous">Previous</button>
+                    <button mat-button matStepperNext i18n="@@Next">Next</button>
                 </form>
             </mat-step>
             <mat-step [stepControl]="graveDataForm" >
                 <form [formGroup]="graveDataForm">
-                    <ng-template matStepLabel>{{pageTexts.graveDataStep[language]}}</ng-template>
+                    <ng-template matStepLabel i18n="@@Grave details">Grave details</ng-template>
                     
-                    <input type="file" (change)="onFileSelected($event, 'graveImage')" accept="image/*" class="file-input" #graveImageInput>   
-                    <label class="file_button" [class]="graveImage ? ' valid ' : 'invalid '" #fileButton>
-                        {{graveImage?.name || pageTexts.graveImage[language]}}
+                    <input 
+                        type="file" 
+                        i18n="@@submit" 
+                        (change)="onFileSelected($event, 'graveImage')" 
+                        accept="image/*" 
+                        class="file-input" 
+                        #graveImageInput
+                    >   
+                    <label 
+                        class="file_button" 
+                        i18n="@@Grave Image" 
+                        [class]="graveImage ? ' valid ' : 'invalid '" 
+                        #fileButton
+                    >
+                        {{graveImage?.name || "Grave Image"}}
                         <button (click)="graveImageInput.click()" type="button" class="upload-btn">
                             +
                         </button>
                     </label>    
 
                     <mat-form-field appearance="fill">
-                        <mat-label>{{pageTexts.graveYardName[language]}}</mat-label>
+                        <mat-label i18n="@@Grave Yard Name">Grave Yard Name</mat-label>
                         <input matInput formControlName="graveYardName" >
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">
-                        <mat-label>{{pageTexts.locationLink[language]}}</mat-label>
+                        <mat-label i18n="@@Location Link">Location Link</mat-label>
                         <input matInput formControlName="locationLink" >
                     </mat-form-field>
                 </form>
                 
                 <mat-card-actions>
-                    <button mat-button matStepperPrevious>{{pageTexts.Previous[language]}}</button>
+                    <button i18n="@@Previous" mat-button matStepperPrevious>Previous</button>
                 </mat-card-actions>
 
             </mat-step>
@@ -186,8 +200,9 @@
                 color="primary" 
                 [disabled]="!basicDataForm.valid || !technicalDataForm.valid || !graveDataForm.valid" 
                 (click)="submit()" type="submit"
+                i18n="@@Submit"
             >
-                {{pageTexts.submit[language]}}
+                Submit
             </button>
         </mat-card-actions>
 

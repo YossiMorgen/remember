@@ -15,14 +15,14 @@
                 <mat-error i18n="@@Please enter a valid email" *ngIf="loginForm.controls['email'].hasError('pattern')">
                     Please enter a <strong>valid</strong> email
                 </mat-error>
-                <mat-error i18n="@@ Password is required" *ngIf="loginForm.controls['password'].hasError('required')">
-                    Password is <strong>required</strong>
+                <mat-error i18n="@@Password is required" *ngIf="loginForm.controls['password'].hasError('required')">
+                    Password is required
                 </mat-error>
                 <mat-error i18n="@@Password must be at least 6 characters" *ngIf="loginForm.controls['password'].hasError('minlength')">
                     Password must be at least <strong>6 characters</strong>
                 </mat-error>
 
-                <button mat-raised-button color="primary" i18n="@@submit" type="submit">Login</button>
+                <button mat-raised-button color="primary" i18n="@@Login" type="submit">Login</button>
             </form>
         </mat-card-content>
     </mat-card>

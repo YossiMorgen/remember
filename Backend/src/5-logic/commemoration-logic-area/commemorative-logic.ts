@@ -4,7 +4,6 @@ import fileHandler from "../../2-utils/file-handler";
 import CommemorativeModel from "../../4-models/commemorations-models/commemorative-model";
 import { ValidationErrorModel } from "../../4-models/error-models";
 import appConfig from "../../2-utils/AppConfig";
-import LanguageModel from "../../4-models/languages-model";
 
 async function getRandomCommemorative(offset: number, language: string){
 
@@ -114,7 +113,7 @@ async function getCommemorativeByID(commemorativeID: number){
             CONCAT(?, graveImageName) AS graveImageName, 
             graveYardName, 
             locationLink, 
-            views, 
+            views + 1, 
             lastWatched,
             SUM(flowers.amount) AS flowersAmount,
             SUM(candles.amount) AS candlesAmount
@@ -125,6 +124,9 @@ async function getCommemorativeByID(commemorativeID: number){
     const [commemorative] = await dal.execute(sql, [appConfig.nodeUrl, appConfig.nodeUrl, commemorativeID])
 
     if(commemorative.length === 0) throw new ValidationErrorModel("No commemorative found with this ID");
+   
+    addView(commemorativeID);
+    
     return commemorative;
 }
 
@@ -263,6 +265,11 @@ async function deleteCommemorative (commemorativeID: number, userID: number, adm
     }
     
     await dal.execute(sql, arr);
+}
+
+function addView (commemorativeID: number){
+    let sql = `UPDATE commemorative SET views = views + 1 WHERE commemorativeID = ?`
+    dal.execute(sql, [commemorativeID]);
 }
 
 export default {

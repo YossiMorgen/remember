@@ -20,21 +20,21 @@ export class LoginComponent {
     private toast: ToastifyNotificationsService
   ){}
 
-public loginForm = this.formBuilder.group({
-  email : ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'), Validators.required]],
-  password : ['', [Validators.required, Validators.minLength(6)]]
-})
+  public loginForm = this.formBuilder.group({
+    email : ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'), Validators.required]],
+    password : ['', [Validators.required, Validators.minLength(6)]]
+  })
 
-public async login():Promise<void>{       
+  public async login():Promise<void>{       
 
-  try {
-      await this.auth.login( this.loginForm.value as CredentialsModel );
-      this.toast.success('Welcome back ' + this.auth.user.firstName + " " + this.auth.user.lastName)
-      if(this.router.url === '/login'){
-          this.router.navigateByUrl('/commemorative_list');
-      }
-  } catch (error:any) {
-      this.toast.error(error);
+    try {
+        await this.auth.login( this.loginForm.value as CredentialsModel );
+        this.toast.success('Welcome back ' + this.auth.user.firstName + " " + this.auth.user.lastName)
+        if(this.router.url === '/login'){
+            this.router.navigateByUrl('/commemorative_list');
+        }
+    } catch (error:any) {
+        this.toast.error(error);
+    }
   }
-}
 }

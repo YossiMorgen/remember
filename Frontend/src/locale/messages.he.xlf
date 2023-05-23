@@ -1,245 +1,199 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" target-language="he" datatype="plaintext" original="ng2.template">
     <body>
-       <trans-unit id="Email" datatype="html">
+      <trans-unit id="Email" datatype="html">
         <source>Email</source>
         <target>אימייל</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Enter your password" datatype="html">
         <source>Enter your password</source>
         <target>הכנס את הסיסמה שלך</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Password" datatype="html">
         <source>Password</source>
         <target>סיסמה</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Please enter a valid email" datatype="html">
         <source> Please enter a <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>valid<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> email </source>
         <target>אנא הכנס אימייל <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/> תקין <x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
-          <context context-type="linenumber">16,17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id=" Password is required" datatype="html">
-        <source> Password is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
-        <target> סיסמה הינה <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/> חובה <x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
-          <context context-type="linenumber">19,20</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Password must be at least 6 characters" datatype="html">
         <source> Password must be at least <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>6 characters<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
         <target> סיסמה חייבת להיות לפחות <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/> 6 תווים <x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
-          <context context-type="linenumber">22,23</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="submit" datatype="html">
+      <trans-unit id="Login" datatype="html">
         <source>Login</source>
-        <target>התחברות</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/login/login.component.html</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
+        <target state="new">התחברות</target>
       </trans-unit>
       <trans-unit id="Enter your confirm password" datatype="html">
         <source>Enter your confirm password</source>
         <target>הכנס את הסיסמה שלך שוב</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Confirm password" datatype="html">
         <source>Confirm password</source>
         <target>אימות סיסמה</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="First Name" datatype="html">
         <source>First Name</source>
         <target>שם פרטי</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Last Name" datatype="html">
         <source>Last Name</source>
         <target>שם משפחה</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="City" datatype="html">
         <source>City</source>
         <target>עיר</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="State" datatype="html">
         <source>State</source>
         <target>מדינה</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
-          <context context-type="linenumber">38</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Choose a date" datatype="html">
         <source>Choose a date</source>
         <target>בחר תאריך</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Date of Birth" datatype="html">
         <source>Date of Birth</source>
         <target>תאריך לידה</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
-          <context context-type="linenumber">43</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Register" datatype="html">
         <source>Register</source>
         <target>הרשמה</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/auth-area/register/register.component.html</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Decease Details tab" datatype="html">
         <source>Details</source>
         <target>פרטים</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Wife" datatype="html">
         <source>Wife</source>
         <target>אישה</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Husband" datatype="html">
         <source>Husband</source>
         <target>בעל</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Father" datatype="html">
         <source>Father</source>
         <target>אב</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Mother" datatype="html">
         <source>Mother</source>
         <target>אם</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Children" datatype="html">
-        <source>Children</source>
-        <target>ילדים</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
+        <source> Children</source>
+        <target state="new">ילדים</target>
       </trans-unit>
       <trans-unit id="Biography" datatype="html">
         <source>Biography</source>
         <target>ביוגרפיה</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="About" datatype="html">
         <source>About</source>
         <target>אודות</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Life Time" datatype="html">
         <source>Life Time</source>
         <target>זמן חיים</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Decease Images tab" datatype="html">
         <source>Decease Images</source>
         <target>תמונות הנפטר</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Stories tab" datatype="html">
         <source>Stories</source>
         <target>סיפורים</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">36</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="Commemoration Sites tab" datatype="html">
         <source>Commemoration Sites</source>
         <target>אתרי זיכרון</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/commemorative-area/commemorative-page/commemorative-page.component.html</context>
-          <context context-type="linenumber">40</context>
-        </context-group>
+      </trans-unit>
+      <trans-unit id="Add/EditMode" datatype="html">
+        <source>
+          <x id="INTERPOLATION" equiv-text="&apos;Add &apos;) + &apos;Commemorative&apos;}}"/>
+        </source>
+        <target state="new">
+          <x id="INTERPOLATION" equiv-text="&apos;Add &apos;) + &apos;Commemorative&apos;}}"/>
+        </target>
+      </trans-unit>
+      <trans-unit id="Fill out decease info" datatype="html">
+        <source>Fill out decease info</source>
+        <target state="new"> מלא את פרטי הנפטר</target>
+      </trans-unit>
+      <trans-unit id="Deceased Name" datatype="html">
+        <source>Deceased Name</source>
+        <target state="new">שם הנפטר</target>
+      </trans-unit>
+      <trans-unit id="Date of Death" datatype="html">
+        <source>Date of Death</source>
+        <target state="new">תאריך פטירה</target>
+      </trans-unit>
+      <trans-unit id="Next" datatype="html">
+        <source>Next</source>
+        <target state="new">הבא</target>
+      </trans-unit>
+      <trans-unit id="Partner Type" datatype="html">
+        <source>Partner Type</source>
+        <target state="new">סוג בן הזוג</target>
+      </trans-unit>
+      <trans-unit id="Partner Name" datatype="html">
+        <source>Partner Name</source>
+        <target state="new">שם בן הזוג</target>
+      </trans-unit>
+      <trans-unit id="Father Name" datatype="html">
+        <source>Father Name</source>
+        <target state="new">שם האב</target>
+      </trans-unit>
+      <trans-unit id="Mother Name" datatype="html">
+        <source>Mother Name</source>
+        <target state="new">שם האב</target>
+      </trans-unit>
+      <trans-unit id="Children Names" datatype="html">
+        <source>Children Names</source>
+        <target state="new">שמות הילדים</target>
+      </trans-unit>
+      <trans-unit id="Previous" datatype="html">
+        <source>Previous</source>
+        <target state="new">הקודם</target>
+      </trans-unit>
+      <trans-unit id="Grave details" datatype="html">
+        <source>Grave details</source>
+        <target state="new">פרטי הקבר</target>
+      </trans-unit>
+      <trans-unit id="Grave Image" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{graveImage?.name || &quot;Grave Image&quot;}}"/> <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button (click)=&quot;graveImageInput.click()&quot; type=&quot;button&quot; class=&quot;upload-btn&quot;&gt;"/> + <x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
+        <target state="new"> <x id="INTERPOLATION" equiv-text="{{graveImage?.name || &quot;תמונת הקבר&quot;}}"/> <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button (click)=&quot;graveImageInput.click()&quot; type=&quot;button&quot; class=&quot;upload-btn&quot;&gt;"/> + <x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></target>
+      </trans-unit>
+      <trans-unit id="Grave Yard Name" datatype="html">
+        <source>Grave Yard Name</source>
+        <target state="new">שם בית הקברות</target>
+      </trans-unit>
+      <trans-unit id="Location Link" datatype="html">
+        <source>Location Link</source>
+        <target state="new">לינק למקום הקבורה</target>
+      </trans-unit>
+      <trans-unit id="Submit" datatype="html">
+        <source> Submit </source>
+        <target state="new"> שלח </target>
+      </trans-unit>
+      <trans-unit id="Password is required" datatype="html">
+        <source> Password is required </source>
+        <target state="new"> סיסמא הינה חובה </target>
+      </trans-unit>
+      <trans-unit id="Change To Language" datatype="html">
+        <source>English</source>
+        <target>עברית</target>
+        <target state="new">English</target>
+      </trans-unit>
+      <trans-unit id="Add Commemorative" datatype="html">
+        <source>Add Commemorative</source>
+        <target>הוסף דף זיכרון</target>
+        <target state="new">Add Commemorative</target>
+      </trans-unit>
+      <trans-unit id="logout" datatype="html">
+        <source>logout</source>
+        <target state="new">logout</target>
       </trans-unit>
     </body>
   </file>
