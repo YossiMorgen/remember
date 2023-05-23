@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConfigService {
-  public frontUrl = "http://localhost:4200/";
+  public frontUrl = environment.frontUrl;
 
-  public baseUrl = "http://localhost:3001/";
+  public baseUrl = environment.baseUrl;
   private api = this.baseUrl + "api/";
   
   public login = this.api + "auth/login";

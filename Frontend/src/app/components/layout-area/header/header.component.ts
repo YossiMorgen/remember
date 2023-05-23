@@ -21,16 +21,10 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.location.subscribe(() => {
-      this.path = this.location.path().split('/')[1];
+    this.router.events.subscribe((val) => {
+      this.path = this.location.path().split('/')[1];      
     });
 
-    this.language = this.locale;
-  }
-
-  changeLanguage(event: any): void {
-    console.log(event.target.value);
-    this.locale = event.target.value;
-    //  this.router.navigate([])
+    this.language = this.locale;    
   }
 }

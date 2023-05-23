@@ -182,9 +182,9 @@
         <target state="new"> סיסמא הינה חובה </target>
       </trans-unit>
       <trans-unit id="Change To Language" datatype="html">
-        <source>English</source>
-        <target>עברית</target>
-        <target state="new">English</target>
+        <source>עברית</source>
+        <target>English</target>
+        <target state="new">עברית</target>
       </trans-unit>
       <trans-unit id="Add Commemorative" datatype="html">
         <source>Add Commemorative</source>
@@ -193,6 +193,7 @@
       </trans-unit>
       <trans-unit id="logout" datatype="html">
         <source>logout</source>
+        <target>התנתק</target>
         <target state="new">logout</target>
       </trans-unit>
     </body>

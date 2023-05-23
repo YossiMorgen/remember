@@ -43,7 +43,7 @@ export class AuthService{
         return firstValueFrom(observable);
     }
 
-    public logout():void{
+    public logout():void{        
         delete this.user;
         this.token = '';
         window.localStorage.removeItem('token')
@@ -66,9 +66,10 @@ export class AuthService{
                 this.logout();
                 return false;
             }
+            return true
         }
 
-        return true
+        return false;
     }
 
     public isAdmin():boolean{

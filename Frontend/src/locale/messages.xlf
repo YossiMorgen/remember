@@ -137,7 +137,7 @@
         <source> Password is required </source>
       </trans-unit>
       <trans-unit id="Change To Language" datatype="html">
-        <source>English</source>
+        <source>עברית</source>
       </trans-unit>
       <trans-unit id="Add Commemorative" datatype="html">
         <source>Add Commemorative</source>
