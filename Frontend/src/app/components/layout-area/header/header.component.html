@@ -2,7 +2,7 @@
     <a mat-button routerLink="/commemorative_list">
         <h1>Remember</h1>
     </a>
-    <a *ngIf="path !== 'add_commemorative'" mat-raised-button color="primary" routerLink="add_commemorative" i18n="@@Add Commemorative">Add Commemorative</a>
+    <a *ngIf="url !== 'add_commemorative' && authService.isLoggedIn()" mat-raised-button color="primary" routerLink="add_commemorative" i18n="@@Add Commemorative">Add Commemorative</a>
     <nav>
         <div *ngIf="!authService.isLoggedIn()" class="connect">
             <a mat-raised-button color="primary" routerLink="/login" i18n="@@Login">Login</a>
@@ -10,5 +10,5 @@
         </div>
         <button (click)="authService.logout()" mat-raised-button color="warn" *ngIf="authService.isLoggedIn()" i18n="@@logout">logout</button>
     </nav>
-    <a i18n="@@Change To Language" [href]="'/' + (language === 'he' ? 'en' : 'he') + location.path()">עברית</a>
+    <a i18n="@@Change To Language" [href]="'/' + (language === 'he' ? 'en' : 'he') + router.url">עברית</a>
 </header>
