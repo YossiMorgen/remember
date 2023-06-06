@@ -26,4 +26,15 @@ export class HeaderComponent implements OnInit {
 
     this.language = this.locale;    
   }
+
+  showEdit(){
+    const arr = this.router.url.split('/');
+    console.log(arr);
+  console.log(this.authService.user.userID);
+      
+    if( arr[1] === 'commemorative' && +arr[2] === this.authService.user.userID ) {
+      return true;
+    }
+    return false
+  }
 }
