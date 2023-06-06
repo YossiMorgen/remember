@@ -19,7 +19,7 @@
         <a  mat-menu-item *ngIf="!authService.isLoggedIn()" class="auth" routerLink="/login" i18n="@@Login">Login</a>
         <a  mat-menu-item *ngIf="!authService.isLoggedIn()" class="auth" routerLink="/register" i18n="@@Register">Register</a>
         <button  mat-menu-item class="logout" (click)="authService.logout()" *ngIf="authService.isLoggedIn()" i18n="@@logout">logout</button>
-        <a  mat-menu-item i18n="@@Change To Language" [href]="'/' + (language === 'he' ? 'en' : 'he') + router.url">עברית</a>
+        <a [ngStyle]="language == 'he' ? {direction: 'ltr'} : {direction: 'rtl'}" mat-menu-item i18n="@@Change To Language" [href]="'/' + (language === 'he' ? 'en' : 'he') + router.url">עברית</a>
     </mat-menu>
     
 </header>
