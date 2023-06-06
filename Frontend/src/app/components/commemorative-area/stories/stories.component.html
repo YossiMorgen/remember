@@ -1,6 +1,6 @@
 <div class="stories">
     
-    <button (click)="showDialog()" class="addStory" mat-mini-fab color="primary" >
+    <button [ngStyle]="language === 'he' ? {left: 0} : {right: 0}" (click)="showDialog()" class="addStory" mat-mini-fab color="primary" >
         <mat-icon>plus_one</mat-icon>
     </button>
     <div (click)="auth.user?.userID === story.userID && showDialog(i)" *ngFor="let story of storyService.stories let i = index">

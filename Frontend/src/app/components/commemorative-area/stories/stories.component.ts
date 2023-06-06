@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import StoryModel from 'src/app/models/commemorative-models/story-model';
@@ -14,13 +14,14 @@ type storyData = {author: string, story: string}
   styleUrls: ['./stories.component.css']
 })
 export class StoriesComponent {
-
+  language = this.locale;
   constructor(
     public dialog: MatDialog,
     public storyService: StoryService,
     private router: Router,
-    public auth: AuthService
-  ) { }
+    public auth: AuthService,
+    @Inject(LOCALE_ID) public locale: string,
+    ) { }
 
   public showDialog(i?: number){
     if(!this.auth.user) {

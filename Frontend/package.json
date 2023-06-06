@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open --hmr --configuration=he",
+    "start": "ng serve --open --hmr --configuration=en",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "i18n:merge-files": "npx ng-i18n-merge-files -f xlf",
