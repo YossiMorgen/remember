@@ -706,3 +706,17 @@ Tue, 06 Jun 2023 09:08:28 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:33
     at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\commemorative-logic.ts:26:37)
     at step (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\commemorative-logic.ts:33:23)
 ----------------------------------------------------------------------------------------------------
+Sun, 25 Jun 2023 05:46:10 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\2-utils\dal.ts:12:12)
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\commemorative-logic.ts:26:37)
+    at step (C:\Users\ASUS\Desktop\fullStack\sql-node-angular\Remember\Backend\src\5-logic\commemoration-logic-area\commemorative-logic.ts:33:23)
+----------------------------------------------------------------------------------------------------

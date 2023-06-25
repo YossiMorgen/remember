@@ -1,22 +1,19 @@
 <div class="commemorativeList">
     <mat-card *ngFor="let c of commemorativeService.commemorative">
-       <a 
-        [routerLink]="['/commemorative/', c.commemorativeID]"
-       >
-       <mat-card-content>
-        <div class="img">
-            <img src={{c.deceaseImageName}} alt="">
-        </div>
-    </mat-card-content>
-    <mat-card-header>
-        <mat-card-title>
-            <h3>{{c.deceasedName}}</h3>
-        </mat-card-title>
-        <mat-card-subtitle>
-            <!-- <h4>{{new Date(c.deathDate).toLocaleDateString()}}</h4> -->
-        </mat-card-subtitle>
-    </mat-card-header>
-    </a>
-
+        <a [routerLink]="['/commemorative/', c.commemorativeID]">
+            <mat-card-content>
+                <div class="img">
+                    <img src={{c.deceaseImageName}} alt="">
+                </div>
+            </mat-card-content>
+            <mat-card-header>
+                <mat-card-title>
+                    <h3>{{c.deceasedName}}</h3>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    <!-- <h4>{{new Date(c.deathDate).toLocaleDateString()}}</h4> -->
+                </mat-card-subtitle>
+            </mat-card-header>
+        </a>
     </mat-card>
 </div>
